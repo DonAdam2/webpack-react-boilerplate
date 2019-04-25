@@ -1,0 +1,16 @@
+.pizzaImage {
+    width      : 80%;
+    height     : 300px;
+    margin     : 20px auto;
+    text-align : center;
+    background-image : url('../assets/pizza.jpg');
+
+    .pizzaImg {
+        max-width  : 100%;
+        min-height : 100%;
+    }
+
+    .title {
+        color : red;
+    }
+}

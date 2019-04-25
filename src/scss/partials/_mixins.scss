@@ -1,0 +1,13 @@
+//dark hover mixin -> it has the orange background hover by default. you can change it if you like
+@mixin hover-color-dark($color: white, $background-color: green, $c-value: 0%, $bg-value: 5%) {
+    color            : darken($color, $c-value);
+    background-color : darken($background-color, $bg-value);
+    border           : 1px solid $background-color;
+}
+
+//light hover mixin -> it has the orange background hover by default. you can change it if you like
+@mixin hover-color-light($color: white, $background-color: green, $c-value: 0%, $bg-value: 5%) {
+    color            : lighten($color, $c-value);
+    background-color : lighten($background-color, $bg-value);
+    border           : 1px solid $background-color;
+}

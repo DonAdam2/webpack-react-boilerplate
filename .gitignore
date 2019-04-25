@@ -1,0 +1,9 @@
+# dependencies
+/node_modules
+/dist
+
+#idea folder which is the IDE setting files
+.idea
+
+# misc
+.DS_Store
