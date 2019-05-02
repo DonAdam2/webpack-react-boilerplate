@@ -1,4 +1,10 @@
 {
+    "extends": [
+        "prettier"
+    ],
+    "plugins": [
+        "prettier"
+    ],
     "parser": "babel-eslint",
     "env": {
         "browser": true,
@@ -19,5 +25,8 @@
     },
     "settings": {
         "import/resolver": "webpack"
+    },
+    "rules": {
+        "prettier/prettier": "error"
     }
 }
