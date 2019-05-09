@@ -1,17 +1,24 @@
 // required for babel polyfills
 import 'core-js/stable';
-//import "regenerator-runtime/runtime";
+//import 'regenerator-runtime/runtime';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 
-import './index.scss';
+import { Provider } from 'react-redux';
+
+import configureStore from './js/store/configureStore';
 import App from './App';
+import './index.scss';
+
+const store = configureStore();
 
 ReactDOM.render(
-	<BrowserRouter>
-		<App />
-	</BrowserRouter>,
+	<Provider store={store}>
+		<BrowserRouter>
+			<App />
+		</BrowserRouter>
+	</Provider>,
 	document.getElementById('root')
 );

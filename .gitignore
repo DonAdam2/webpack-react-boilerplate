@@ -7,3 +7,6 @@
 
 # misc
 .DS_Store
+
+# analyze webpack output json file
+stats.json
