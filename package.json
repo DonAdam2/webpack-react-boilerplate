@@ -6,7 +6,7 @@
     "scripts": {
         "start": "webpack-dev-server --mode development --open --config webpack.dev.js",
         "build": "rimraf dist && webpack --mode production  --config webpack.prod.js --progress --profile --color",
-        "analyze-bundle": "rimraf dist && webpack --mode=production --bundleAnalyze=true --config webpack.prod.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist"
+        "analyze-bundle": "rimraf dist && webpack --mode=production --config webpack.prod.js --profile --bundleAnalyze=true --json > stats.json && webpack-bundle-analyzer stats.json dist"
     },
     "author": "Adam Morsi",
     "license": "ISC",

@@ -65,7 +65,8 @@ module.exports = (env, options) => {
 			},
 		},
 		devServer: {
-			//			hot: true,
+			// important to enable hot reloading (hot-loader)
+			hot: true,
 			compress: true,
 			port: port,
 			// important for navigating to the app using browser (if you use any route other than /)

@@ -12,9 +12,10 @@ module.exports = (env, options) => {
 		output: {
 			// __dirname is the absolute path to the root directory of our app
 			path: path.resolve(__dirname, 'dist'),
-			filename: jsSubDirectory + 'bundle.[hash].js',
+			// hashes are very important in production for caching purposes
+			filename: jsSubDirectory + 'bundle.[hash:8].js',
 			// used for the lazy loaded component
-			chunkFilename: jsSubDirectory + '[name].[hash].js',
+			chunkFilename: jsSubDirectory + '[name].[hash:8].js',
 			publicPath: '/',
 		},
 		optimization: {
