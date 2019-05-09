@@ -1,4 +1,4 @@
-This webpack (V4.30.0) boilerplate supports following:
+This webpack (V4.30.0) boilerplate supports the following:
 - SCSS preprocessor
 - CSS modules (each component has it's own styles "no conflict between different components styles")
 - Autoprefixer for CSS (it supports IE >= 11)
