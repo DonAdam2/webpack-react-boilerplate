@@ -6,23 +6,11 @@ export const testAction = () => ({
 });
 
 // fetch image actions
-const fetchBackgroundImageSucceeded = (img) => ({
+export const fetchBackgroundImageSucceeded = (img) => ({
 	type: SET_BACKGROUND_IMG,
 	image: img,
 });
 
-const fetchBackgroundImageFailed = () => ({
+export const fetchBackgroundImageFailed = () => ({
 	type: FETCH_BACKGROUND_IMG_FAILED,
 });
-
-export const initBackgroundImage = () => {
-	return (dispatch) => {
-		fetch('https://unsplash.it/800/600/?random')
-			.then((res) => {
-				dispatch(fetchBackgroundImageSucceeded(res.url));
-			})
-			.catch((err) => {
-				dispatch(fetchBackgroundImageFailed());
-			});
-	};
-};

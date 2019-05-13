@@ -6,7 +6,8 @@ import { Link, Route } from 'react-router-dom';
 import Users from './js/containers/Users';
 import AnotherComponent from './js/components/AnotherComponent';
 import { getBGFailedFetch, getBGImg, getUserTest } from './js/store/users/UsersSelectors';
-import { initBackgroundImage, testAction } from './js/store/users/UsersActions';
+import { testAction } from './js/store/users/UsersActions';
+import { initBackgroundImage } from './js/store/users/UsersApiCalls';
 
 const AsyncPizza = React.lazy(() => import('./js/containers/Pizza'));
 
