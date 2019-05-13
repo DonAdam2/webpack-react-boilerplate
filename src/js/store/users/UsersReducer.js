@@ -1,5 +1,12 @@
 import { FETCH_BACKGROUND_IMG_FAILED, SET_BACKGROUND_IMG, TEST_ACTION } from '../actionTypes';
 
+const updateObject = (oldObject, UpdatedValues) => {
+	return {
+		...oldObject,
+		...UpdatedValues,
+	};
+};
+
 const initialState = {
 	test: 'lol',
 	backgroundImage: null,
@@ -9,20 +16,11 @@ const initialState = {
 const users = (state = initialState, action) => {
 	switch (action.type) {
 		case TEST_ACTION:
-			return {
-				...state,
-				test: 'testing',
-			};
+			return updateObject(state, { test: 'testing' });
 		case SET_BACKGROUND_IMG:
-			return {
-				...state,
-				backgroundImage: action.image,
-			};
+			return updateObject(state, { backgroundImage: action.image });
 		case FETCH_BACKGROUND_IMG_FAILED:
-			return {
-				...state,
-				backgroundImageFailedFetch: true,
-			};
+			return updateObject(state, { backgroundImageFailedFetch: true });
 		default:
 			return state;
 	}
