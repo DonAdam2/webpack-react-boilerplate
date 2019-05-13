@@ -1,11 +1,14 @@
+import axios from 'axios';
 import { fetchBackgroundImageFailed, fetchBackgroundImageSucceeded } from './UsersActions';
+
+const url = 'https://www.mocky.io/v2/5ccfe7d13200006f0000f8c7';
 
 export const initBackgroundImage = () => {
 	return (dispatch) => {
-		fetch('https://unsplash.it/800/600/?random')
+		axios
+			.get(url)
 			.then((res) => {
-				console.log(res);
-				dispatch(fetchBackgroundImageSucceeded(res.url));
+				dispatch(fetchBackgroundImageSucceeded(res.data.movies[0].image));
 			})
 			.catch((err) => {
 				dispatch(fetchBackgroundImageFailed());
