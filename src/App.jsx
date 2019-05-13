@@ -5,14 +5,19 @@ import { Link, Route } from 'react-router-dom';
 
 import Users from './js/containers/Users';
 import AnotherComponent from './js/components/AnotherComponent';
-import { getUserTest } from './js/store/users/UsersSelectors';
-import { testAction } from './js/store/users/UsersActions';
+import { getBGFailedFetch, getBGImg, getUserTest } from './js/store/users/UsersSelectors';
+import { initBackgroundImage, testAction } from './js/store/users/UsersActions';
 
 const AsyncPizza = React.lazy(() => import('./js/containers/Pizza'));
 
 class App extends Component {
 	componentDidMount() {
 		this.props.testAction();
+		this.props.setBackgroundImage();
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		console.log(this.props.userImage, this.props.userImageFailed);
 	}
 
 	render() {
@@ -25,6 +30,7 @@ class App extends Component {
 				<p>
 					Testing the store <strong>{this.props.userTest}</strong>
 				</p>
+				<img src={this.props.userImage} />
 				<div>
 					<Route path="/" exact component={Users} />
 					<Route
@@ -45,10 +51,13 @@ class App extends Component {
 
 const mapStateToProps = (state) => ({
 	userTest: getUserTest({ state }),
+	userImage: getBGImg({ state }),
+	userImageFailed: getBGFailedFetch({ state }),
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	testAction: () => dispatch(testAction()),
+	setBackgroundImage: () => dispatch(initBackgroundImage()),
 });
 
 export default connect(

@@ -1,19 +1,31 @@
+import { FETCH_BACKGROUND_IMG_FAILED, SET_BACKGROUND_IMG, TEST_ACTION } from '../actionTypes';
+
 const initialState = {
-	entries: [],
-	isFetching: false,
-	fetchedSuccesfully: true,
 	test: 'lol',
+	backgroundImage: null,
+	backgroundImageFailedFetch: false,
 };
 
 const users = (state = initialState, action) => {
-	let nextState = {};
 	switch (action.type) {
-		case 'TEST_ACTION':
-			nextState.test = 'testing';
-			break;
+		case TEST_ACTION:
+			return {
+				...state,
+				test: 'testing',
+			};
+		case SET_BACKGROUND_IMG:
+			return {
+				...state,
+				backgroundImage: action.image,
+			};
+		case FETCH_BACKGROUND_IMG_FAILED:
+			return {
+				...state,
+				backgroundImageFailedFetch: true,
+			};
+		default:
+			return state;
 	}
-	state = { ...state, ...nextState };
-	return state;
 };
 
 export default users;
