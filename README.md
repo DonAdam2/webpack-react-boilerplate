@@ -1,4 +1,4 @@
-This webpack (V4.30.0) boilerplate supports the following:
+## This webpack (V4.30.0) boilerplate supports the following:
 - SCSS preprocessor
 - CSS modules (each component has it's own styles "no conflict between different components styles")
 - Autoprefixer for CSS (it supports IE >= 11)
@@ -7,10 +7,18 @@ This webpack (V4.30.0) boilerplate supports the following:
   will not pick it up) & **CSS** and **redux** store (in development)
 - Prettier (for code format)
 
-It has the following configuration for React:
+## It has the following configuration for React:
 - React router dom
 - Redux & Redux devTool
 - Prop types
+
+## Configuring Prettier
+
+This build relies on [Prettier formatter](https://prettier.io/) to enforce a code style. You can find steps on how to setup prettier formatter with WebStorm/PhpStorm [here](https://prettier.io/docs/en/webstorm.html#running-prettier-on-save-using-file-watcher). Please refer to other tutorials if you are using a different IDE. 
+
+Notes: 
+- It's better to use the local `node_modules` version of prettier instead of a global one. This is to avoid version conflicts (in case the globally installed version does not match with the versions specified in `package.json`). So when setting up the file watcher when you follow the steps from the above link you can set `program` to  `$ProjectFileDir$\node_modules\.bin\prettier` (warning this assumes that node_modules sits in the root of your project. This will need to change if your directory structure changes).
+- You will have to create two file watchers. One for JSX files and one for JS files. The webpack build tools are already configured to work with `eslint` and `prettier`. The only thing needed is the two file watchers.   
 
 ## Available Scripts
 
