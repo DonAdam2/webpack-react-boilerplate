@@ -32,7 +32,7 @@ module.exports = (env, options) => {
 								// Number of loaders applied before CSS loader (which is postcss-loader)
 								importLoaders: 2,
 								// the following is used to enable CSS modules
-								modules: true,
+								//								modules: true,
 								// unique name of generated selectors
 								localIdentName: '[name]__[local]__[hash:base64:5]',
 							},
