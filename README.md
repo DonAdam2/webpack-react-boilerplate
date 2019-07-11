@@ -1,6 +1,6 @@
 ## This webpack (V4.30.0) boilerplate supports the following:
 - SCSS preprocessor
-- CSS modules (each component has it's own styles "no conflict between different components styles")
+- To enable CSS modules (each component has it's own styles "no conflict between different components styles") => just open (webpack.prod.js && webpack.dev.js) and uncomment modules: true. Then in every component add the required import as follow: import classes from './scss/requiredStyles'
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** (***Note:*** if you add anything in the **constructor**
  or **componentDidMount** you need to refresh the page because hot loader
