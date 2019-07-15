@@ -45,10 +45,10 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-***Note:*** http-server is part of package.json which you can use to check your application in production by using the following command:
-`http-server dist -o -c-1`
+***Note:*** live-server is part of package.json which you can use to check your application in production by navigating to dist directory then use the following command:
+`live-server --port=8080 --entry-file=./index.html`
 
-By using http-server you can check your app in production without any need for xampp, wamp or any similar web server.
+By using live-server you can check your app in production without any need for xampp, wamp or any similar web server.
 
 ### `npm run analyze-bundle`
 
