@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const { port, devServer, jsSubDirectory } = require('./constants');
 let fullDevServerUrl = devServer + ':' + port + '/';
@@ -18,6 +20,11 @@ module.exports = (env, options) => {
 			chunkFilename: jsSubDirectory + '[name].[hash:8].js',
 			publicPath: '/',
 		},
+		// cheap-module-eval-source-map => (build speed: medium, rebuild speed: fast)
+		// cheap-module-source-map => (build speed: medium, rebuild speed: pretty slow)
+		// source mappings are very useful for debugging and returning the original source code
+		devtool:
+			options.mode === 'development' ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
 		optimization: {
 			// used to avoid duplicated dependencies from node modules
 			splitChunks: {
@@ -53,8 +60,8 @@ module.exports = (env, options) => {
 							loader: 'file-loader',
 							options: {
 								name: '[name].[hash].[ext]',
-								outputPath: 'images',
-								publicPath: options.mode === 'development ' ? fullDevServerUrl + 'images' : '',
+								outputPath: 'assets/images',
+								publicPath: options.mode === 'development' ? fullDevServerUrl + 'images' : '',
 							},
 						},
 					],
@@ -67,8 +74,57 @@ module.exports = (env, options) => {
 							loader: 'file-loader',
 							options: {
 								name: '[name].[hash].[ext]',
-								outputPath: 'fonts',
-								publicPath: options.mode === 'development ' ? fullDevServerUrl + 'fonts' : '',
+								outputPath: 'assets/fonts',
+								publicPath: options.mode === 'development' ? fullDevServerUrl + 'fonts' : '',
+							},
+						},
+					],
+				},
+				{
+					test: /\.s?[ac]ss$/,
+					exclude: /node_modules/,
+					use: [
+						{
+							// style-loader => insert styles in the head of the HTML as style tags or in blob links
+							// MiniCssExtractPlugin => extract styles to a file
+							loader: options.mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+							options: {
+								// used for debugging the app (to see from which component styles are applied)
+								sourceMap: options.mode === 'development',
+							},
+						},
+						{
+							loader: 'css-loader',
+							options: {
+								sourceMap: options.mode === 'development',
+								// Number of loaders applied before CSS loader (which is postcss-loader)
+								importLoaders: 3,
+								// the following is used to enable CSS modules
+								//								modules: true,
+								// unique name of generated selectors
+								localIdentName: '[name]__[local]__[hash:base64:5]',
+							},
+						},
+						{
+							loader: 'postcss-loader',
+							options: {
+								ident: 'postcss',
+								sourceMap: true,
+								plugins: [autoprefixer()],
+							},
+						},
+						{
+							loader: 'resolve-url-loader',
+							options: {
+								//needs sourcemaps to resolve urls
+								sourceMap: true,
+								engine: 'rework',
+							},
+						},
+						{
+							loader: 'sass-loader',
+							options: {
+								sourceMap: true,
 							},
 						},
 					],
@@ -81,7 +137,7 @@ module.exports = (env, options) => {
 				template: __dirname + '/src/index.html',
 				filename: 'index.html',
 				inject: 'body',
-				favicon: './src/assets/favicon.png',
+				favicon: './src/assets/images/favicon.png',
 			}),
 		],
 	};
