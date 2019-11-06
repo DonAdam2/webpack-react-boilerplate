@@ -1,8 +1,8 @@
 // the following 2 lines is to merge common webpack configurations with this file
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
-
-const { port } = require('./constants');
+//constants
+const { port, rootDirectory } = require('./constants');
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
@@ -14,7 +14,7 @@ module.exports = (env, options) => {
 		devServer: {
 			hot: true, // important to enable hot reloading (hot-loader)
 			compress: true,
-			contentBase: 'src', // Tell the server where to serve content from
+			contentBase: rootDirectory, // Tell the server where to serve content from
 			port: port,
 			overlay: true, //show error messages on an overlay on the browser
 			// important for navigating to the app using browser (if you use any route other than /)

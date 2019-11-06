@@ -1,16 +1,17 @@
 const path = require('path');
+//plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const { port, devServer, jsSubDirectory } = require('./constants');
+const autoprefixer = require('autoprefixer');
+//constants
+const { port, devServer, rootDirectory, jsSubDirectory } = require('./constants');
 let fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
 	// the mode variable is passed in package.json scripts (development, production)
 
 	return {
-		entry: './src/index.js',
+		entry: `./${rootDirectory}/index.js`,
 		output: {
 			// __dirname is the absolute path to the root directory of our app
 			path: path.resolve(__dirname, 'dist'),
@@ -55,30 +56,26 @@ module.exports = (env, options) => {
 				},
 				{
 					test: /\.(png|jp(e*)g|svg)$/,
-					use: [
-						{
-							loader: 'file-loader',
-							options: {
-								name: '[name].[hash].[ext]',
-								outputPath: 'assets/images',
-								publicPath: options.mode === 'development' ? fullDevServerUrl + 'images' : '',
-							},
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[hash].[ext]',
+							outputPath: 'assets/images',
+							publicPath: options.mode === 'development' ? fullDevServerUrl + 'images' : '',
 						},
-					],
+					},
 				},
 				{
 					test: /\.(ttf|eot|woff|woff2)$/,
 					exclude: /node_modules/,
-					use: [
-						{
-							loader: 'file-loader',
-							options: {
-								name: '[name].[hash].[ext]',
-								outputPath: 'assets/fonts',
-								publicPath: options.mode === 'development' ? fullDevServerUrl + 'fonts' : '',
-							},
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[hash].[ext]',
+							outputPath: 'assets/fonts',
+							publicPath: options.mode === 'development' ? fullDevServerUrl + 'fonts' : '',
 						},
-					],
+					},
 				},
 				{
 					test: /\.s?[ac]ss$/,
@@ -134,10 +131,10 @@ module.exports = (env, options) => {
 		plugins: [
 			new HtmlWebpackPlugin({
 				title: 'Webpack React',
-				template: __dirname + '/src/index.html',
+				template: __dirname + `/${rootDirectory}/index.html`,
 				filename: 'index.html',
 				inject: 'body',
-				favicon: './src/assets/images/favicon.png',
+				favicon: `./${rootDirectory}/assets/images/favicon.png`,
 			}),
 		],
 	};
