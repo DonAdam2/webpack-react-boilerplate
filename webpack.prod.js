@@ -12,7 +12,22 @@ module.exports = (env, options) => {
 	return merge(common(env, options), {
 		optimization: {
 			// minify the bundled js files
-			minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin()],
+			minimizer: [
+				new TerserJSPlugin({
+					extractComments: true,
+					cache: true,
+					parallel: true,
+					sourceMap: true, // Must be set to true if using source-maps in production
+					terserOptions: {
+						// https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
+						extractComments: 'all',
+						compress: {
+							drop_console: true,
+						},
+					},
+				}),
+				new OptimizeCSSAssetsPlugin(),
+			],
 		},
 		plugins: [
 			// used to extract styles into separated stylesheet
