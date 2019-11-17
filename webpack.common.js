@@ -61,7 +61,7 @@ module.exports = (env, options) => {
 						options: {
 							name: '[name].[hash].[ext]',
 							outputPath: 'assets/images',
-							publicPath: options.mode === 'development' ? fullDevServerUrl + 'images' : '',
+							publicPath: options.mode === 'development' ? fullDevServerUrl + 'assets/images' : '',
 						},
 					},
 				},
@@ -73,7 +73,7 @@ module.exports = (env, options) => {
 						options: {
 							name: '[name].[hash].[ext]',
 							outputPath: 'assets/fonts',
-							publicPath: options.mode === 'development' ? fullDevServerUrl + 'fonts' : '',
+							publicPath: options.mode === 'development' ? fullDevServerUrl + 'assets/fonts' : '',
 						},
 					},
 				},
