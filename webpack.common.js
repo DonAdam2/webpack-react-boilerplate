@@ -135,6 +135,13 @@ module.exports = (env, options) => {
 				filename: 'index.html',
 				inject: 'body',
 				favicon: `./${rootDirectory}/assets/images/favicon.png`,
+				meta: {
+					author: 'Adam Morsi',
+					description:
+						'Hello, I am adam, I am a software developer currently based in Nicosia, Cyprus. I love creating responsive web applications. I love learning and being up to date with latest technologies',
+					// image: `./${rootDirectory}/assets/images/intro.png`,
+					keywords: 'portfolio, software developer, frontend developer',
+				},
 			}),
 		],
 	};
