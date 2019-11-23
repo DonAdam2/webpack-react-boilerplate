@@ -4,4 +4,10 @@ module.exports = {
 	rootDirectory: 'src',
 	jsSubDirectory: 'js/',
 	cssSubDirectory: 'css/',
+	metaInfo: {
+		title: 'Adam Morsi',
+		description: 'description',
+		url: 'https://example.com/',
+		keywords: 'add you keywords',
+	},
 };

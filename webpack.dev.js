@@ -2,7 +2,8 @@
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 //constants
-const { port, rootDirectory } = require('./constants');
+const { port, rootDirectory, devServer } = require('./constants');
+let fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
@@ -10,6 +11,21 @@ module.exports = (env, options) => {
 			alias: {
 				'react-dom': '@hot-loader/react-dom',
 			},
+		},
+		module: {
+			rules: [
+				{
+					test: /\.(png|jp(e*)g|svg)$/,
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[hash].[ext]',
+							outputPath: 'assets/images',
+							publicPath: fullDevServerUrl + 'assets/images',
+						},
+					},
+				},
+			],
 		},
 		devServer: {
 			hot: true, // important to enable hot reloading (hot-loader)

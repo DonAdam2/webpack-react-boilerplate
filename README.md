@@ -20,8 +20,20 @@ Notes:
 - It's better to use the local `node_modules` version of prettier instead of a global one. This is to avoid version conflicts (in case the globally installed version does not match with the versions specified in `package.json`). So when setting up the file watcher when you follow the steps from the above link you can set `program` to  `$ProjectFileDir$\node_modules\.bin\prettier` (warning this assumes that node_modules sits in the root of your project. This will need to change if your directory structure changes).
 - You will have to create two file watchers. One for JSX files and one for JS files. The webpack build tools are already configured to work with `eslint` and `prettier`. The only thing needed is the two file watchers.   
 
+## Site meta tags:
+- This app includes facebook, twitter and regular meta tags
+#### To update them:
+- Open constants.js file and update metaInfo object
+- Open src/assets/images and replace (favicon.png, metaImage.jpg) with your images but using the same name
+
+
 ## Extra:
 - Font awesome
+- Layout using bootstrap grid system (scss/generic/_grid.scss)
+- Basic mixins (scss/generic/_mixins.scss)
+- Normalize styles (scss/generic/_normalize.scss)
+- App typography styles (scss/generic/_typography.scss)
+- 4 break points (scss/generic/_variables.scss)
 
 ## Available Scripts
 
