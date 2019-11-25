@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
 //constants
 const {
+	outputDirectory,
 	port,
 	devServer,
 	rootDirectory,
@@ -20,7 +21,7 @@ module.exports = (env, options) => {
 		entry: `./${rootDirectory}/index.js`,
 		output: {
 			// __dirname is the absolute path to the root directory of our app
-			path: path.resolve(__dirname, 'dist'),
+			path: path.resolve(__dirname, outputDirectory),
 			// hashes are very important in production for caching purposes
 			filename: jsSubDirectory + 'bundle.[hash:8].js',
 			// used for the lazy loaded component
