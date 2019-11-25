@@ -11,7 +11,7 @@ class App extends Component {
 	render() {
 		const { testAction, setTestAction } = this.props;
 		return (
-			<div>
+			<div className="container" style={{ textAlign: 'center' }}>
 				<p>
 					Testing the store <strong>{testAction}</strong>
 				</p>
