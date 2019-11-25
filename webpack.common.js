@@ -61,6 +61,17 @@ module.exports = (env, options) => {
 					exclude: /node_modules/,
 				},
 				{
+					test: /\.(png|jp(e*)g|svg)$/,
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[hash].[ext]',
+							outputPath: 'assets/images',
+							publicPath: fullDevServerUrl + 'assets/images',
+						},
+					},
+				},
+				{
 					test: /\.(ttf|eot|woff|woff2)$/,
 					exclude: /node_modules/,
 					use: {
