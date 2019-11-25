@@ -12,6 +12,21 @@ module.exports = (env, options) => {
 				'react-dom': '@hot-loader/react-dom',
 			},
 		},
+		module: {
+			rules: [
+				{
+					test: /\.(png|jp(e*)g|svg)$/,
+					use: {
+						loader: 'file-loader',
+						options: {
+							name: '[name].[hash].[ext]',
+							outputPath: 'assets/images',
+							publicPath: fullDevServerUrl + 'assets/images',
+						},
+					},
+				},
+			],
+		},
 		devServer: {
 			hot: true, // important to enable hot reloading (hot-loader)
 			compress: true,

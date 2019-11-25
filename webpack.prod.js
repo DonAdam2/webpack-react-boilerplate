@@ -33,31 +33,40 @@ module.exports = (env, options) => {
 			rules: [
 				{
 					test: /\.(png|jp(e*)g|svg)$/,
-					use: {
-						//used to minimize images
-						loader: 'image-webpack-loader',
-						options: {
-							mozjpeg: {
-								progressive: true,
-								quality: 65,
-							},
-							// optipng.enabled: false will disable optipng
-							optipng: {
-								enabled: false,
-							},
-							pngquant: {
-								quality: [0.65, 0.9],
-								speed: 4,
-							},
-							gifsicle: {
-								interlaced: false,
-							},
-							// the webp option will enable WEBP
-							webp: {
-								quality: 75,
+					use: [
+						{
+							loader: 'file-loader',
+							options: {
+								name: '[name].[hash].[ext]',
+								outputPath: 'assets/images',
+								publicPath: '',
 							},
 						},
-					},
+						{
+							loader: 'image-webpack-loader',
+							options: {
+								mozjpeg: {
+									progressive: true,
+									quality: 65,
+								},
+								// optipng.enabled: false will disable optipng
+								optipng: {
+									enabled: false,
+								},
+								pngquant: {
+									quality: [0.65, 0.9],
+									speed: 4,
+								},
+								gifsicle: {
+									interlaced: false,
+								},
+								// the webp option will enable WEBP
+								webp: {
+									quality: 75,
+								},
+							},
+						},
+					],
 				},
 			],
 		},
