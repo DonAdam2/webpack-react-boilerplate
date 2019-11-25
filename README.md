@@ -28,6 +28,7 @@ Notes:
 
 
 ## Extra:
+- Private route guard
 - Font awesome
 - Layout using bootstrap grid system (scss/generic/_grid.scss)
 - Basic mixins (scss/generic/_mixins.scss)
