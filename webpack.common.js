@@ -81,14 +81,11 @@ module.exports = (env, options) => {
 							// style-loader => insert styles in the head of the HTML as style tags or in blob links
 							// MiniCssExtractPlugin => extract styles to a file
 							loader: options.mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
-							options: {
-								// used for debugging the app (to see from which component styles are applied)
-								sourceMap: options.mode === 'development',
-							},
 						},
 						{
 							loader: 'css-loader',
 							options: {
+								// used for debugging the app (to see from which component styles are applied)
 								sourceMap: options.mode === 'development',
 								// Number of loaders applied before CSS loader (which is postcss-loader)
 								importLoaders: 3,
