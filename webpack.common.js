@@ -135,7 +135,7 @@ module.exports = (env, options) => {
 				meta: {
 					description: description,
 					keywords: keywords,
-					url: options.mode === 'development' ? 'http://localhost:3000/' : url,
+					url: options.mode === 'development' ? fullDevServerUrl : url,
 					'apple-mobile-web-app-capable': 'yes',
 					'mobile-web-app-capable': 'yes',
 				},
