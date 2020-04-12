@@ -46,7 +46,7 @@ Notes:
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.<br>
 It will open [http://localhost:3000](http://localhost:3000) automatically in the browser to see your app.
@@ -60,7 +60,7 @@ You will see in the console the following:
   1. Linting errors.
   2. Code format errors (because of [prettier](https://prettier.io/))
 
-### `npm run build`
+### `yarn run build`
 
 Builds the app for production to the `dist` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -68,11 +68,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-**_Note:_** live-server is part of package.json which you can use to check your application in production by navigating to dist directory then use the following command:
+**_Note:_** You can install live-server globally (npm install -g live-server) which allows your to check your application in production by navigating to dist directory then use the following command:
 `live-server --port=8080 --entry-file=./index.html`
 
 By using live-server you can check your app in production without any need for xampp, wamp or any similar web server.
 
-### `npm run analyze-bundle`
+### `yarn run analyze-bundle`
 
 It allows you to analyze the bundle size.<br>
