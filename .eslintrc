@@ -1,32 +1,28 @@
 {
-    "extends": [
-        "prettier"
-    ],
-    "plugins": [
-        "prettier"
-    ],
-    "parser": "babel-eslint",
-    "env": {
-        "browser": true,
-        "node": true,
-        "commonjs":true,
-        "es6":true
-    },
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true,
-            "modules": true,
-            "arrowFunctions": true,
-            "restParams": true,
-            "experimentalObjectRestSpread": true
-        }
-    },
-    "settings": {
-        "import/resolver": "webpack"
-    },
-    "rules": {
-        "prettier/prettier": "error"
-    }
+	"extends": ["prettier"],
+	"plugins": ["prettier"],
+	"parser": "babel-eslint",
+	"env": {
+		"browser": true,
+		"node": true,
+		"commonjs": true,
+		"es6": true
+	},
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true,
+			"modules": true,
+			"arrowFunctions": true,
+			"restParams": true,
+			"experimentalObjectRestSpread": true
+		}
+	},
+	"settings": {
+		"import/resolver": "webpack"
+	},
+	"rules": {
+		"prettier/prettier": "error"
+	}
 }

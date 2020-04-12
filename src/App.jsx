@@ -31,7 +31,4 @@ const mapDispatchToProps = (dispatch) => ({
 	setTestAction: () => dispatch(setTestAction()),
 });
 
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(hot(App));
+export default connect(mapStateToProps, mapDispatchToProps)(hot(App));
