@@ -1,34 +1,19 @@
-import React, { Component } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { connect } from 'react-redux';
+//components
+import LoadingIndicator from './js/components/UI/LoadingIndicator';
+const TestComponent = lazy(() => import('./js/components/TestComponent'));
 
-//selectors
-import { getTestAction } from './js/store/selectors/AppSelectors';
-//actions
-import { setTestAction } from './js/store/actions/AppActions';
-
-class App extends Component {
-	render() {
-		const { testAction, setTestAction } = this.props;
-		return (
-			<div className="container" style={{ textAlign: 'center' }}>
-				<p>
-					Testing the store <strong>{testAction}</strong>
-				</p>
-				<button className="std-btn primary" onClick={setTestAction}>
-					Change text
-				</button>
+const App = () => (
+	<Suspense
+		fallback={
+			<div className="loader-wrapper">
+				<LoadingIndicator />
 			</div>
-		);
-	}
-}
+		}
+	>
+		<TestComponent />
+	</Suspense>
+);
 
-const mapStateToProps = (state) => ({
-	testAction: getTestAction({ state }),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-	setTestAction: () => dispatch(setTestAction()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(hot(App));
+export default hot(App);
