@@ -94,7 +94,9 @@ module.exports = (env, options) => {
 								// the following is used to enable CSS modules
 								//								modules: true,
 								// unique name of generated selectors
-								localIdentName: '[name]__[local]__[hash:base64:5]',
+								modules: {
+									localIdentName: '[name]__[local]__[hash:base64:5]',
+								},
 							},
 						},
 						{

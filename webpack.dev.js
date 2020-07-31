@@ -1,5 +1,5 @@
 // the following 2 lines is to merge common webpack configurations with this file
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 //constants
 const { port, rootDirectory, devServer } = require('./constants');
