@@ -11,14 +11,16 @@ const { cssSubDirectory } = require('./constants');
 module.exports = (env, options) => {
 	return merge(common(env, options), {
 		optimization: {
+			minimize: true,
 			// minify the bundled js files
 			minimizer: [
 				new TerserJSPlugin({
 					extractComments: true,
 					cache: true,
 					parallel: true,
-					sourceMap: true, // Must be set to true if using source-maps in production
+					sourceMap: false,
 					terserOptions: {
+						ecma: 5,
 						// https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
 						extractComments: 'all',
 						compress: {
