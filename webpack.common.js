@@ -1,18 +1,20 @@
 const path = require('path');
 //plugins
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin'),
+	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+	autoprefixer = require('autoprefixer'),
+	EsLintPlugin = require('eslint-webpack-plugin');
+
 //constants
 const {
-	outputDirectory,
-	port,
-	devServer,
-	rootDirectory,
-	jsSubDirectory,
-	metaInfo: { title, description, url, keywords },
-} = require('./constants');
-let fullDevServerUrl = devServer + ':' + port + '/';
+		outputDirectory,
+		port,
+		devServer,
+		rootDirectory,
+		jsSubDirectory,
+		metaInfo: { title, description, url, keywords },
+	} = require('./constants'),
+	fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
 	// the mode variable is passed in package.json scripts (development, production)
@@ -44,18 +46,6 @@ module.exports = (env, options) => {
 		},
 		module: {
 			rules: [
-				{
-					test: /\.(js|jsx)$/, // include .js files
-					exclude: [/node_modules/],
-					enforce: 'pre',
-					use: {
-						loader: 'eslint-loader',
-						options: {
-							emitError: true,
-							emitWarning: true,
-						},
-					},
-				},
 				{
 					test: /\.js|jsx$/,
 					exclude: /node_modules/,
@@ -127,6 +117,11 @@ module.exports = (env, options) => {
 			],
 		},
 		plugins: [
+			new EsLintPlugin({
+				emitError: true,
+				emitWarning: true,
+				threads: true,
+			}),
 			new HtmlWebpackPlugin({
 				title: title,
 				template: __dirname + `/${rootDirectory}/index.html`,
