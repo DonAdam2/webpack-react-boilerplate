@@ -58,8 +58,11 @@ module.exports = (env, options) => {
 				},
 				{
 					test: /\.js|jsx$/,
-					loader: 'babel-loader',
 					exclude: /node_modules/,
+					use: {
+						loader: 'babel-loader',
+						options: { cacheDirectory: true },
+					},
 				},
 				{
 					test: /\.(ttf|eot|woff|woff2)$/,
