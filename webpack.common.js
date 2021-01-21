@@ -18,6 +18,7 @@ const {
 
 module.exports = (env, options) => {
 	// the mode variable is passed in package.json scripts (development, production)
+	const isDevelopment = options.mode === 'development';
 
 	return {
 		entry: `./${rootDirectory}/index.js`,
@@ -33,8 +34,7 @@ module.exports = (env, options) => {
 		// cheap-module-eval-source-map => (build speed: medium, rebuild speed: fast)
 		// cheap-module-source-map => (build speed: medium, rebuild speed: pretty slow)
 		// source mappings are very useful for debugging and returning the original source code
-		devtool:
-			options.mode === 'development' ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
+		devtool: isDevelopment ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
 		optimization: {
 			// used to avoid duplicated dependencies from node modules
 			splitChunks: {
@@ -62,7 +62,7 @@ module.exports = (env, options) => {
 						options: {
 							name: '[name].[hash].[ext]',
 							outputPath: 'assets/fonts',
-							publicPath: options.mode === 'development' ? fullDevServerUrl + 'assets/fonts' : '',
+							publicPath: isDevelopment ? fullDevServerUrl + 'assets/fonts' : '',
 						},
 					},
 				},
@@ -73,7 +73,7 @@ module.exports = (env, options) => {
 						{
 							// style-loader => insert styles in the head of the HTML as style tags or in blob links
 							// MiniCssExtractPlugin => extract styles to a file
-							loader: options.mode === 'development' ? 'style-loader' : MiniCssExtractPlugin.loader,
+							loader: isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
 							//if source map is set to true from previous loaders => this loader will be true as well
 						},
 						{
@@ -81,7 +81,7 @@ module.exports = (env, options) => {
 							loader: 'css-loader',
 							options: {
 								// used for debugging the app (to see from which component styles are applied)
-								sourceMap: options.mode === 'development',
+								sourceMap: isDevelopment,
 								// Number of loaders applied before CSS loader (which is postcss-loader)
 								importLoaders: 3,
 								// the following is used to enable CSS modules
@@ -92,7 +92,7 @@ module.exports = (env, options) => {
 							loader: 'postcss-loader',
 							options: {
 								ident: 'postcss',
-								sourceMap: options.mode === 'development',
+								sourceMap: isDevelopment,
 								plugins: [autoprefixer()],
 							},
 						},
@@ -131,7 +131,7 @@ module.exports = (env, options) => {
 				meta: {
 					description: description,
 					keywords: keywords,
-					url: options.mode === 'development' ? fullDevServerUrl : url,
+					url: isDevelopment ? fullDevServerUrl : url,
 					'apple-mobile-web-app-capable': 'yes',
 					'mobile-web-app-capable': 'yes',
 				},
