@@ -34,12 +34,12 @@ module.exports = (env, options) => {
 		module: {
 			rules: [
 				{
-					test: /\.(png|jp(e*)g|svg)$/,
+					test: /\.(png|jpe?g|svg|gif)$/i,
 					use: [
 						{
 							loader: 'file-loader',
 							options: {
-								name: '[name].[hash].[ext]',
+								name: '[name].[ext]',
 								outputPath: 'assets/images',
 								publicPath: '',
 							},

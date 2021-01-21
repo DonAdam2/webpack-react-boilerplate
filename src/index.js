@@ -1,3 +1,5 @@
+//import meta image
+import './assets/images/metaImage.jpg';
 // required for babel polyfills
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';

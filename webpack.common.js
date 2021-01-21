@@ -134,6 +134,7 @@ module.exports = (env, options) => {
 					url: isDevelopment ? fullDevServerUrl : url,
 					'apple-mobile-web-app-capable': 'yes',
 					'mobile-web-app-capable': 'yes',
+					image: `${isDevelopment ? fullDevServerUrl : url}assets/images/metaImage.jpg`,
 				},
 			}),
 		],
