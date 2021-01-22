@@ -5,6 +5,7 @@
 #idea folder which is the IDE setting files
 .idea
 .vscode
+debug.log
 
 # misc
 .DS_Store
