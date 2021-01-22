@@ -1,18 +1,21 @@
 ## This webpack (V4.44.1) boilerplate supports the following:
 
-- SCSS preprocessor 
+- SCSS preprocessor
 - To enable CSS modules (each component has it's own styles "no conflict between different components styles") => just open (webpack.prod.js && webpack.dev.js) and uncomment modules: true. Then in every component add the required import as follow: import classes from './scss/requiredStyles'
 - Autoprefixer for CSS (it supports IE >= 11)
-- Hot reloading for **JS** (**_Note:_** if you add anything in the **constructor**
-  or **componentDidMount** you need to refresh the page because hot loader
-  will not pick it up) & **CSS** and **redux** store (in development)
+- Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
 
 ## It has the following configuration for React:
 
 - React router dom
-- Redux & Redux devTool
+- Redux & Redux thunk & Redux devTool
 - Prop types
+- 2 environments {production: .env, development: .env.development}
+
+### Update environment variables:
+
+Please keep in mind that variables are configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
 
 ## Configuring Prettier
 
