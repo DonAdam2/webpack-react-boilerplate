@@ -1,5 +1,5 @@
-import { TEST_ACTION } from '../actionTypes';
-import { updateObject } from '../utility';
+import { TEST_ACTION } from '../appActionTypes';
+import { updateObject } from '../../../constants/Helpers';
 
 const initialState = {
 	testString: 'Initial test',

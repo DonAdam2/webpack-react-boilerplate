@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //selectors
-import { getTestAction } from '../store/selectors/AppSelectors';
+import { getTestAction } from '../store/app/selectors/AppSelectors';
 //actions
-import { setTestAction } from '../store/actions/AppActions';
+import { setTestAction } from '../store/app/actions/AppActions';
 
 const TestComponent = () => {
 	const dispatch = useDispatch(),
