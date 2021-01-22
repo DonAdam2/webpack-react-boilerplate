@@ -1,12 +1,12 @@
 // the following 2 lines is to merge common webpack configurations with this file
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
-//plugins
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const TerserJSPlugin = require('terser-webpack-plugin');
-//constants
-const { cssSubDirectory } = require('./constants');
+const { merge } = require('webpack-merge'),
+	common = require('./webpack.common.js'),
+	//plugins
+	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+	TerserJSPlugin = require('terser-webpack-plugin'),
+	//constants
+	{ cssSubDirectory } = require('./constants');
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {

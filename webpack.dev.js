@@ -1,9 +1,9 @@
 // the following 2 lines is to merge common webpack configurations with this file
-const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
-//constants
-const { port, rootDirectory, devServer } = require('./constants');
-let fullDevServerUrl = devServer + ':' + port + '/';
+const { merge } = require('webpack-merge'),
+	common = require('./webpack.common.js'),
+	//constants
+	{ port, rootDirectory, devServer } = require('./constants'),
+	fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {

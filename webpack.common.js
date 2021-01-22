@@ -1,18 +1,17 @@
-const path = require('path');
-//plugins
-const HtmlWebpackPlugin = require('html-webpack-plugin'),
+const path = require('path'),
+	//plugins
+	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 	autoprefixer = require('autoprefixer'),
-	EsLintPlugin = require('eslint-webpack-plugin');
-
-//constants
-const {
+	EsLintPlugin = require('eslint-webpack-plugin'),
+	//constants
+	{
 		outputDirectory,
 		port,
 		devServer,
 		rootDirectory,
 		jsSubDirectory,
-		metaInfo: { title, description, url, keywords },
+		metaInfo: { title, description, url, keywords, metaImageName },
 	} = require('./constants'),
 	fullDevServerUrl = devServer + ':' + port + '/';
 
@@ -123,18 +122,18 @@ module.exports = (env, options) => {
 				threads: true,
 			}),
 			new HtmlWebpackPlugin({
-				title: title,
+				title,
 				template: __dirname + `/${rootDirectory}/index.html`,
 				filename: 'index.html',
 				inject: 'body',
 				favicon: `./${rootDirectory}/assets/images/favicon.png`,
 				meta: {
-					description: description,
-					keywords: keywords,
+					description,
+					keywords,
 					url: isDevelopment ? fullDevServerUrl : url,
 					'apple-mobile-web-app-capable': 'yes',
 					'mobile-web-app-capable': 'yes',
-					image: `${isDevelopment ? fullDevServerUrl : url}assets/images/metaImage.jpg`,
+					image: `${isDevelopment ? fullDevServerUrl : url}assets/images/${metaImageName}`,
 				},
 			}),
 		],

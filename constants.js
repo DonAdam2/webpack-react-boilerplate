@@ -9,6 +9,7 @@ module.exports = {
 		title: 'Adam Morsi',
 		description: 'description',
 		url: 'https://example.com/',
+		metaImageName: 'metaImage.jpg',
 		keywords: 'add you keywords',
 	},
 };
