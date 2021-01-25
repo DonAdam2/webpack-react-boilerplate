@@ -5,6 +5,22 @@
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
+- Docker setup for development
+
+## Notes regarding docker
+- Please make sure to install packages locally before starting the docker otherwise you will have issues with prettier
+- Use the following command to build the image and run a container from it (only the first time):
+```
+docker-compose up --build
+```
+- Use the following command to run the container (if you build it already):
+```
+docker-compose up
+```
+- Use the following command to stop the container:
+```
+docker-compose down
+```
 
 ## It has the following configuration for React:
 
@@ -62,6 +78,9 @@ You will see in the console the following:
 - Any of the following errors:
   1. Linting errors.
   2. Code format errors (because of [prettier](https://prettier.io/))
+
+### `yarn run docker-start`
+Used by docker to start the development server in a container.
 
 ### `yarn run build`
 
