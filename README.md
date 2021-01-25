@@ -16,7 +16,7 @@
 
 ### Update environment variables:
 
-Please keep in mind that variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
+Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
 
 ### Note regarding docker
 Please make sure to install packages locally before starting the docker otherwise you will have issues with prettier.
