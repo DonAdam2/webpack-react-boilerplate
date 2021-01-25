@@ -7,21 +7,6 @@
 - Prettier (for code format)
 - Docker setup for development
 
-## Notes regarding docker
-- Please make sure to install packages locally before starting the docker otherwise you will have issues with prettier
-- Use the following command to build the image and run a container from it (only the first time):
-```
-docker-compose up --build
-```
-- Use the following command to run the container (if you build it already):
-```
-docker-compose up
-```
-- Use the following command to stop the container:
-```
-docker-compose down
-```
-
 ## It has the following configuration for React:
 
 - React router dom
@@ -31,7 +16,10 @@ docker-compose down
 
 ### Update environment variables:
 
-Please keep in mind that variables are configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
+Please keep in mind that variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
+
+### Note regarding docker
+Please make sure to install packages locally before starting the docker otherwise you will have issues with prettier.
 
 ## Configuring Prettier
 
