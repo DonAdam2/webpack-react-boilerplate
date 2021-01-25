@@ -1,6 +1,6 @@
 import React from 'react';
 
-const LoadingIndicator = () => (
+const LoadingIcon = () => (
 	<div className="lds-ring">
 		<div />
 		<div />
@@ -9,4 +9,4 @@ const LoadingIndicator = () => (
 	</div>
 );
 
-export default LoadingIndicator;
+export default LoadingIcon;
