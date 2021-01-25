@@ -41,7 +41,9 @@ Notes:
 
 ## Extra:
 
-- Private route guard
+- Private route guard => protect the given route based on a token.
+- Restricted route guard => protect the given route based on a token, and a list of permissions (can be an array or a string).
+- Restricted section => protect the given section based on a list of permissions (can be an array or a string).
 - Font awesome
 - Layout using bootstrap grid system (scss/generic/\_grid.scss)
 - Basic mixins (scss/generic/\_mixins.scss)
