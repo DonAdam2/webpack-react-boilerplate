@@ -13,6 +13,7 @@ const App = () => (
 		}
 	>
 		<TestComponent />
+		<p>Hello World</p>
 	</Suspense>
 );
 
