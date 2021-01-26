@@ -87,4 +87,8 @@ By using live-server you can check your app in production without any need for x
 
 ### `yarn run analyze-bundle`
 
-It allows you to analyze the bundle size.<br>
+It allows you to analyze the bundle size.
+
+### `yarn run test`
+
+It runs test files using react testing library.
