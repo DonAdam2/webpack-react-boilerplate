@@ -9,7 +9,6 @@
 	],
 	"scripts": {
 		"start": "webpack-dev-server --mode=development --open --config webpack.dev.js",
-		"docker-start": "webpack-dev-server --host 0.0.0.0 --mode=development --open --config webpack.dev.js",
 		"build": "rimraf dist && webpack --mode=production  --config webpack.prod.js --progress --profile --color",
 		"analyze-bundle": "rimraf dist && webpack --mode=production --config webpack.prod.js --profile --bundleAnalyze=true --json > stats.json && webpack-bundle-analyzer stats.json dist",
 		"test": "jest -c jest.config.js --watch"

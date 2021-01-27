@@ -69,9 +69,6 @@ You will see in the console the following:
   1. Linting errors.
   2. Code format errors (because of [prettier](https://prettier.io/))
 
-### `yarn run docker-start`
-Used by docker to start the development server in a container. Open [http://localhost:3000](http://localhost:3000) to see your app. 
-
 ### `yarn run build`
 
 Builds the app for production to the `dist` folder.<br>
