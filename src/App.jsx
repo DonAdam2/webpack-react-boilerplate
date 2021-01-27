@@ -16,7 +16,7 @@ const App = () => (
 	>
 		<ErrorBoundary>
 			<TestComponent />
-			<p>Hello World</p>
+			<p style={{ textAlign: 'center' }}>Hello World</p>
 		</ErrorBoundary>
 	</Suspense>
 );
