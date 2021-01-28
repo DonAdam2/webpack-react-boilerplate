@@ -8,5 +8,6 @@
   trailingComma: "es5",
   jsxBracketSameLine: false,
   requirePragma: false,
-  arrowParens: "always"
+  arrowParens: "always",
+  endOfLine: "auto"
 }
