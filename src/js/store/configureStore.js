@@ -19,6 +19,7 @@ const configureStore = () => {
 		store = createStore(
 			rootReducer,
 			/* preloadedState, */
+			//use redux dev tool in development only
 			isDevelopment ? composeWithDevTools(apply) : apply
 		);
 
