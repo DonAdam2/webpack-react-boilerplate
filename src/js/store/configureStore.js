@@ -12,14 +12,16 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 const configureStore = () => {
-	const store = createStore(
-		rootReducer,
-		/* preloadedState, */
-		composeWithDevTools(applyMiddleware(thunkMiddleware, ...middlewares))
-	);
+	const isDevelopment = process.env.NODE_ENV === 'development',
+		apply = applyMiddleware(thunkMiddleware, ...middlewares),
+		store = createStore(
+			rootReducer,
+			/* preloadedState, */
+			isDevelopment ? composeWithDevTools(apply) : apply
+		);
 
 	// enable hot loading in development mode only
-	if (process.env.NODE_ENV !== 'production' && module.hot) {
+	if (isDevelopment && module.hot) {
 		module.hot.accept('./rootReducer', () => store.replaceReducer(rootReducer));
 	}
 

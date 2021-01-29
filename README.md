@@ -10,7 +10,7 @@
 ## It has the following configuration for React:
 
 - React router dom
-- Redux & Redux thunk & Redux devTool
+- Redux & Redux thunk & & Redux logger & Redux devTool
 - Prop types
 - 2 environments {production: .env, development: .env.development}
 
