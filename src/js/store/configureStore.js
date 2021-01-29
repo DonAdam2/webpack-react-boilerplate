@@ -1,19 +1,21 @@
 import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+//root reducer
 import rootReducer from './rootReducer';
+//middle wares
+import thunkMiddleware from 'redux-thunk';
 
-const middlewares = [];
+const isDevelopment = process.env.NODE_ENV === 'development',
+	middlewares = [];
 
 // log redux data in development mode only
-if (process.env.NODE_ENV !== 'production') {
+if (isDevelopment) {
 	const { logger } = require('redux-logger');
 	middlewares.push(logger);
 }
 
 const configureStore = () => {
-	const isDevelopment = process.env.NODE_ENV === 'development',
-		apply = applyMiddleware(thunkMiddleware, ...middlewares),
+	const apply = applyMiddleware(thunkMiddleware, ...middlewares),
 		store = createStore(
 			rootReducer,
 			/* preloadedState, */
