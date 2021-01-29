@@ -1,7 +1,7 @@
 ## This webpack (V4.44.1) boilerplate supports the following:
 
 - SCSS preprocessor
-- To enable CSS modules (each component has it's own styles "no conflict between different components styles") => just open (webpack.prod.js && webpack.dev.js) and uncomment modules: true. Then in every component add the required import as follow: import classes from './scss/requiredStyles'
+- To enable CSS modules (each component has it's own styles "no conflict between different components styles") => just open (webpack.prod.js && webpack.dev.js) and uncomment modules: true. Then in every component add the required import as follow: `import classes from './scss/requiredStyles'`
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
@@ -14,12 +14,27 @@
 - Prop types
 - 2 environments {production: .env, development: .env.development}
 
-### Update environment variables:
+## Prerequisites:
+- nodeJS > 12.X.X or Docker
+
+## Installing / Getting Started:
+### Development (locally):
+
+- Clone repo => `git clone repo-url`
+- `cd frontend`
+- Install dependencies => `yarn install`
+- Start the development server => `yarn start`
+
+### Development (using Docker):
+
+- Clone repo => `git clone repo-url`
+- `cd frontend`
+- Install dependencies (required for prettier) => `yarn install`
+- Start the development server => `docker-compose up --build`
+
+## Update environment variables:
 
 Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
-
-### Note regarding docker
-Please make sure to install packages locally before starting the docker otherwise you will have issues with prettier.
 
 ## Configuring Prettier
 
@@ -44,12 +59,13 @@ Notes:
 - Private route guard => protect the given route based on a token.
 - Restricted route guard => protect the given route based on a token, and a list of permissions (can be an array or a string).
 - Restricted section => protect the given section based on a list of permissions (can be an array or a string).
+- Generic error boundary fallback component (you can customize it) 
 - Font awesome
-- Layout using bootstrap grid system (scss/generic/\_grid.scss)
-- Basic mixins (scss/generic/\_mixins.scss)
-- Normalize styles (scss/generic/\_normalize.scss)
-- App typography styles (scss/generic/\_typography.scss)
-- 4 break points (scss/generic/\_variables.scss)
+- Layout using bootstrap grid system `(scss/generic/_grid.scss)`
+- Basic mixins `(scss/generic/_mixins.scss)`
+- Normalize styles `(scss/generic/_normalize.scss)`
+- App typography styles `(scss/generic/_typography.scss)`
+- 4 break points `(scss/generic/_variables.scss)`
 
 ## Available Scripts
 
