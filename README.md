@@ -86,6 +86,21 @@ By using live-server you can check your app in production without any need for x
 
 It allows you to analyze the bundle size.
 
-### `yarn run test`
+### `yarn run test:watch`
 
-It runs test files using react testing library.
+Run test for latest files updated and watches for changes. (not committed yet)
+
+### `yarn run test:last`
+Runs only tests for updated files (not committed yet).
+
+### `yarn run test:all`
+
+Runs all tests.
+
+### `yarn run test:clear`
+
+Clears jest's cache. Very useful when the tests start to fail for no reason.
+
+### `yarn run test:coverage`
+
+Runs all tests in order to get the code coverage. Our goal is to have at least 80 90 %.

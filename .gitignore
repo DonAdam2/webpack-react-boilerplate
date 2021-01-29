@@ -1,6 +1,7 @@
 # dependencies
 /node_modules
 /dist
+/coverage
 
 #idea folder which is the IDE setting files
 .idea

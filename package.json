@@ -11,7 +11,11 @@
 		"start": "webpack-dev-server --mode=development --open --config webpack.dev.js",
 		"build": "rimraf dist && webpack --mode=production  --config webpack.prod.js --progress --profile --color",
 		"analyze-bundle": "rimraf dist && webpack --mode=production --config webpack.prod.js --profile --bundleAnalyze=true --json > stats.json && webpack-bundle-analyzer stats.json dist",
-		"test": "jest -c jest.config.js --watch"
+		"test:watch": "jest -c jest.config.js --watch",
+		"test:last": "jest -o --verbose --lastCommit",
+		"test:all": "jest --verbose",
+		"test:clear": "jest --clearCache",
+		"test:coverage": "npm run test:clear && jest --coverage"
 	},
 	"author": "Adam Morsi",
 	"license": "ISC",
