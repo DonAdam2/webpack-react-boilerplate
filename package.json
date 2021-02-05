@@ -8,10 +8,10 @@
 		"last 2 version"
 	],
 	"scripts": {
-		"start": "webpack-dev-server --mode=development --open --config webpack.dev.js",
-		"build": "rimraf dist && webpack --mode=production  --config webpack.prod.js --progress --profile --color",
-		"analyze-bundle": "rimraf dist && webpack --mode=production --config webpack.prod.js --profile --bundleAnalyze=true --json > stats.json && webpack-bundle-analyzer stats.json dist",
-		"test:watch": "jest -c jest.config.js --watch",
+		"start": "webpack-dev-server --mode=development --open --config buildTools/webpack.dev.js",
+		"build": "rimraf dist && webpack --mode=production  --config buildTools/webpack.prod.js --progress --profile --color",
+		"analyze-bundle": "rimraf dist && webpack --mode=production --config buildTools/webpack.prod.js --profile --bundleAnalyze=true --json > stats.json && webpack-bundle-analyzer stats.json dist",
+		"test:watch": "jest -c testTools/jest.config.js --watch",
 		"test:last": "jest -o --verbose --lastCommit",
 		"test:all": "jest --verbose",
 		"test:clear": "jest --clearCache",

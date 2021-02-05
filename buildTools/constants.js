@@ -3,6 +3,7 @@ module.exports = {
 	devServer: 'http://localhost',
 	rootDirectory: 'src',
 	outputDirectory: 'dist',
+	environmentsDirectory: 'environments',
 	jsSubDirectory: 'js/',
 	cssSubDirectory: 'css/',
 	metaInfo: {

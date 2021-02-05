@@ -21,7 +21,7 @@ module.exports = {
 	},
 	// This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
 	testURL: 'http://localhost',
-	roots: ['<rootDir>/src'],
+	roots: ['<rootDir>/../src'],
 	// A map from regular expressions to paths to transformers
 	transform: {
 		'^.+\\.(jsx|js)$': 'babel-jest',
@@ -34,6 +34,6 @@ module.exports = {
 	// The test environment that will be used for testing
 	testEnvironment: 'jest-environment-jsdom',
 	moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
-	testPathIgnorePatterns: ['<rootDir>/node_modules'],
+	testPathIgnorePatterns: ['<rootDir>/../node_modules'],
 	setupFilesAfterEnv: ['<rootDir>/jest-setup.js'], // setupFiles before the tests are ran
 };

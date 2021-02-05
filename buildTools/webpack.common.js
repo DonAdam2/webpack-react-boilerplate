@@ -9,14 +9,21 @@ const path = require('path'),
 	autoprefixer = require('autoprefixer'),
 	EsLintPlugin = require('eslint-webpack-plugin'),
 	//constants
+	projectPath = `${path.join(__dirname)}/../`,
 	{
 		outputDirectory,
 		port,
 		devServer,
 		rootDirectory,
+		environmentsDirectory,
 		jsSubDirectory,
 		metaInfo: { title, description, url, keywords, metaImageName },
 	} = require('./constants'),
+	PATHS = {
+		src: path.join(projectPath, rootDirectory),
+		outputSrc: path.resolve(projectPath, outputDirectory),
+		environments: path.resolve(projectPath, environmentsDirectory),
+	},
 	fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
@@ -24,7 +31,7 @@ module.exports = (env, options) => {
 	const isDevelopment = options.mode === 'development',
 		/*================ setup environments variables ===================*/
 		// create a fallback path (the production .env)
-		basePath = `${path.join(__dirname)}/.env`,
+		basePath = `${PATHS.environments}/.env`,
 		// concatenate the environment name to the base path to specify the correct env file!
 		envPath = `${basePath}.${options.mode}`,
 		// check if the file exists, otherwise fall back to the production .env
@@ -39,10 +46,10 @@ module.exports = (env, options) => {
 	/*================ finish setup environments variables ===================*/
 
 	return {
-		entry: `./${rootDirectory}/index.js`,
+		entry: `${PATHS.src}/index.js`,
 		output: {
 			// __dirname is the absolute path to the root directory of our app
-			path: path.resolve(__dirname, outputDirectory),
+			path: PATHS.outputSrc,
 			// hashes are very important in production for caching purposes
 			filename: jsSubDirectory + 'bundle.[hash:8].js',
 			// used for the lazy loaded component
@@ -142,10 +149,10 @@ module.exports = (env, options) => {
 			}),
 			new HtmlWebpackPlugin({
 				title,
-				template: __dirname + `/${rootDirectory}/index.html`,
+				template: `${PATHS.src}/index.html`,
 				filename: 'index.html',
 				inject: 'body',
-				favicon: `./${rootDirectory}/assets/images/favicon.png`,
+				favicon: `${PATHS.src}/assets/images/favicon.png`,
 				meta: {
 					description,
 					keywords,
