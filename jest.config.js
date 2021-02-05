@@ -1,7 +1,7 @@
-module.export = {
+module.exports = {
 	// An array of glob patterns indicating a set of files for which coverage information should be collected
 	collectCoverageFrom: [
-		'src/**/*.{js,jsx,mjs}',
+		'src/**/*.{js,jsx}',
 		'!src/**/store/*.{js,jsx}', // we dont want to test redux store
 	],
 	// The directory where Jest should output its coverage files
@@ -24,15 +24,16 @@ module.export = {
 	roots: ['<rootDir>/src'],
 	// A map from regular expressions to paths to transformers
 	transform: {
-		'\\.(js|jsx)?$': 'babel-jest',
-		'^.+\\.css$': '<rootDir>/cssTransform.js',
-		'^(?!.*\\.(js|jsx|css|json)$)': '<rootDir>/fileTransform.js',
+		'^.+\\.(jsx|js)$': 'babel-jest',
 	},
-	// The glob patterns Jest uses to detect test files
-	testMatch: ['<rootDir>/src/**/>(*.)test.{js, jsx}'], // finds test
+	moduleNameMapper: {
+		'^.+\\.(css|scss)$': 'identity-obj-proxy',
+		'\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+			'<rootDir>/fileTransform.js',
+	},
 	// The test environment that will be used for testing
 	testEnvironment: 'jest-environment-jsdom',
 	moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
-	testPathIgnorePatterns: ['/node_modules/'],
+	testPathIgnorePatterns: ['<rootDir>/node_modules'],
 	setupFilesAfterEnv: ['<rootDir>/jest-setup.js'], // setupFiles before the tests are ran
 };

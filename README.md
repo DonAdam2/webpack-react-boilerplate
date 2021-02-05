@@ -85,7 +85,7 @@ You will see in the console the following:
   1. Linting errors.
   2. Code format errors (because of [prettier](https://prettier.io/))
 
-### `yarn run build`
+### `yarn build`
 
 Builds the app for production to the `dist` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -98,25 +98,25 @@ Your app is ready to be deployed!
 
 By using live-server you can check your app in production without any need for xampp, wamp or any similar web server.
 
-### `yarn run analyze-bundle`
+### `yarn analyze-bundle`
 
 It allows you to analyze the bundle size.
 
-### `yarn run test:watch`
+### `yarn test:watch`
 
 Run test for latest files updated and watches for changes. (not committed yet)
 
-### `yarn run test:last`
+### `yarn test:last`
 Runs only tests for updated files (not committed yet).
 
-### `yarn run test:all`
+### `yarn test:all`
 
 Runs all tests.
 
-### `yarn run test:clear`
+### `yarn test:clear`
 
 Clears jest's cache. Very useful when the tests start to fail for no reason.
 
-### `yarn run test:coverage`
+### `yarn test:coverage`
 
 Runs all tests in order to get the code coverage. Our goal is to have at least 80 90 %.
