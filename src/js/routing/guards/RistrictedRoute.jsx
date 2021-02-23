@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 //replace the following with your own selectors
-import { getUserPermissionsList } from '../store/app/selectors/AppSelectors';
+import { getUserPermissionsList } from '../../store/app/selectors/AppSelectors';
 //components
-import PermissionsCannotAccess from './PermissionsCannotAccess';
+import PermissionsCannotAccess from '../routingComponents/PermissionsCannotAccess';
 
 const RestrictedRoute = ({ component: Component, requiredPermissions, ...rest }) => {
 	const userPermissionsList = useSelector((state) => getUserPermissionsList({ state }));
