@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 //replace the following with your own selectors
 import { getUserPermissionsList } from '../store/app/selectors/AppSelectors';
 //components
-import PermissionsCannotAccess from '../components/PermissionsCannotAccess';
+import PermissionsCannotAccess from './PermissionsCannotAccess';
 
 const RestrictedRoute = ({ component: Component, requiredPermissions, ...rest }) => {
 	const userPermissionsList = useSelector((state) => getUserPermissionsList({ state }));
