@@ -3,6 +3,9 @@
 /dist
 /coverage
 
+#docs
+/docs
+
 #idea folder which is the IDE setting files
 .idea
 .vscode

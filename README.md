@@ -139,3 +139,8 @@ Clears jest's cache. Very useful when the tests start to fail for no reason.
 ### `yarn test:coverage`
 
 Runs all tests in order to get the code coverage. Our goal is to have at least 80 90 %.
+
+### `yarn docs`
+
+Scans all project for jsdoc comments and generates HTML documentation files (will be hosted in /docs).
+- Read this [blog](https://www.inkoop.io/blog/a-guide-to-js-docs-for-react-js/) for reference.
