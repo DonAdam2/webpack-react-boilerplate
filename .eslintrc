@@ -1,7 +1,7 @@
 {
-	"extends": ["prettier"],
+	"extends": ["prettier", "plugin:react-hooks/recommended"],
 	"plugins": ["prettier"],
-	"parser": "babel-eslint",
+	"parser": "@babel/eslint-parser",
 	"env": {
 		"browser": true,
 		"node": true,
