@@ -110,7 +110,13 @@ module.exports = (env, options) => {
 								// Number of loaders applied before CSS loader (which is postcss-loader)
 								importLoaders: 3,
 								// the following is used to enable CSS modules
-								//								modules: true,
+								/*modules: {
+									exportGlobals: true,
+									localIdentName: isDevelopment ? '[name]_[local]' : '[hash:base64]',
+									localIdentContext: PATHS.src,
+									localIdentHashPrefix: 'react-boilerplate',
+									exportLocalsConvention: 'camelCaseOnly',
+								},*/
 							},
 						},
 						{
