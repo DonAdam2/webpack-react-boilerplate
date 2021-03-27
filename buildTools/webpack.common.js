@@ -111,7 +111,13 @@ module.exports = (env, options) => {
 								importLoaders: 3,
 								// the following is used to enable CSS modules
 								/*modules: {
-									exportGlobals: true,
+									mode: (resourcePath) => {
+										if (/global.scss$/i.test(resourcePath)) {
+											return 'global';
+										}
+
+										return 'local';
+									},
 									localIdentName: isDevelopment ? '[name]_[local]' : '[hash:base64]',
 									localIdentContext: PATHS.src,
 									localIdentHashPrefix: 'react-boilerplate',

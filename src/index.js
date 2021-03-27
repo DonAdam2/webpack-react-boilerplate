@@ -11,7 +11,7 @@ import configureStore from './js/store/configureStore';
 //root component
 import App from './App';
 //styles
-import './scss/styles.scss';
+import './scss/global.scss';
 
 const store = configureStore();
 
