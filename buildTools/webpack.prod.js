@@ -1,13 +1,20 @@
 // the following 2 lines is to merge common webpack configurations with this file
 const { merge } = require('webpack-merge'),
 	common = require('./webpack.common.js'),
+	path = require('path'),
+	glob = require('glob'),
 	//plugins
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+	PurgeCSSPlugin = require('purgecss-webpack-plugin'),
 	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 	TerserJSPlugin = require('terser-webpack-plugin'),
 	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 	//constants
-	{ cssSubDirectory } = require('./constants');
+	projectPath = `${path.join(__dirname)}/../`,
+	{ cssSubDirectory, rootDirectory } = require('./constants'),
+	PATHS = {
+		src: path.join(projectPath, rootDirectory),
+	};
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
@@ -84,6 +91,9 @@ module.exports = (env, options) => {
 				filename: cssSubDirectory + '[name].[hash:8].css',
 				// used for the lazy loaded component
 				chunkFilename: cssSubDirectory + '[id].[hash:8].css',
+			}),
+			new PurgeCSSPlugin({
+				paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
 			}),
 		],
 	});
