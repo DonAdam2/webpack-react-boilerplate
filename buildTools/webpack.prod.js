@@ -5,6 +5,7 @@ const { merge } = require('webpack-merge'),
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
 	TerserJSPlugin = require('terser-webpack-plugin'),
+	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 	//constants
 	{ cssSubDirectory } = require('./constants');
 
@@ -14,15 +15,19 @@ module.exports = (env, options) => {
 			minimize: true,
 			// minify the bundled js files
 			minimizer: [
+				new UglifyJsPlugin({
+					cache: true,
+					parallel: true,
+				}),
 				new TerserJSPlugin({
-					extractComments: true,
+					extractComments: false,
 					cache: true,
 					parallel: true,
 					sourceMap: false,
+					// https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
 					terserOptions: {
 						ecma: 5,
-						// https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
-						extractComments: 'all',
+						warnings: false,
 						compress: {
 							drop_console: true,
 						},

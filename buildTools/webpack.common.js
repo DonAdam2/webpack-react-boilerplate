@@ -59,11 +59,18 @@ module.exports = (env, options) => {
 		// cheap-module-eval-source-map => (build speed: medium, rebuild speed: fast)
 		// cheap-module-source-map => (build speed: medium, rebuild speed: pretty slow)
 		// source mappings are very useful for debugging and returning the original source code
-		devtool: isDevelopment ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
+		devtool: isDevelopment ? 'cheap-module-eval-source-map' : false,
 		optimization: {
 			// used to avoid duplicated dependencies from node modules
 			splitChunks: {
-				chunks: 'all',
+				cacheGroups: {
+					vendor: {
+						test: /[\\/]node_modules[\\/]/,
+						name: 'vendor',
+						enforce: true,
+						chunks: 'all',
+					},
+				},
 			},
 		},
 		resolve: {
@@ -155,9 +162,7 @@ module.exports = (env, options) => {
 		},
 		plugins: [
 			new EsLintPlugin({
-				emitError: true,
-				emitWarning: true,
-				threads: true,
+				extensions: ['.js', '.jsx'],
 			}),
 			new HtmlWebpackPlugin({
 				title,
