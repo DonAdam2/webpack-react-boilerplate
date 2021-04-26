@@ -23,6 +23,7 @@ module.exports = (env, options) => {
 							publicPath: fullDevServerUrl + 'assets/images',
 						},
 					},
+					type: 'javascript/auto',
 				},
 			],
 		},

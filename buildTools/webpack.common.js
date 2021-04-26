@@ -89,6 +89,7 @@ module.exports = (env, options) => {
 							publicPath: isDevelopment ? fullDevServerUrl + 'assets/fonts' : '',
 						},
 					},
+					type: 'javascript/auto',
 				},
 				{
 					test: /\.s?[ac]ss$/,

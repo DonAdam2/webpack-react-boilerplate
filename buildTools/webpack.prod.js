@@ -71,6 +71,7 @@ module.exports = (env, options) => {
 							},
 						},
 					],
+					type: 'javascript/auto',
 				},
 			],
 		},
