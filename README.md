@@ -117,6 +117,12 @@ Your app is ready to be deployed!
 
 By using live-server you can check your app in production without any need for xampp, wamp or any similar web server.
 
+### `yarn build:check`
+
+Builds the app for production to the `dist` folder and then serves it to the browser using live-server.
+
+**_Note:_** Use this script only if you have live-server installed globally. 
+
 ### `yarn analyze-bundle`
 
 It allows you to analyze the bundle size.

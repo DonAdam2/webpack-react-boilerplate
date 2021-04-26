@@ -10,6 +10,7 @@
 	"scripts": {
 		"start": "webpack serve --mode=development --config buildTools/webpack.dev.js",
 		"build": "webpack --mode=production  --config buildTools/webpack.prod.js --progress --color",
+		"build:check": "yarn build && cd dist && live-server --port=8080 --entry-file=./index.htm",
 		"analyze-bundle": "webpack --mode=production --config buildTools/webpack.prod.js --json > stats.json && webpack-bundle-analyzer stats.json dist"
 	},
 	"author": "Adam Morsi",
