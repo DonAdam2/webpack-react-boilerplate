@@ -1,36 +1,25 @@
 // the following 2 lines is to merge common webpack configurations with this file
 const { merge } = require('webpack-merge'),
 	common = require('./webpack.common.js'),
-	path = require('path'),
 	glob = require('glob'),
 	//plugins
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 	PurgeCSSPlugin = require('purgecss-webpack-plugin'),
-	OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
+	CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
 	TerserJSPlugin = require('terser-webpack-plugin'),
-	UglifyJsPlugin = require('uglifyjs-webpack-plugin'),
 	//constants
-	projectPath = `${path.join(__dirname)}/../`,
-	{ cssSubDirectory, rootDirectory } = require('./constants'),
-	PATHS = {
-		src: path.join(projectPath, rootDirectory),
-	};
+	{ cssSubDirectory } = require('./constants'),
+	PATHS = require('./paths');
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
 		optimization: {
 			minimize: true,
-			// minify the bundled js files
 			minimizer: [
-				new UglifyJsPlugin({
-					cache: true,
-					parallel: true,
-				}),
+				// minify the bundled js files (note: it's used by default in webpack5, but we are modifying the options)
 				new TerserJSPlugin({
 					extractComments: false,
-					cache: true,
 					parallel: true,
-					sourceMap: false,
 					// https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
 					terserOptions: {
 						ecma: 5,
@@ -40,7 +29,8 @@ module.exports = (env, options) => {
 						},
 					},
 				}),
-				new OptimizeCSSAssetsPlugin(),
+				//optimize and minify CSS
+				new CssMinimizerPlugin(),
 			],
 		},
 		module: {
@@ -88,10 +78,11 @@ module.exports = (env, options) => {
 			// used to extract styles into separated stylesheet
 			new MiniCssExtractPlugin({
 				// used for main styles file
-				filename: cssSubDirectory + '[name].[hash:8].css',
+				filename: cssSubDirectory + '[name].[contenthash:8].css',
 				// used for the lazy loaded component
-				chunkFilename: cssSubDirectory + '[id].[hash:8].css',
+				chunkFilename: cssSubDirectory + '[id].[contenthash:8].css',
 			}),
+			// remove un-used styles
 			new PurgeCSSPlugin({
 				paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
 			}),

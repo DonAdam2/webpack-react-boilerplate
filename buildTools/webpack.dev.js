@@ -1,5 +1,6 @@
-// the following 2 lines is to merge common webpack configurations with this file
-const { merge } = require('webpack-merge'),
+const webpack = require('webpack'),
+	// the following 2 lines is to merge common webpack configurations with this file
+	{ merge } = require('webpack-merge'),
 	common = require('./webpack.common.js'),
 	//constants
 	{ port, rootDirectory, devServer } = require('./constants'),
@@ -7,11 +8,9 @@ const { merge } = require('webpack-merge'),
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
-		resolve: {
-			alias: {
-				'react-dom': '@hot-loader/react-dom',
-			},
-		},
+		devtool: 'inline-source-map',
+		//required for hot reload
+		target: 'web',
 		module: {
 			rules: [
 				{
@@ -19,7 +18,7 @@ module.exports = (env, options) => {
 					use: {
 						loader: 'file-loader',
 						options: {
-							name: '[name].[hash].[ext]',
+							name: '[name].[contenthash].[ext]',
 							outputPath: 'assets/images',
 							publicPath: fullDevServerUrl + 'assets/images',
 						},
@@ -28,11 +27,16 @@ module.exports = (env, options) => {
 			],
 		},
 		devServer: {
-			hot: true, // important to enable hot reloading (hot-loader)
+			// important to enable hot reloading
+			hot: true,
 			compress: true,
-			contentBase: rootDirectory, // Tell the server where to serve content from
+			// Tell the server where to serve content from
+			contentBase: rootDirectory,
+			// open development server
+			open: true,
 			port: port,
-			overlay: true, //show error messages on an overlay on the browser
+			//show error messages on an overlay on the browser
+			overlay: true,
 			// important for navigating to the app using browser (if you use any route other than /)
 			historyApiFallback: true,
 			// CORS :: https://github.com/webpack/webpack-dev-server/issues/533
@@ -42,5 +46,9 @@ module.exports = (env, options) => {
 				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
 			},
 		},
+		plugins: [
+			// Only update what has changed on hot reload
+			new webpack.HotModuleReplacementPlugin(),
+		],
 	});
 };

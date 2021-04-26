@@ -1,5 +1,5 @@
-const path = require('path'),
-	fs = require('fs'), //used to check if the given file exists
+//used to check if the given file exists
+const fs = require('fs'),
 	//dotenv
 	dotenv = require('dotenv'),
 	//plugins
@@ -8,22 +8,15 @@ const path = require('path'),
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 	autoprefixer = require('autoprefixer'),
 	EsLintPlugin = require('eslint-webpack-plugin'),
+	{ CleanWebpackPlugin } = require('clean-webpack-plugin'),
 	//constants
-	projectPath = `${path.join(__dirname)}/../`,
 	{
-		outputDirectory,
 		port,
 		devServer,
-		rootDirectory,
-		environmentsDirectory,
 		jsSubDirectory,
 		metaInfo: { title, description, url, keywords, metaImageName },
 	} = require('./constants'),
-	PATHS = {
-		src: path.join(projectPath, rootDirectory),
-		outputSrc: path.resolve(projectPath, outputDirectory),
-		environments: path.resolve(projectPath, environmentsDirectory),
-	},
+	PATHS = require('./paths'),
 	fullDevServerUrl = devServer + ':' + port + '/';
 
 module.exports = (env, options) => {
@@ -51,15 +44,11 @@ module.exports = (env, options) => {
 			// __dirname is the absolute path to the root directory of our app
 			path: PATHS.outputSrc,
 			// hashes are very important in production for caching purposes
-			filename: jsSubDirectory + 'bundle.[hash:8].js',
+			filename: jsSubDirectory + 'bundle.[contenthash:8].js',
 			// used for the lazy loaded component
-			chunkFilename: jsSubDirectory + '[name].[hash:8].js',
+			chunkFilename: jsSubDirectory + '[name].[contenthash:8].js',
 			publicPath: '/',
 		},
-		// cheap-module-eval-source-map => (build speed: medium, rebuild speed: fast)
-		// cheap-module-source-map => (build speed: medium, rebuild speed: pretty slow)
-		// source mappings are very useful for debugging and returning the original source code
-		devtool: isDevelopment ? 'cheap-module-eval-source-map' : false,
 		optimization: {
 			// used to avoid duplicated dependencies from node modules
 			splitChunks: {
@@ -75,6 +64,9 @@ module.exports = (env, options) => {
 		},
 		resolve: {
 			extensions: ['*', '.js', '.jsx'],
+			fallback: {
+				crypto: false,
+			},
 		},
 		module: {
 			rules: [
@@ -92,7 +84,7 @@ module.exports = (env, options) => {
 					use: {
 						loader: 'file-loader',
 						options: {
-							name: '[name].[hash].[ext]',
+							name: '[name].[contenthash].[ext]',
 							outputPath: 'assets/fonts',
 							publicPath: isDevelopment ? fullDevServerUrl + 'assets/fonts' : '',
 						},
@@ -125,7 +117,7 @@ module.exports = (env, options) => {
 
 										return 'local';
 									},
-									localIdentName: isDevelopment ? '[name]_[local]' : '[hash:base64]',
+									localIdentName: isDevelopment ? '[name]_[local]' : '[contenthash:base64]',
 									localIdentContext: PATHS.src,
 									localIdentHashPrefix: 'react-boilerplate',
 									exportLocalsConvention: 'camelCaseOnly',
@@ -161,6 +153,8 @@ module.exports = (env, options) => {
 			],
 		},
 		plugins: [
+			// Removes/cleans build folders and unused assets when rebuilding
+			new CleanWebpackPlugin(),
 			new EsLintPlugin({
 				extensions: ['.js', '.jsx'],
 			}),
