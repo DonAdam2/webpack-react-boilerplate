@@ -10,7 +10,7 @@
 	"scripts": {
 		"start": "webpack serve --mode=development --config buildTools/webpack.dev.js",
 		"build": "webpack --mode=production  --config buildTools/webpack.prod.js --progress --color",
-		"build:check": "yarn build && cd dist && live-server --port=8080 --entry-file=./index.htm",
+		"build:serve": "serve dist -p 8080",
 		"analyze-bundle": "webpack --mode=production --config buildTools/webpack.prod.js --json > stats.json && webpack-bundle-analyzer stats.json dist"
 	},
 	"author": "Adam Morsi",
@@ -58,6 +58,7 @@
 		"regenerator-runtime": "^0.13.7",
 		"resolve-url-loader": "^3.1.2",
 		"sass-loader": "^11.0.1",
+		"serve": "^11.3.2",
 		"style-loader": "^2.0.0",
 		"terser-webpack-plugin": "^5.1.1",
 		"webpack": "^5.35.1",

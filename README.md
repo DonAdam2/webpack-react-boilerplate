@@ -112,16 +112,11 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-**_Note:_** You can install live-server globally (npm install -g live-server) which allows your to check your application in production by navigating to dist directory then use the following command:
-`live-server --port=8080 --entry-file=./index.html`
+### `yarn build:serve`
 
-By using live-server you can check your app in production without any need for xampp, wamp or any similar web server.
+Serves the app from the `dist` folder to check the production version.
 
-### `yarn build:check`
-
-Builds the app for production to the `dist` folder and then serves it to the browser using live-server.
-
-**_Note:_** Use this script only if you have live-server installed globally. 
+**_Note:_** Use this script only if you ran the build script `yarn build`. 
 
 ### `yarn analyze-bundle`
 
