@@ -51,6 +51,7 @@ module.exports = (env, options) => {
 		},
 		optimization: {
 			// used to avoid duplicated dependencies from node modules
+			runtimeChunk: 'single',
 			splitChunks: {
 				cacheGroups: {
 					vendor: {

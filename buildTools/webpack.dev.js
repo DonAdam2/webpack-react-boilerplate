@@ -1,5 +1,6 @@
-// the following 2 lines is to merge common webpack configurations with this file
-const { merge } = require('webpack-merge'),
+const webpack = require('webpack'),
+	// the following 2 lines is to merge common webpack configurations with this file
+	{ merge } = require('webpack-merge'),
 	common = require('./webpack.common.js'),
 	//constants
 	{ port, rootDirectory, devServer } = require('./constants'),
@@ -51,5 +52,9 @@ module.exports = (env, options) => {
 				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
 			},
 		},
+		plugins: [
+			// Only update what has changed on hot reload
+			new webpack.HotModuleReplacementPlugin(),
+		],
 	});
 };
