@@ -1,6 +1,5 @@
-const webpack = require('webpack'),
-	// the following 2 lines is to merge common webpack configurations with this file
-	{ merge } = require('webpack-merge'),
+// the following 2 lines is to merge common webpack configurations with this file
+const { merge } = require('webpack-merge'),
 	common = require('./webpack.common.js'),
 	//constants
 	{ port, rootDirectory, devServer } = require('./constants'),
@@ -8,6 +7,11 @@ const webpack = require('webpack'),
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
+		resolve: {
+			alias: {
+				'react-dom': '@hot-loader/react-dom',
+			},
+		},
 		devtool: 'inline-source-map',
 		//required for hot reload
 		target: 'web',
@@ -47,9 +51,5 @@ module.exports = (env, options) => {
 				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
 			},
 		},
-		plugins: [
-			// Only update what has changed on hot reload
-			new webpack.HotModuleReplacementPlugin(),
-		],
 	});
 };

@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import { hot } from 'react-hot-loader/root';
 //error boundary
 import { ErrorBoundary } from 'react-error-boundary';
 //error boundary fallback
@@ -27,4 +28,4 @@ const App = () => (
 	</Suspense>
 );
 
-export default App;
+export default hot(App);
