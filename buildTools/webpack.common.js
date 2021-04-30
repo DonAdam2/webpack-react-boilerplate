@@ -129,9 +129,11 @@ module.exports = (env, options) => {
 						{
 							loader: 'postcss-loader',
 							options: {
-								ident: 'postcss',
+								postcssOptions: {
+									ident: 'postcss',
+									plugins: [autoprefixer()],
+								},
 								sourceMap: isDevelopment,
-								plugins: [autoprefixer()],
 							},
 						},
 						{
