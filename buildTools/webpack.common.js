@@ -8,7 +8,6 @@ const fs = require('fs'),
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
 	autoprefixer = require('autoprefixer'),
 	EsLintPlugin = require('eslint-webpack-plugin'),
-	{ CleanWebpackPlugin } = require('clean-webpack-plugin'),
 	//constants
 	{
 		port,
@@ -157,8 +156,6 @@ module.exports = (env, options) => {
 			],
 		},
 		plugins: [
-			// Removes/cleans build folders and unused assets when rebuilding
-			new CleanWebpackPlugin(),
 			new EsLintPlugin({
 				extensions: ['.js', '.jsx'],
 			}),

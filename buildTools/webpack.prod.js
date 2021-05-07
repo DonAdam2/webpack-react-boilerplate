@@ -7,6 +7,7 @@ const { merge } = require('webpack-merge'),
 	PurgeCSSPlugin = require('purgecss-webpack-plugin'),
 	CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
 	TerserJSPlugin = require('terser-webpack-plugin'),
+	{ CleanWebpackPlugin } = require('clean-webpack-plugin'),
 	//constants
 	{ cssSubDirectory } = require('./constants'),
 	PATHS = require('./paths');
@@ -76,6 +77,8 @@ module.exports = (env, options) => {
 			],
 		},
 		plugins: [
+			// Removes/cleans build folders and unused assets when rebuilding
+			new CleanWebpackPlugin(),
 			// used to extract styles into separated stylesheet
 			new MiniCssExtractPlugin({
 				// used for main styles file
