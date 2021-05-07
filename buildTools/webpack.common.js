@@ -86,7 +86,7 @@ module.exports = (env, options) => {
 						loader: 'file-loader',
 						options: {
 							name: '[name].[contenthash].[ext]',
-							outputPath: 'assets/fonts',
+							outputPath: `${isDevelopment ? '' : '/'}assets/fonts`,
 							publicPath: isDevelopment ? fullDevServerUrl + 'assets/fonts' : '',
 						},
 					},
