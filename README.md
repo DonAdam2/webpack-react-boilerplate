@@ -68,24 +68,6 @@ Notes:
 - App typography styles `(scss/generic/_typography.scss)`
 - 4 break points `(scss/generic/_variables.scss)`
 
-#### Font Awesome Pro:
-- This boilerplate is using font awesome pro, but in order to be able to use it, you need to do the following:
-  1. Create `.npmrc` file
-  1. Add the following but with your token:
-  ```
-  @fortawesome:registry=https://npm.fontawesome.com/
-  //npm.fontawesome.com/:_authToken=YOUR_TOKEN
-  ```
-- If you don't have a pro token you can use the free version using the following steps:
-  1. Remove font awesome pro packages:
-    ```
-    yarn remove @fortawesome/fontawesome-pro @fortawesome/pro-duotone-svg-icons @fortawesome/pro-light-svg-icons @fortawesome/pro-regular-svg-icons @fortawesome/pro-solid-svg-icons
-    ```
-  1. Add font awesome free packages:
-    ```
-    yarn add @fortawesome/free-solid-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/free-regular-svg-icons
-    ```
-
 ## Available Scripts
 
 In the project directory, you can run:
