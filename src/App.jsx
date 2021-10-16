@@ -9,23 +9,23 @@ import LoadingIcon from './js/components/shared/loadingIcon/LoadingIcon';
 const TestComponent = lazy(() => import('./js/containers/TestComponent'));
 
 const App = () => (
-	<Suspense
-		fallback={
-			<div className="loader-wrapper">
-				<LoadingIcon />
-			</div>
-		}
+	<ErrorBoundary
+		FallbackComponent={ErrorBoundaryFallback}
+		onReset={() => {
+			//Reset the state of your app so the error doesn't happen again
+			console.log('Try again clicked');
+		}}
 	>
-		<ErrorBoundary
-			FallbackComponent={ErrorBoundaryFallback}
-			onReset={() => {
-				//Reset the state of your app so the error doesn't happen again
-				console.log('Try again clicked');
-			}}
+		<Suspense
+			fallback={
+				<div className="loader-wrapper">
+					<LoadingIcon />
+				</div>
+			}
 		>
 			<TestComponent />
-		</ErrorBoundary>
-	</Suspense>
+		</Suspense>
+	</ErrorBoundary>
 );
 
 export default hot(App);
