@@ -33,16 +33,10 @@ module.exports = (env, options) => {
 			],
 		},
 		devServer: {
-			// important to enable hot reloading
-			hot: true,
 			compress: true,
-			// Tell the server where to serve content from
-			contentBase: rootDirectory,
 			// open development server
 			open: true,
 			port: port,
-			//show error messages on an overlay on the browser
-			overlay: true,
 			// important for navigating to the app using browser (if you use any route other than /)
 			historyApiFallback: true,
 			// CORS :: https://github.com/webpack/webpack-dev-server/issues/533
