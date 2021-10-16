@@ -12,7 +12,7 @@ const TestComponent = () => {
 	return (
 		<div className="container" style={{ textAlign: 'center' }}>
 			<p>
-				Current environment API is <strong>{process.env.API_URL}</strong>
+				Current environment API is <strong>{process.env.BASE_URL}</strong>
 			</p>
 			<p>
 				Testing the store <strong>{testAction}</strong>
