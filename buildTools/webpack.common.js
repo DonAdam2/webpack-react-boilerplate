@@ -95,8 +95,7 @@ module.exports = (env, options) => {
 						{
 							// style-loader => insert styles in the head of the HTML as style tags or in blob links
 							// MiniCssExtractPlugin => extract styles to a file
-							// loader: isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-							loader: 'style-loader',
+							loader: isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
 							//if source map is set to true from previous loaders => this loader will be true as well
 						},
 						{

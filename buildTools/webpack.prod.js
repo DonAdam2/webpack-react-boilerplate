@@ -39,12 +39,12 @@ module.exports = (env, options) => {
 			new CleanWebpackPlugin(),
 			// used to extract styles into separated stylesheet
 			//commenting it out temporarily because it causes issues
-			/*new MiniCssExtractPlugin({
+			new MiniCssExtractPlugin({
 				// used for main styles file
 				filename: cssSubDirectory + '[name].[contenthash:8].css',
 				// used for the lazy loaded component
 				chunkFilename: cssSubDirectory + '[id].[contenthash:8].css',
-			}),*/
+			}),
 			// remove un-used styles
 			new PurgeCSSPlugin({
 				paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
