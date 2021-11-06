@@ -9,8 +9,7 @@ module.exports = {
 	metaInfo: {
 		title: 'Adam Morsi',
 		description: 'description',
-		url: 'https://example.com/',
-		metaImageName: 'metaImage.jpg',
+		url: 'https://example.com',
 		keywords: 'add you keywords',
 	},
 };

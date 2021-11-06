@@ -10,16 +10,14 @@ const TestComponent = () => {
 		testAction = useSelector((state) => getTestAction({ state }));
 
 	return (
-		<div className="container" style={{ textAlign: 'center' }}>
+		<div className="container">
 			<p>
 				Current environment API is <strong>{process.env.BASE_URL}</strong>
 			</p>
 			<p>
 				Testing the store <strong>{testAction}</strong>
 			</p>
-			<button className="std-btn primary" onClick={() => dispatch(setTestAction())}>
-				Change text
-			</button>
+			<button onClick={() => dispatch(setTestAction())}>Change text</button>
 		</div>
 	);
 };

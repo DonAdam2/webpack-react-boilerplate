@@ -3,8 +3,7 @@ const webpack = require('webpack'),
 	{ merge } = require('webpack-merge'),
 	common = require('./webpack.common.js'),
 	//constants
-	{ port, rootDirectory, devServer } = require('./constants'),
-	fullDevServerUrl = devServer + ':' + port + '/';
+	{ port } = require('./constants');
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
@@ -16,22 +15,6 @@ module.exports = (env, options) => {
 		devtool: 'inline-source-map',
 		//required for hot reload
 		target: 'web',
-		module: {
-			rules: [
-				{
-					test: /\.(png|jp(e*)g|svg)$/,
-					use: {
-						loader: 'file-loader',
-						options: {
-							name: '[name].[contenthash].[ext]',
-							outputPath: 'assets/images',
-							publicPath: fullDevServerUrl + 'assets/images',
-						},
-					},
-					type: 'javascript/auto',
-				},
-			],
-		},
 		devServer: {
 			compress: true,
 			// open development server

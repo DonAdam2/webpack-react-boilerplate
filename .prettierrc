@@ -6,7 +6,6 @@
   bracketSpacing: true,
   singleQuote: true,
   trailingComma: "es5",
-  jsxBracketSameLine: false,
   requirePragma: false,
   arrowParens: "always",
   endOfLine: "auto"
