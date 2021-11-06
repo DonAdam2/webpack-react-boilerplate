@@ -62,7 +62,6 @@ Notes:
 - Generic error boundary fallback component (you can customize it) 
 - Cookies, local storage and sessions storage mangers to store data in the browser. (**Note:** the data encrypted using crypto-js package before storing it.)
 - Font awesome
-- Layout using bootstrap grid system `(scss/generic/_grid.scss)`
 - Basic mixins `(scss/generic/_mixins.scss)`
 - Normalize styles `(scss/generic/_normalize.scss)`
 - App typography styles `(scss/generic/_typography.scss)`
