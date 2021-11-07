@@ -38,7 +38,6 @@ module.exports = (env, options) => {
 			// Removes/cleans build folders and unused assets when rebuilding
 			new CleanWebpackPlugin(),
 			// used to extract styles into separated stylesheet
-			//commenting it out temporarily because it causes issues
 			new MiniCssExtractPlugin({
 				// used for main styles file
 				filename: cssSubDirectory + '[name].[contenthash:8].css',
