@@ -1,4 +1,4 @@
-FROM node:13.12.0-alpine
+FROM node:14
 
 WORKDIR /usr/app
 
@@ -9,4 +9,4 @@ RUN yarn install --silent
 
 COPY . ./
 
-CMD ["yarn", "start", "--", "--host", "0.0.0.0"]
+CMD ["yarn", "start", "--host", "0.0.0.0"]
