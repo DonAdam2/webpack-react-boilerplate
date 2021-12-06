@@ -1,17 +1,20 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { useLocation, Navigate } from 'react-router-dom';
+//managers
+import LocalStorageManager from '../../managers/LocalStorageManger';
+//routes
+//replace the following with your own url
+import { getLoginPageUrl } from '../routingConstants/AppUrls';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
-	<Route
-		{...rest}
-		render={(props) => {
-			//revise this
-			if (localStorage.getItem('jwtToken')) {
-				return <Component {...props} />;
-			}
-			return <Redirect to={{ pathname: '/login', state: { from: props.location } }} />;
-		}}
-	/>
-);
+const PrivateRoute = ({ children }) => {
+	const location = useLocation();
+
+	//to be revised
+	if (LocalStorageManager.getItem('token')) {
+		return children;
+	}
+
+	return <Navigate replace to={getLoginPageUrl()} state={{ from: location }} />;
+};
 
 export default PrivateRoute;
