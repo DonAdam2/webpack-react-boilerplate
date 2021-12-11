@@ -1,0 +1,6 @@
+{
+    "extends": "@istanbuljs/nyc-config-babel",
+    "check-coverage": true,
+    "lines": 60,
+    "reporter": ["html", "text"]
+}

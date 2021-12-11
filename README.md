@@ -1,7 +1,8 @@
 ## This webpack (V5.64.3) boilerplate supports the following:
 
-- SCSS preprocessor
-- To enable CSS modules (each component has it's own styles "no conflict between different components styles") => just open (webpack.common.js) and uncomment **modules section** in **css-loader**. Then open (webpack.prod.js) and comment out **PurgeCSSPlugin** in the **plugins section**. Then in every component add the required import as follows: `import classes from './scss/requiredStyles'`
+- Testing using **mocha**, **chai**, **enzyme**
+- **SCSS** preprocessor
+- To enable **CSS modules** (each component has it's own styles "no conflict between different components styles") => just open (webpack.common.js) and uncomment **modules section** in **css-loader**. Then open (webpack.prod.js) and comment out **PurgeCSSPlugin** in the **plugins section**. Then in every component add the required import as follows: `import classes from './scss/requiredStyles'`
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
@@ -33,6 +34,46 @@
 - `cd frontend`
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up --build`
+
+## This boilerplate uses `enzyme`, `mocha` and `chai` for testing
+
+**_Note:_** All test files should be in `/src/test/` with the name of `ComponentName.test.js`.
+
+### Required packages for testing:
+
+- `enzyme` => is a JavaScript Testing utility for React
+- `@wojtekmaj/enzyme-adapter-react-17` => Unofficial adapter for React 17 for Enzyme.
+- `mocha` => is a JavaScript test framework for Node.js programs, featuring browser support, asynchronous testing, test coverage reports, and use of any assertion library.
+- `@babel/register` => uses Node's require() hook system to compile files on the fly when they are loaded.
+- `ignore-styles` => a style hook to ignore style imports when running in Node.
+- `chai` => is an assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
+- `chai-enzyme` => is a ***Chai.js*** assertions for ***enzyme***.
+- `cheerio` => required by ***chai***.
+- `nyc` => is an npm package for getting stats about the **test coverage** working hand to hand with `Mocha`.
+- `@istanbuljs/nyc-config-babel` => Handy default configuration for instrumenting your babel-backed project with ***test coverage*** using `nyc` and `babel-plugin-istanbul`.
+- `babel-plugin-istanbul` => A Babel plugin that instruments your code with `Istanbul coverage`. It can instantly be used with `karma-coverage` and `mocha` on Node.js (through `nyc`)
+- `jsdom-global` => injects ***document***, ***window*** and other DOM API into your Node.js environment so that you can use them for testing.
+- `jsdom` => required by ***jsdom-global***.
+- `sinon` => used for mocking.
+- `redux-mock-store` => A mock store for testing ***Redux*** async action creators and middleware.
+- `chai-redux-mock-store` => A set of helpers to use with ***chaijs*** and ***redux-mock-store***.
+
+### .mocharc.yml file:
+
+- Imports all the required packages for mocha.
+- Specifies the name of the setup file.
+- Specifies which files should be tested.
+
+### .nycrc file:
+
+- Extends babel configurations to use `@istanbuljs/nyc-config-babel`
+- Set `check-coverage` to true.
+- Set lines percentage to `60%`.
+- Creates 2 report types:
+
+    1-  `html` => outputs the coverage results as `html` in the `/coverage` directory.
+
+    2- `text` => outputs the coverage results as `text` in the `CLI`
 
 ## Update environment variables:
 
