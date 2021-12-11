@@ -175,3 +175,12 @@ It runs all unit test files in `/src/test` directory.
 ### `yarn test:coverage`
 
 It runs test coverage with `60%` which is set in `.nycrc` file.
+
+### `yarn generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_**
+
+- It creates a boilerplate for component, container, page, custom hook, service or reducer.
+
+**_Notes:_**
+- On create component, container or page, it will ask you if css modules are enabled:
+    - If yes => it creates a scss file on the same level of the (component || container || page) then add css modules import
+    - If no => it creates a scss file in the scss directory (scss/components, scss/containers) in the corresponding directory then import the created scss file in the corresponding scss file (scss/_components, scss/_containers)
