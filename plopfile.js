@@ -58,17 +58,17 @@ module.exports = (plop) => {
 		actions: [
 			{
 				type: 'add',
-				path: 'src/js/containers/pages/{{pascalCase name}}/{{pascalCase name}}.js',
-				templateFile: 'generatorTemplates/component/Component.js.hbs',
+				path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.js',
+				templateFile: 'generatorTemplates/page/Page.js.hbs',
 			},
 			{
 				type: 'add',
-				path: 'src/test/containers/pages/{{pascalCase name}}.test.js',
-				templateFile: 'generatorTemplates/Page.test.js.hbs',
+				path: 'src/test/containers/pages/{{pascalCase name}}Page.test.js',
+				templateFile: 'generatorTemplates/page/Page.test.js.hbs',
 			},
 			{
 				type: 'add',
-				path: 'src/js/containers/pages/{{pascalCase name}}/{{pascalCase name}}.scss',
+				path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss',
 				templateFile: 'generatorTemplates/component/Component.scss.hbs',
 			},
 		],
