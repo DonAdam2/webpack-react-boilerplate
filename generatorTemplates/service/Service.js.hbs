@@ -1,0 +1,13 @@
+//services
+import { apiService } from './HttpService';
+
+class {{pascalCase name}}Service {
+    static fetchSomething() {
+        return apiService({
+            method: 'GET',
+            url: '/replace-with-your-url',
+        });
+    }
+}
+
+export default {{pascalCase name}}Service;

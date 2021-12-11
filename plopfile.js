@@ -30,17 +30,17 @@ module.exports = (plop) => {
 				// Path for the new file
 				path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.js',
 				// Handlebars template used to generate content of new file
-				templateFile: 'generatorTemplates/Component/Component.js.hbs',
+				templateFile: 'generatorTemplates/component/Component.js.hbs',
 			},
 			{
 				type: 'add',
 				path: 'src/test/components/{{pascalCase name}}.test.js',
-				templateFile: 'generatorTemplates/Component/Component.test.js.hbs',
+				templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 			},
 			{
 				type: 'add',
 				path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.scss',
-				templateFile: 'generatorTemplates/Component/Component.scss.hbs',
+				templateFile: 'generatorTemplates/component/Component.scss.hbs',
 			},
 		],
 	});
@@ -59,7 +59,7 @@ module.exports = (plop) => {
 			{
 				type: 'add',
 				path: 'src/js/containers/pages/{{pascalCase name}}/{{pascalCase name}}.js',
-				templateFile: 'generatorTemplates/Component/Component.js.hbs',
+				templateFile: 'generatorTemplates/component/Component.js.hbs',
 			},
 			{
 				type: 'add',
@@ -69,7 +69,7 @@ module.exports = (plop) => {
 			{
 				type: 'add',
 				path: 'src/js/containers/pages/{{pascalCase name}}/{{pascalCase name}}.scss',
-				templateFile: 'generatorTemplates/Component/Component.scss.hbs',
+				templateFile: 'generatorTemplates/component/Component.scss.hbs',
 			},
 		],
 	});
@@ -88,7 +88,7 @@ module.exports = (plop) => {
 			{
 				type: 'add',
 				path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.js',
-				templateFile: 'generatorTemplates/Component/Component.js.hbs',
+				templateFile: 'generatorTemplates/component/Component.js.hbs',
 			},
 			{
 				type: 'add',
@@ -98,7 +98,7 @@ module.exports = (plop) => {
 			{
 				type: 'add',
 				path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss',
-				templateFile: 'generatorTemplates/Component/Component.scss.hbs',
+				templateFile: 'generatorTemplates/component/Component.scss.hbs',
 			},
 		],
 	});
@@ -118,6 +118,31 @@ module.exports = (plop) => {
 				type: 'add',
 				path: 'src/js/customHooks/{{camelCase name}}.js',
 				templateFile: 'generatorTemplates/hook.js.hbs',
+			},
+		],
+	});
+
+	plop.setGenerator('service', {
+		description: 'Create a service',
+		prompts: [
+			{
+				type: 'input',
+				name: 'name',
+				message: 'What is your service name?',
+				validate: requireField('name'),
+			},
+		],
+		actions: [
+			{
+				type: 'add',
+				path: 'src/js/services/{{pascalCase name}}Service.js',
+				templateFile: 'generatorTemplates/service/Service.js.hbs',
+			},
+			{
+				type: 'add',
+				path: 'src/js/services/HttpService.js',
+				templateFile: 'generatorTemplates/service/HttpService.js.hbs',
+				skipIfExists: true,
 			},
 		],
 	});
