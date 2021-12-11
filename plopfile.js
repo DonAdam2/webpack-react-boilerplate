@@ -135,24 +135,50 @@ module.exports = (plop) => {
 				message: 'What is your container name?',
 				validate: requireField('name'),
 			},
-		],
-		actions: [
 			{
-				type: 'add',
-				path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.js',
-				templateFile: 'generatorTemplates/component/Component.js.hbs',
-			},
-			{
-				type: 'add',
-				path: 'src/test/containers/{{pascalCase name}}.test.js',
-				templateFile: 'generatorTemplates/Container.test.js.hbs',
-			},
-			{
-				type: 'add',
-				path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss',
-				templateFile: 'generatorTemplates/component/Component.scss.hbs',
+				type: 'confirm',
+				name: 'cssModules',
+				message: 'Did you enable CSS modules?',
 			},
 		],
+		actions: function (data) {
+			let actionsList = [
+				{
+					type: 'add',
+					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.jsx',
+					templateFile: 'generatorTemplates/component/Component.js.hbs',
+				},
+				{
+					type: 'add',
+					path: 'src/test/containers/{{pascalCase name}}.test.js',
+					templateFile: 'generatorTemplates/Container.test.js.hbs',
+				},
+			];
+
+			if (data.cssModules) {
+				actionsList.push({
+					type: 'add',
+					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss',
+					templateFile: 'generatorTemplates/component/Component.scss.hbs',
+				});
+			} else {
+				actionsList.push(
+					{
+						type: 'add',
+						path: 'src/scss/containers/_{{dashCase name}}.scss',
+						templateFile: 'generatorTemplates/component/Component.scss.hbs',
+					},
+					{
+						type: 'append',
+						path: 'src/scss/_containers.scss',
+						pattern: `/* PLOP_INJECT_IMPORT */`,
+						template: `@import 'containers/{{dashCase name}}';`,
+					}
+				);
+			}
+
+			return actionsList;
+		},
 	});
 
 	plop.setGenerator('hook', {
