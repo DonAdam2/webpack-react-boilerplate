@@ -146,4 +146,50 @@ module.exports = (plop) => {
 			},
 		],
 	});
+
+	plop.setGenerator('reducer', {
+		description: 'Create a reducer',
+		prompts: [
+			{
+				type: 'input',
+				name: 'name',
+				message: 'What is your reducer name?',
+				validate: requireField('name'),
+			},
+		],
+		actions: [
+			{
+				type: 'add',
+				path: 'src/js/store/{{camelCase name}}/actions/{{pascalCase name}}Actions.js',
+				templateFile: 'generatorTemplates/reducer/Actions.js.hbs',
+			},
+			{
+				type: 'add',
+				path: 'src/js/store/{{camelCase name}}/reducers/{{pascalCase name}}Reducer.js',
+				templateFile: 'generatorTemplates/reducer/Reducer.js.hbs',
+			},
+			{
+				type: 'add',
+				path: 'src/js/store/{{camelCase name}}/selectors/{{pascalCase name}}Selectors.js',
+				templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
+			},
+			{
+				type: 'add',
+				path: 'src/js/store/{{camelCase name}}/{{pascalCase name}}ActionTypes.js',
+				templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
+			},
+			{
+				type: 'append',
+				path: 'src/js/store/rootReducer.js',
+				pattern: `/* PLOP_INJECT_IMPORT */`,
+				template: `import {{camelCase name}} from './{{camelCase name}}/reducers/{{pascalCase name}}Reducer';`,
+			},
+			{
+				type: 'append',
+				path: 'src/js/store/rootReducer.js',
+				pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
+				template: `{{camelCase name}},`,
+			},
+		],
+	});
 };
