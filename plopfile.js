@@ -19,30 +19,56 @@ module.exports = (plop) => {
 				name: 'name',
 				// Prompt to display on command line
 				message: 'What is your component name?',
-				// make user that component name is not empty
+				// make sure that component name is not empty
 				validate: requireField('name'),
 			},
-		],
-		actions: [
 			{
-				// Add a new file
-				type: 'add',
-				// Path for the new file
-				path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.js',
-				// Handlebars template used to generate content of new file
-				templateFile: 'generatorTemplates/component/Component.js.hbs',
-			},
-			{
-				type: 'add',
-				path: 'src/test/components/{{pascalCase name}}.test.js',
-				templateFile: 'generatorTemplates/component/Component.test.js.hbs',
-			},
-			{
-				type: 'add',
-				path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.scss',
-				templateFile: 'generatorTemplates/component/Component.scss.hbs',
+				type: 'confirm',
+				name: 'cssModules',
+				message: 'Did you enable CSS modules?',
 			},
 		],
+		actions: function (data) {
+			let actionsList = [
+				{
+					// Add a new file
+					type: 'add',
+					// Path for the new file
+					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.jsx',
+					// Handlebars template used to generate content of new file
+					templateFile: 'generatorTemplates/component/Component.js.hbs',
+				},
+				{
+					type: 'add',
+					path: 'src/test/components/{{pascalCase name}}.test.js',
+					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
+				},
+			];
+
+			if (data.cssModules) {
+				actionsList.push({
+					type: 'add',
+					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.scss',
+					templateFile: 'generatorTemplates/component/Component.scss.hbs',
+				});
+			} else {
+				actionsList.push(
+					{
+						type: 'add',
+						path: 'src/scss/components/_{{dashCase name}}.scss',
+						templateFile: 'generatorTemplates/component/Component.scss.hbs',
+					},
+					{
+						type: 'append',
+						path: 'src/scss/_components.scss',
+						pattern: `/* PLOP_INJECT_IMPORT */`,
+						template: `@import 'components/{{dashCase name}}';`,
+					}
+				);
+			}
+
+			return actionsList;
+		},
 	});
 
 	plop.setGenerator('page', {
