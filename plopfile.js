@@ -80,24 +80,50 @@ module.exports = (plop) => {
 				message: 'What is your page name?',
 				validate: requireField('name'),
 			},
-		],
-		actions: [
 			{
-				type: 'add',
-				path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.js',
-				templateFile: 'generatorTemplates/page/Page.js.hbs',
-			},
-			{
-				type: 'add',
-				path: 'src/test/containers/pages/{{pascalCase name}}Page.test.js',
-				templateFile: 'generatorTemplates/page/Page.test.js.hbs',
-			},
-			{
-				type: 'add',
-				path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss',
-				templateFile: 'generatorTemplates/component/Component.scss.hbs',
+				type: 'confirm',
+				name: 'cssModules',
+				message: 'Did you enable CSS modules?',
 			},
 		],
+		actions: function (data) {
+			let actionsList = [
+				{
+					type: 'add',
+					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.jsx',
+					templateFile: 'generatorTemplates/page/Page.js.hbs',
+				},
+				{
+					type: 'add',
+					path: 'src/test/containers/pages/{{pascalCase name}}Page.test.js',
+					templateFile: 'generatorTemplates/page/Page.test.js.hbs',
+				},
+			];
+
+			if (data.cssModules) {
+				actionsList.push({
+					type: 'add',
+					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss',
+					templateFile: 'generatorTemplates/component/Component.scss.hbs',
+				});
+			} else {
+				actionsList.push(
+					{
+						type: 'add',
+						path: 'src/scss/containers/pages/_{{dashCase name}}.scss',
+						templateFile: 'generatorTemplates/component/Component.scss.hbs',
+					},
+					{
+						type: 'append',
+						path: 'src/scss/_containers.scss',
+						pattern: `/* PLOP_INJECT_IMPORT */`,
+						template: `@import 'containers/pages/{{dashCase name}}';`,
+					}
+				);
+			}
+
+			return actionsList;
+		},
 	});
 
 	plop.setGenerator('container', {

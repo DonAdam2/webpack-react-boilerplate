@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-//styles
-import './{{pascalCase name}}Page.scss';
+{{#if cssModules}}
+    //styles
+    import styles from './{{pascalCase name}}Page.scss';
+{{/if}}
 
 const {{pascalCase name}}Page = (props) => {
     return (
-        <div  className="root">
+        {{#if cssModules}}
+            <div  className={styles.{{camelCase name}}Wrapper}>
+        {{else}}
+            <div  className="{{camelCase name}}Wrapper">
+        {{/if}}
             {{pascalCase name}}Page
         </div>
     );
