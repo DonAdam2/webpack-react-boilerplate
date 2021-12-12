@@ -23,14 +23,14 @@
 
 ### Development (locally):
 
-- Clone repo => `git clone repo-url`
+- Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
 - `cd frontend`
 - Install dependencies => `yarn install`
 - Start the development server => `yarn start`
 
 ### Development (using Docker):
 
-- Clone repo => `git clone repo-url`
+- Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
 - `cd frontend`
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up --build`
