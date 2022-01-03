@@ -1,4 +1,4 @@
-## This webpack (V5.64.3) boilerplate supports the following:
+## This webpack (V5.65.0) boilerplate supports the following:
 
 - Testing using **mocha**, **chai**, **enzyme**
 - **SCSS** preprocessor
