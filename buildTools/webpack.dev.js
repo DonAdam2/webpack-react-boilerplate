@@ -1,12 +1,11 @@
 const webpack = require('webpack'),
 	// the following 2 lines is to merge common webpack configurations with this file
 	{ merge } = require('webpack-merge'),
-	common = require('./webpack.common.js'),
-	//constants
-	{ port } = require('./constants');
+	common = require('./webpack.common.js');
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
+		mode: 'development',
 		resolve: {
 			alias: {
 				'react-dom': '@hot-loader/react-dom',
@@ -19,7 +18,8 @@ module.exports = (env, options) => {
 			compress: true,
 			// open development server
 			open: true,
-			port: port,
+			//coming from scripts/start.js file
+			port: options.port,
 			// important for navigating to the app using browser (if you use any route other than /)
 			historyApiFallback: true,
 			// CORS :: https://github.com/webpack/webpack-dev-server/issues/533
