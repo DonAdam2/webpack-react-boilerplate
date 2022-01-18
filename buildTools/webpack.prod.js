@@ -9,7 +9,7 @@ const { merge } = require('webpack-merge'),
 	TerserJSPlugin = require('terser-webpack-plugin'),
 	{ CleanWebpackPlugin } = require('clean-webpack-plugin'),
 	//constants
-	{ cssSubDirectory } = require('./constants'),
+	{ cssSubDirectory, isCssModules } = require('./constants'),
 	PATHS = require('./paths');
 
 module.exports = (env, options) => {
@@ -45,9 +45,13 @@ module.exports = (env, options) => {
 				chunkFilename: cssSubDirectory + '[id].[contenthash:8].css',
 			}),
 			// remove un-used styles
-			new PurgeCSSPlugin({
-				paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
-			}),
+			...(isCssModules
+				? []
+				: [
+						new PurgeCSSPlugin({
+							paths: glob.sync(`${PATHS.src}/**/*`, { nodir: true }),
+						}),
+				  ]),
 		],
 	});
 };

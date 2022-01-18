@@ -2,7 +2,7 @@
 
 - Testing using **mocha**, **chai**, **enzyme**
 - **SCSS** preprocessor
-- To enable **CSS modules** (each component has it's own styles "no conflict between different components styles") => just open (webpack.common.js) and uncomment **modules section** in **css-loader**. Then open (webpack.prod.js) and comment out **PurgeCSSPlugin** in the **plugins section**. Then in every component add the required import as follows: `import classes from './scss/requiredStyles'`
+- To enable **CSS modules** (each component has its own styles "no conflict between different components styles") => just open `/buildTools/constants.js` and set **isCssModules** to **true**. Then in every component add the required import as follows: `import classes from './scss/requiredStyles'`
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)

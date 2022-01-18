@@ -14,6 +14,7 @@ const path = require('path'),
 		port,
 		devServer,
 		jsSubDirectory,
+		isCssModules,
 		metaInfo: { title, description, url, keywords },
 	} = require('./constants'),
 	PATHS = require('./paths'),
@@ -107,19 +108,23 @@ module.exports = (env, options) => {
 								// Number of loaders applied before CSS loader (which is postcss-loader)
 								importLoaders: 3,
 								// the following is used to enable CSS modules
-								/*modules: {
-									mode: (resourcePath) => {
-										if (/global.scss$/i.test(resourcePath)) {
-											return 'global';
-										}
+								...(isCssModules
+									? {
+											modules: {
+												mode: (resourcePath) => {
+													if (/global.scss$/i.test(resourcePath)) {
+														return 'global';
+													}
 
-										return 'local';
-									},
-									localIdentName: isDevelopment ? '[name]_[local]' : '[contenthash:base64]',
-									localIdentContext: PATHS.src,
-									localIdentHashSalt: 'react-boilerplate',
-									exportLocalsConvention: 'camelCaseOnly',
-								},*/
+													return 'local';
+												},
+												localIdentName: isDevelopment ? '[name]_[local]' : '[contenthash:base64]',
+												localIdentContext: PATHS.src,
+												localIdentHashSalt: 'react-boilerplate',
+												exportLocalsConvention: 'camelCaseOnly',
+											},
+									  }
+									: {}),
 							},
 						},
 						{
