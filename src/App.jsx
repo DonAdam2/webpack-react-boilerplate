@@ -23,6 +23,7 @@ const App = () => (
 				</div>
 			}
 		>
+			<h1>Webpack react boilerplate</h1>
 			<TestComponent />
 		</Suspense>
 	</ErrorBoundary>

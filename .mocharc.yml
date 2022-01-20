@@ -1,7 +1,0 @@
-require:
-  - '@babel/register'
-  - 'ignore-styles'
-file:
-  - 'src/test/setupTests.js'
-spec:
-  - 'src/test/**/*.test.js'
