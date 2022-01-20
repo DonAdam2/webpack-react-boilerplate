@@ -1,6 +1,6 @@
 ## This webpack (V5.66.0) boilerplate supports the following:
 
-- Testing using **mocha**, **chai**, **enzyme**
+- Testing using **jest**, **react-testing-library**
 - **SCSS** preprocessor
 - To enable **CSS modules** (each component has its own styles "no conflict between different components styles") => just open `/buildTools/constants.js` and set **isCssModules** to **true**. Then in every component add the required import as follows: `import classes from './scss/requiredStyles'`
 - Autoprefixer for CSS (it supports IE >= 11)
@@ -34,46 +34,6 @@
 - `cd webpack-react-boilerplate`
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up --build`
-
-## This boilerplate uses `enzyme`, `mocha` and `chai` for testing
-
-**_Note:_** All test files should be in `/src/test/` with the name of `ComponentName.test.js`.
-
-### Required packages for testing:
-
-- `enzyme` => is a JavaScript Testing utility for React
-- `@wojtekmaj/enzyme-adapter-react-17` => Unofficial adapter for React 17 for Enzyme.
-- `mocha` => is a JavaScript test framework for Node.js programs, featuring browser support, asynchronous testing, test coverage reports, and use of any assertion library.
-- `@babel/register` => uses Node's require() hook system to compile files on the fly when they are loaded.
-- `ignore-styles` => a style hook to ignore style imports when running in Node.
-- `chai` => is an assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
-- `chai-enzyme` => is a ***Chai.js*** assertions for ***enzyme***.
-- `cheerio` => required by ***chai***.
-- `nyc` => is an npm package for getting stats about the **test coverage** working hand to hand with `Mocha`.
-- `@istanbuljs/nyc-config-babel` => Handy default configuration for instrumenting your babel-backed project with ***test coverage*** using `nyc` and `babel-plugin-istanbul`.
-- `babel-plugin-istanbul` => A Babel plugin that instruments your code with `Istanbul coverage`. It can instantly be used with `karma-coverage` and `mocha` on Node.js (through `nyc`)
-- `jsdom-global` => injects ***document***, ***window*** and other DOM API into your Node.js environment so that you can use them for testing.
-- `jsdom` => required by ***jsdom-global***.
-- `sinon` => used for mocking.
-- `redux-mock-store` => A mock store for testing ***Redux*** async action creators and middleware.
-- `chai-redux-mock-store` => A set of helpers to use with ***chaijs*** and ***redux-mock-store***.
-
-### .mocharc.yml file:
-
-- Imports all the required packages for mocha.
-- Specifies the name of the setup file.
-- Specifies which files should be tested.
-
-### .nycrc file:
-
-- Extends babel configurations to use `@istanbuljs/nyc-config-babel`
-- Set `check-coverage` to true.
-- Set lines percentage to `60%`.
-- Creates 2 report types:
-
-    1-  `html` => outputs the coverage results as `html` in the `/coverage` directory.
-
-    2- `text` => outputs the coverage results as `text` in the `CLI`
 
 ## Update environment variables:
 
@@ -163,24 +123,23 @@ Serves the app on `http://localhost:8080/` from the `dist` folder to check the p
 
 It allows you to analyze the bundle size.
 
-### `yarn test`
+### `yarn test:all`
 
-It runs all unit test files in `/src/test` directory.
+It runs all test files.
 
 ### `yarn test:watch`
 
-- It runs all unit test files in `/src/test` directory using watch mode.
+- It runs all unit test files in `/src` directory using watch mode.
 - Will run all your tests once then again on every change of your source code
 
 ### `yarn test:coverage`
 
-It runs test coverage with `60%` which is set in `.nycrc` file.
+It runs test coverage.
+
+### `yarn test:clear`
+
+Clears test cache.
 
 ### `yarn generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_**
 
 - It creates a boilerplate for component, container, page, custom hook, service or reducer.
-
-**_Notes:_**
-- On create component, container or page, it will ask you if css modules are enabled:
-    - If yes => it creates a scss file on the same level of the (component || container || page) then add css modules import
-    - If no => it creates a scss file in the scss directory (scss/components, scss/containers) in the corresponding directory then import the created scss file in the corresponding scss file (scss/_components, scss/_containers)

@@ -1,3 +1,5 @@
+const { isCssModules } = require('./buildTools/constants');
+
 const requireField = (fieldName) => {
 	return (value) => {
 		if (String(value).length === 0) {
@@ -22,11 +24,6 @@ module.exports = (plop) => {
 				// make sure that component name is not empty
 				validate: requireField('name'),
 			},
-			{
-				type: 'confirm',
-				name: 'cssModules',
-				message: 'Did you enable CSS modules?',
-			},
 		],
 		actions: function (data) {
 			let actionsList = [
@@ -37,6 +34,7 @@ module.exports = (plop) => {
 					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.jsx',
 					// Handlebars template used to generate content of new file
 					templateFile: 'generatorTemplates/component/Component.js.hbs',
+					data: { isCssModules },
 				},
 				{
 					type: 'add',
@@ -45,7 +43,7 @@ module.exports = (plop) => {
 				},
 			];
 
-			if (data.cssModules) {
+			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
 					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.scss',
@@ -80,11 +78,6 @@ module.exports = (plop) => {
 				message: 'What is your page name?',
 				validate: requireField('name'),
 			},
-			{
-				type: 'confirm',
-				name: 'cssModules',
-				message: 'Did you enable CSS modules?',
-			},
 		],
 		actions: function (data) {
 			let actionsList = [
@@ -92,6 +85,7 @@ module.exports = (plop) => {
 					type: 'add',
 					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.jsx',
 					templateFile: 'generatorTemplates/page/Page.js.hbs',
+					data: { isCssModules },
 				},
 				{
 					type: 'add',
@@ -100,7 +94,7 @@ module.exports = (plop) => {
 				},
 			];
 
-			if (data.cssModules) {
+			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
 					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss',
@@ -135,11 +129,6 @@ module.exports = (plop) => {
 				message: 'What is your container name?',
 				validate: requireField('name'),
 			},
-			{
-				type: 'confirm',
-				name: 'cssModules',
-				message: 'Did you enable CSS modules?',
-			},
 		],
 		actions: function (data) {
 			let actionsList = [
@@ -147,6 +136,7 @@ module.exports = (plop) => {
 					type: 'add',
 					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.jsx',
 					templateFile: 'generatorTemplates/component/Component.js.hbs',
+					data: { isCssModules },
 				},
 				{
 					type: 'add',
@@ -155,7 +145,7 @@ module.exports = (plop) => {
 				},
 			];
 
-			if (data.cssModules) {
+			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
 					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss',
