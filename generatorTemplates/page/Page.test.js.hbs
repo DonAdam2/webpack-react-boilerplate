@@ -1,11 +1,12 @@
 import React from 'react';
-//components
-import {{pascalCase name}}Page from '../../../js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page';
+import { render, screen } from '@testing-library/react';
+//pages
+import {{pascalCase name}}Page from './{{pascalCase name}}Page';
 
 describe('<{{pascalCase name}}Page />', () => {
-    beforeEach(() => {
-        //add code to execute before each test
-    });
-
-    it('renders without error', () => {});
+    test('renders webpack react boilerplate', () => {
+            render(<{{pascalCase name}}Page />);
+            const title = screen.getByText(/{{camelCase name}}Page/i);
+            expect(title).toBeInTheDocument();
+        });
 });

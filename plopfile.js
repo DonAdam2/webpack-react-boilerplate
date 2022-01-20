@@ -40,7 +40,7 @@ module.exports = (plop) => {
 				},
 				{
 					type: 'add',
-					path: 'src/test/components/{{pascalCase name}}.test.js',
+					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.test.js',
 					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 				},
 			];
@@ -95,7 +95,7 @@ module.exports = (plop) => {
 				},
 				{
 					type: 'add',
-					path: 'src/test/containers/pages/{{pascalCase name}}Page.test.js',
+					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.test.js',
 					templateFile: 'generatorTemplates/page/Page.test.js.hbs',
 				},
 			];
@@ -150,8 +150,8 @@ module.exports = (plop) => {
 				},
 				{
 					type: 'add',
-					path: 'src/test/containers/{{pascalCase name}}.test.js',
-					templateFile: 'generatorTemplates/Container.test.js.hbs',
+					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.test.js',
+					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 				},
 			];
 
