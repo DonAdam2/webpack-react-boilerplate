@@ -9,22 +9,22 @@ const requireField = (fieldName) => {
 	};
 };
 
+const createQuestion = (type) => ({
+	// Raw text input
+	type: 'input',
+	// Variable name for this input
+	name: 'name',
+	// Prompt to display on command line
+	message: `What is your ${type} name?`,
+	// make sure that name is not empty
+	validate: requireField('name'),
+});
+
 module.exports = (plop) => {
 	plop.setGenerator('component', {
 		description: 'Create a component',
 		// User input prompts provided as arguments to the template
-		prompts: [
-			{
-				// Raw text input
-				type: 'input',
-				// Variable name for this input
-				name: 'name',
-				// Prompt to display on command line
-				message: 'What is your component name?',
-				// make sure that component name is not empty
-				validate: requireField('name'),
-			},
-		],
+		prompts: [createQuestion('component')],
 		actions: function (data) {
 			let actionsList = [
 				{
@@ -71,14 +71,7 @@ module.exports = (plop) => {
 
 	plop.setGenerator('page', {
 		description: 'Create a page',
-		prompts: [
-			{
-				type: 'input',
-				name: 'name',
-				message: 'What is your page name?',
-				validate: requireField('name'),
-			},
-		],
+		prompts: [createQuestion('page')],
 		actions: function (data) {
 			let actionsList = [
 				{
@@ -122,14 +115,7 @@ module.exports = (plop) => {
 
 	plop.setGenerator('container', {
 		description: 'Create a container',
-		prompts: [
-			{
-				type: 'input',
-				name: 'name',
-				message: 'What is your container name?',
-				validate: requireField('name'),
-			},
-		],
+		prompts: [createQuestion('container')],
 		actions: function (data) {
 			let actionsList = [
 				{
@@ -173,14 +159,7 @@ module.exports = (plop) => {
 
 	plop.setGenerator('hook', {
 		description: 'Create a custom react hook',
-		prompts: [
-			{
-				type: 'input',
-				name: 'name',
-				message: 'What is your hook name?',
-				validate: requireField('name'),
-			},
-		],
+		prompts: [createQuestion('hook')],
 		actions: [
 			{
 				type: 'add',
@@ -192,14 +171,7 @@ module.exports = (plop) => {
 
 	plop.setGenerator('service', {
 		description: 'Create a service',
-		prompts: [
-			{
-				type: 'input',
-				name: 'name',
-				message: 'What is your service name?',
-				validate: requireField('name'),
-			},
-		],
+		prompts: [createQuestion('service')],
 		actions: [
 			{
 				type: 'add',
@@ -217,14 +189,7 @@ module.exports = (plop) => {
 
 	plop.setGenerator('reducer', {
 		description: 'Create a reducer',
-		prompts: [
-			{
-				type: 'input',
-				name: 'name',
-				message: 'What is your reducer name?',
-				validate: requireField('name'),
-			},
-		],
+		prompts: [createQuestion('reducer')],
 		actions: [
 			{
 				type: 'add',
