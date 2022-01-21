@@ -71,9 +71,6 @@ module.exports = (env, options) => {
 		},
 		resolve: {
 			extensions: ['*', '.js', '.jsx', '.json'],
-			fallback: {
-				crypto: false,
-			},
 		},
 		module: {
 			rules: [
