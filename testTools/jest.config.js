@@ -1,12 +1,14 @@
+const { rootDirectory } = require('../buildTools/constants');
+
 module.exports = {
 	// A list of paths to directories that Jest should use to search for files in.
-	roots: ['<rootDir>/../src'],
+	roots: [`<rootDir>/../${rootDirectory}`],
 	// setupFiles before the tests are ran
 	setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
 	// The glob patterns Jest uses to detect test files
 	testMatch: [
-		'<rootDir>/../src/**/__tests__/**/*.{js,jsx,ts,tsx}',
-		'<rootDir>/../src/**/*.{spec,test}.{js,jsx,ts,tsx}',
+		`<rootDir>/../${rootDirectory}/**/__tests__/**/*.{js,jsx,ts,tsx}`,
+		`<rootDir>/../${rootDirectory}/**/*.{spec,test}.{js,jsx,ts,tsx}`,
 	],
 	// The test environment that will be used for testing
 	testEnvironment: 'jsdom',
@@ -46,12 +48,12 @@ module.exports = {
 	coverageDirectory: '<rootDir>/../coverage',
 	//an array of glob patterns indicating a set of files for which coverage information should be collected
 	collectCoverageFrom: [
-		'../src/**/*.{js,jsx,ts,tsx}',
-		'!../src/**/*.d.ts',
-		'!../src/js/store/**/*.{js,ts}',
-		'!../src/js/services/**/*.{js,ts}',
-		'!../src/js/managers/**/*.{js,ts}',
-		'!../src/js/constants/**/*.{js,ts}',
+		`../${rootDirectory}/**/*.{js,jsx,ts,tsx}`,
+		`!../${rootDirectory}/**/*.d.ts`,
+		`!../${rootDirectory}/js/store/**/*.{js,ts}`,
+		`!../${rootDirectory}/js/services/**/*.{js,ts}`,
+		`!../${rootDirectory}/js/managers/**/*.{js,ts}`,
+		`!../${rootDirectory}/js/constants/**/*.{js,ts}`,
 	],
 	coverageThreshold: {
 		global: {
