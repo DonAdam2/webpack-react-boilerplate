@@ -1,4 +1,4 @@
-const { isCssModules } = require('./buildTools/constants');
+const { isCssModules, rootDirectory } = require('./buildTools/constants');
 
 const requireField = (fieldName) => {
 	return (value) => {
@@ -31,14 +31,14 @@ module.exports = (plop) => {
 					// Add a new file
 					type: 'add',
 					// Path for the new file
-					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.jsx',
+					path: `${rootDirectory}/js/components/{{pascalCase name}}/{{pascalCase name}}.jsx`,
 					// Handlebars template used to generate content of new file
 					templateFile: 'generatorTemplates/component/Component.js.hbs',
 					data: { isCssModules },
 				},
 				{
 					type: 'add',
-					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.test.js',
+					path: `${rootDirectory}/js/components/{{pascalCase name}}/{{pascalCase name}}.test.js`,
 					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 				},
 			];
@@ -46,19 +46,19 @@ module.exports = (plop) => {
 			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
-					path: 'src/js/components/{{pascalCase name}}/{{pascalCase name}}.scss',
+					path: `${rootDirectory}/js/components/{{pascalCase name}}/{{pascalCase name}}.scss`,
 					templateFile: 'generatorTemplates/component/Component.scss.hbs',
 				});
 			} else {
 				actionsList.push(
 					{
 						type: 'add',
-						path: 'src/scss/components/_{{dashCase name}}.scss',
+						path: `${rootDirectory}/scss/components/_{{dashCase name}}.scss`,
 						templateFile: 'generatorTemplates/component/Component.scss.hbs',
 					},
 					{
 						type: 'append',
-						path: 'src/scss/_components.scss',
+						path: `${rootDirectory}/scss/_components.scss`,
 						pattern: `/* PLOP_INJECT_IMPORT */`,
 						template: `@import 'components/{{dashCase name}}';`,
 					}
@@ -76,13 +76,13 @@ module.exports = (plop) => {
 			let actionsList = [
 				{
 					type: 'add',
-					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.jsx',
+					path: `${rootDirectory}/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.jsx`,
 					templateFile: 'generatorTemplates/page/Page.js.hbs',
 					data: { isCssModules },
 				},
 				{
 					type: 'add',
-					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.test.js',
+					path: `${rootDirectory}/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.test.js`,
 					templateFile: 'generatorTemplates/page/Page.test.js.hbs',
 				},
 			];
@@ -90,19 +90,19 @@ module.exports = (plop) => {
 			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
-					path: 'src/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss',
+					path: `${rootDirectory}/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss`,
 					templateFile: 'generatorTemplates/component/Component.scss.hbs',
 				});
 			} else {
 				actionsList.push(
 					{
 						type: 'add',
-						path: 'src/scss/containers/pages/_{{dashCase name}}.scss',
+						path: `${rootDirectory}/scss/containers/pages/_{{dashCase name}}.scss`,
 						templateFile: 'generatorTemplates/component/Component.scss.hbs',
 					},
 					{
 						type: 'append',
-						path: 'src/scss/_containers.scss',
+						path: `${rootDirectory}/scss/_containers.scss`,
 						pattern: `/* PLOP_INJECT_IMPORT */`,
 						template: `@import 'containers/pages/{{dashCase name}}';`,
 					}
@@ -120,13 +120,13 @@ module.exports = (plop) => {
 			let actionsList = [
 				{
 					type: 'add',
-					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.jsx',
+					path: `${rootDirectory}/js/containers/{{pascalCase name}}/{{pascalCase name}}.jsx`,
 					templateFile: 'generatorTemplates/component/Component.js.hbs',
 					data: { isCssModules },
 				},
 				{
 					type: 'add',
-					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.test.js',
+					path: `${rootDirectory}/js/containers/{{pascalCase name}}/{{pascalCase name}}.test.js`,
 					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 				},
 			];
@@ -134,19 +134,19 @@ module.exports = (plop) => {
 			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
-					path: 'src/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss',
+					path: `${rootDirectory}/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss`,
 					templateFile: 'generatorTemplates/component/Component.scss.hbs',
 				});
 			} else {
 				actionsList.push(
 					{
 						type: 'add',
-						path: 'src/scss/containers/_{{dashCase name}}.scss',
+						path: `${rootDirectory}/scss/containers/_{{dashCase name}}.scss`,
 						templateFile: 'generatorTemplates/component/Component.scss.hbs',
 					},
 					{
 						type: 'append',
-						path: 'src/scss/_containers.scss',
+						path: `${rootDirectory}/scss/_containers.scss`,
 						pattern: `/* PLOP_INJECT_IMPORT */`,
 						template: `@import 'containers/{{dashCase name}}';`,
 					}
@@ -163,7 +163,7 @@ module.exports = (plop) => {
 		actions: [
 			{
 				type: 'add',
-				path: 'src/js/customHooks/{{camelCase name}}.js',
+				path: `${rootDirectory}/js/customHooks/{{camelCase name}}.js`,
 				templateFile: 'generatorTemplates/hook.js.hbs',
 			},
 		],
@@ -175,12 +175,12 @@ module.exports = (plop) => {
 		actions: [
 			{
 				type: 'add',
-				path: 'src/js/services/{{pascalCase name}}Service.js',
+				path: `${rootDirectory}/js/services/{{pascalCase name}}Service.js`,
 				templateFile: 'generatorTemplates/service/Service.js.hbs',
 			},
 			{
 				type: 'add',
-				path: 'src/js/services/HttpService.js',
+				path: `${rootDirectory}/js/services/HttpService.js`,
 				templateFile: 'generatorTemplates/service/HttpService.js.hbs',
 				skipIfExists: true,
 			},
@@ -193,33 +193,33 @@ module.exports = (plop) => {
 		actions: [
 			{
 				type: 'add',
-				path: 'src/js/store/{{camelCase name}}/actions/{{pascalCase name}}Actions.js',
+				path: `${rootDirectory}/js/store/{{camelCase name}}/actions/{{pascalCase name}}Actions.js`,
 				templateFile: 'generatorTemplates/reducer/Actions.js.hbs',
 			},
 			{
 				type: 'add',
-				path: 'src/js/store/{{camelCase name}}/reducers/{{pascalCase name}}Reducer.js',
+				path: `${rootDirectory}/js/store/{{camelCase name}}/reducers/{{pascalCase name}}Reducer.js`,
 				templateFile: 'generatorTemplates/reducer/Reducer.js.hbs',
 			},
 			{
 				type: 'add',
-				path: 'src/js/store/{{camelCase name}}/selectors/{{pascalCase name}}Selectors.js',
+				path: `${rootDirectory}/js/store/{{camelCase name}}/selectors/{{pascalCase name}}Selectors.js`,
 				templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
 			},
 			{
 				type: 'add',
-				path: 'src/js/store/{{camelCase name}}/{{pascalCase name}}ActionTypes.js',
+				path: `${rootDirectory}/js/store/{{camelCase name}}/{{pascalCase name}}ActionTypes.js`,
 				templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
 			},
 			{
 				type: 'append',
-				path: 'src/js/store/rootReducer.js',
+				path: `${rootDirectory}/js/store/rootReducer.js`,
 				pattern: `/* PLOP_INJECT_IMPORT */`,
 				template: `import {{camelCase name}} from './{{camelCase name}}/reducers/{{pascalCase name}}Reducer';`,
 			},
 			{
 				type: 'append',
-				path: 'src/js/store/rootReducer.js',
+				path: `${rootDirectory}/js/store/rootReducer.js`,
 				pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
 				template: `{{camelCase name}},`,
 			},
