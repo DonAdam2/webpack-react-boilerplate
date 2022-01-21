@@ -88,7 +88,6 @@ module.exports = (env, options) => {
 				},
 				{
 					test: /\.s?[ac]ss$/,
-					exclude: /node_modules/,
 					use: [
 						{
 							// style-loader => insert styles in the head of the HTML as style tags or in blob links
@@ -129,7 +128,22 @@ module.exports = (env, options) => {
 							options: {
 								postcssOptions: {
 									ident: 'postcss',
-									plugins: [autoprefixer()],
+									plugins: [
+										'postcss-flexbugs-fixes',
+										[
+											'postcss-preset-env',
+											{
+												autoprefixer: {
+													flexbox: 'no-2009',
+												},
+												stage: 3,
+											},
+										],
+										// Adds PostCSS Normalize as the reset css with default options,
+										// so that it honors browserslist config in package.json
+										// which in turn let's users customize the target behavior as per their needs.
+										'postcss-normalize',
+									],
 								},
 								sourceMap: isDevelopment,
 							},
