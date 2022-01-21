@@ -35,6 +35,7 @@
 		"autoprefixer": "^10.4.2",
 		"babel-jest": "^27.4.6",
 		"babel-loader": "^8.2.3",
+		"camelcase": "^6.3.0",
 		"clean-webpack-plugin": "^4.0.0",
 		"cli-color": "^2.0.1",
 		"core-js": "^3.20.2",
