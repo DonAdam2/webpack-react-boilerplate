@@ -28,18 +28,7 @@ module.exports = {
 		'^.+\\.(css|scss)$': 'identity-obj-proxy', // for css modules
 	},
 	// An array of file extensions your modules use
-	moduleFileExtensions: [
-		'web.js',
-		'js',
-		'web.ts',
-		'ts',
-		'web.tsx',
-		'tsx',
-		'json',
-		'web.jsx',
-		'jsx',
-		'node',
-	],
+	moduleFileExtensions: ['js', 'ts', 'tsx', 'json', 'jsx', 'node'],
 	// This option allows you to use custom watch plugins
 	watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 	// Automatically reset mock state before every test
