@@ -1,4 +1,4 @@
-## This webpack (V5.66.0) boilerplate supports the following:
+## This webpack (V5.67.0) boilerplate supports the following:
 
 - Testing using **jest**, **react-testing-library**
 - **SCSS** preprocessor
