@@ -9,16 +9,35 @@ const requireField = (fieldName) => {
 	};
 };
 
-const createQuestion = (type) => ({
-	// Raw text input
-	type: 'input',
-	// Variable name for this input
-	name: 'name',
-	// Prompt to display on command line
-	message: `What is your ${type} name?`,
-	// make sure that name is not empty
-	validate: requireField('name'),
-});
+const createQuestion = (type, isReducer) => {
+	if (isReducer) {
+		return [
+			{
+				type: 'input',
+				name: 'reducerEntity',
+				message: `What is your entity name (directory in store)?`,
+				validate: requireField('reducerEntity'),
+			},
+			{
+				type: 'input',
+				name: 'name',
+				message: `What is your ${type} name?`,
+				validate: requireField('name'),
+			},
+		];
+	} else {
+		return {
+			// Raw text input
+			type: 'input',
+			// Variable name for this input
+			name: 'name',
+			// Prompt to display on command line
+			message: `What is your ${type} name?`,
+			// make sure that name is not empty
+			validate: requireField('name'),
+		};
+	}
+};
 
 module.exports = (plop) => {
 	plop.setGenerator('component', {
@@ -189,33 +208,33 @@ module.exports = (plop) => {
 
 	plop.setGenerator('reducer', {
 		description: 'Create a reducer',
-		prompts: [createQuestion('reducer')],
+		prompts: createQuestion('reducer', true),
 		actions: [
 			{
 				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase name}}/actions/{{pascalCase name}}Actions.js`,
+				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/actions/{{pascalCase name}}Actions.js`,
 				templateFile: 'generatorTemplates/reducer/Actions.js.hbs',
 			},
 			{
 				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase name}}/reducers/{{pascalCase name}}Reducer.js`,
+				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer.js`,
 				templateFile: 'generatorTemplates/reducer/Reducer.js.hbs',
 			},
 			{
 				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase name}}/selectors/{{pascalCase name}}Selectors.js`,
+				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/selectors/{{pascalCase name}}Selectors.js`,
 				templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
 			},
 			{
 				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase name}}/{{pascalCase name}}ActionTypes.js`,
+				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase name}}ActionTypes.js`,
 				templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
 			},
 			{
 				type: 'append',
 				path: `${rootDirectory}/js/store/rootReducer.js`,
 				pattern: `/* PLOP_INJECT_IMPORT */`,
-				template: `import {{camelCase name}} from './{{camelCase name}}/reducers/{{pascalCase name}}Reducer';`,
+				template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer';`,
 			},
 			{
 				type: 'append',
