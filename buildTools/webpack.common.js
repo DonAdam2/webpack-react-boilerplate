@@ -7,7 +7,6 @@ const path = require('path'),
 	{ DefinePlugin } = require('webpack'),
 	HtmlWebpackPlugin = require('html-webpack-plugin'),
 	MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-	autoprefixer = require('autoprefixer'),
 	EsLintPlugin = require('eslint-webpack-plugin'),
 	//constants
 	{

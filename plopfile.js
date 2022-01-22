@@ -1,4 +1,5 @@
-const { isCssModules, rootDirectory } = require('./buildTools/constants');
+const { isCssModules, rootDirectory } = require('./buildTools/constants'),
+	fs = require('fs');
 
 const requireField = (fieldName) => {
 	return (value) => {
@@ -9,7 +10,22 @@ const requireField = (fieldName) => {
 	};
 };
 
-const createQuestion = (type, isReducer) => {
+const startsWithUseKeyWord = () => {
+	return (value) => {
+		if (String(value).startsWith('use')) {
+			return true;
+		}
+		return 'Custom hooks should start with use keyword';
+	};
+};
+
+const isStoreEntityExist = (entityName) =>
+	fs.existsSync(`./${rootDirectory}/js/store/${entityName}`);
+
+const createQuestion = (type) => {
+	const isReducer = type === 'reducer',
+		isHook = type === 'hook';
+
 	if (isReducer) {
 		return [
 			{
@@ -34,7 +50,7 @@ const createQuestion = (type, isReducer) => {
 			// Prompt to display on command line
 			message: `What is your ${type} name?`,
 			// make sure that name is not empty
-			validate: requireField('name'),
+			validate: isHook ? requireField('name') && startsWithUseKeyWord() : requireField('name'),
 		};
 	}
 };
@@ -208,40 +224,56 @@ module.exports = (plop) => {
 
 	plop.setGenerator('reducer', {
 		description: 'Create a reducer',
-		prompts: createQuestion('reducer', true),
-		actions: [
-			{
-				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/actions/{{pascalCase name}}Actions.js`,
-				templateFile: 'generatorTemplates/reducer/Actions.js.hbs',
-			},
-			{
-				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer.js`,
-				templateFile: 'generatorTemplates/reducer/Reducer.js.hbs',
-			},
-			{
-				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/selectors/{{pascalCase name}}Selectors.js`,
-				templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
-			},
-			{
-				type: 'add',
-				path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase name}}ActionTypes.js`,
-				templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
-			},
-			{
-				type: 'append',
-				path: `${rootDirectory}/js/store/rootReducer.js`,
-				pattern: `/* PLOP_INJECT_IMPORT */`,
-				template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer';`,
-			},
-			{
-				type: 'append',
-				path: `${rootDirectory}/js/store/rootReducer.js`,
-				pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
-				template: `{{camelCase name}},`,
-			},
-		],
+		prompts: createQuestion('reducer'),
+		actions: function (data) {
+			let actionsList = [
+				{
+					type: 'add',
+					path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/actions/{{pascalCase name}}Actions.js`,
+					templateFile: 'generatorTemplates/reducer/Actions.js.hbs',
+				},
+				{
+					type: 'add',
+					path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer.js`,
+					templateFile: 'generatorTemplates/reducer/Reducer.js.hbs',
+				},
+				{
+					type: 'add',
+					path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/selectors/{{pascalCase name}}Selectors.js`,
+					templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
+				},
+				{
+					type: 'append',
+					path: `${rootDirectory}/js/store/rootReducer.js`,
+					pattern: `/* PLOP_INJECT_IMPORT */`,
+					template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer';`,
+				},
+				{
+					type: 'append',
+					path: `${rootDirectory}/js/store/rootReducer.js`,
+					pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
+					template: `{{camelCase name}},`,
+				},
+			];
+
+			//if store entity (directory) exists
+			console.log(isStoreEntityExist(data.reducerEntity));
+			if (isStoreEntityExist(data.reducerEntity)) {
+				actionsList.push({
+					type: 'append',
+					path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase reducerEntity}}ActionTypes.js`,
+					pattern: `/* PLOP_INJECT_ACTION_TYPE */`,
+					template: `export const TEST_ACTION = '[{{pascalCase name}}] TEST_ACTION';`,
+				});
+			} else {
+				actionsList.push({
+					type: 'add',
+					path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase name}}ActionTypes.js`,
+					templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
+				});
+			}
+
+			return actionsList;
+		},
 	});
 };
