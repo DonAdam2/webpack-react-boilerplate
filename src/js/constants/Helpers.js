@@ -2,12 +2,10 @@ import CryptoJS from 'crypto-js';
 
 const secretKey = 'we are the best of the best';
 
-export const updateObject = (oldObject, UpdatedValues) => {
-	return {
-		...oldObject,
-		...UpdatedValues,
-	};
-};
+export const updateObject = (oldObject, UpdatedValues) => ({
+	...oldObject,
+	...UpdatedValues,
+});
 
 export const decodeToken = (token) => JSON.parse(atob(token.split('.')[1]));
 
