@@ -1,4 +1,4 @@
-import { TEST_ACTION } from '../appActionTypes';
+import { TEST_ACTION } from '../AppActionTypes';
 import { updateObject } from '../../../constants/Helpers';
 
 const initialState = {
