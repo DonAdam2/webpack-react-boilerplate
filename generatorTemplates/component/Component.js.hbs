@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 {{#if isCssModules}}
-    //styles
+    // styles
     import classes from './{{pascalCase name}}.scss';
 {{/if}}
 
@@ -17,8 +17,6 @@ const {{pascalCase name}} = (props) => {
     );
 };
 
-{{pascalCase name}}.propTypes = {
-
-};
+{{pascalCase name}}.propTypes = {};
 
 export default {{pascalCase name}};

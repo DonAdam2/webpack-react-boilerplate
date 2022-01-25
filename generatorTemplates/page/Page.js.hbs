@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 {{#if isCssModules}}
-    //styles
+    // styles
     import classes from './{{pascalCase name}}Page.scss';
 {{/if}}
 
@@ -17,8 +17,6 @@ const {{pascalCase name}}Page = (props) => {
     );
 };
 
-{{pascalCase name}}Page.propTypes = {
-
-};
+{{pascalCase name}}Page.propTypes = {};
 
 export default {{pascalCase name}}Page;
