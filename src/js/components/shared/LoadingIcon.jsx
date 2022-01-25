@@ -1,11 +1,13 @@
 import React from 'react';
 
 const LoadingIcon = () => (
-	<div className="lds-ring">
-		<div />
-		<div />
-		<div />
-		<div />
+	<div className="loader-wrapper">
+		<div className="lds-ring">
+			<div />
+			<div />
+			<div />
+			<div />
+		</div>
 	</div>
 );
 
