@@ -66,14 +66,14 @@ module.exports = (plop) => {
 					// Add a new file
 					type: 'add',
 					// Path for the new file
-					path: `${rootDirectory}/js/components/{{pascalCase name}}/{{pascalCase name}}.jsx`,
+					path: `${rootDirectory}/js/components/{{camelCase name}}/{{pascalCase name}}.jsx`,
 					// Handlebars template used to generate content of new file
 					templateFile: 'generatorTemplates/component/Component.js.hbs',
 					data: { isCssModules },
 				},
 				{
 					type: 'add',
-					path: `${rootDirectory}/js/components/{{pascalCase name}}/{{pascalCase name}}.test.js`,
+					path: `${rootDirectory}/js/components/{{camelCase name}}/{{pascalCase name}}.test.jsx`,
 					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 				},
 			];
@@ -81,7 +81,7 @@ module.exports = (plop) => {
 			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
-					path: `${rootDirectory}/js/components/{{pascalCase name}}/{{pascalCase name}}.scss`,
+					path: `${rootDirectory}/js/components/{{camelCase name}}/{{pascalCase name}}.scss`,
 					templateFile: 'generatorTemplates/component/Component.scss.hbs',
 				});
 			} else {
@@ -111,13 +111,13 @@ module.exports = (plop) => {
 			let actionsList = [
 				{
 					type: 'add',
-					path: `${rootDirectory}/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.jsx`,
+					path: `${rootDirectory}/js/containers/pages/{{camelCase name}}Page/{{pascalCase name}}Page.jsx`,
 					templateFile: 'generatorTemplates/page/Page.js.hbs',
 					data: { isCssModules },
 				},
 				{
 					type: 'add',
-					path: `${rootDirectory}/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.test.js`,
+					path: `${rootDirectory}/js/containers/pages/{{camelCase name}}Page/{{pascalCase name}}Page.test.jsx`,
 					templateFile: 'generatorTemplates/page/Page.test.js.hbs',
 				},
 			];
@@ -125,7 +125,7 @@ module.exports = (plop) => {
 			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
-					path: `${rootDirectory}/js/containers/pages/{{pascalCase name}}Page/{{pascalCase name}}Page.scss`,
+					path: `${rootDirectory}/js/containers/pages/{{camelCase name}}Page/{{pascalCase name}}Page.scss`,
 					templateFile: 'generatorTemplates/component/Component.scss.hbs',
 				});
 			} else {
@@ -155,13 +155,13 @@ module.exports = (plop) => {
 			let actionsList = [
 				{
 					type: 'add',
-					path: `${rootDirectory}/js/containers/{{pascalCase name}}/{{pascalCase name}}.jsx`,
+					path: `${rootDirectory}/js/containers/{{camelCase name}}/{{pascalCase name}}.jsx`,
 					templateFile: 'generatorTemplates/component/Component.js.hbs',
 					data: { isCssModules },
 				},
 				{
 					type: 'add',
-					path: `${rootDirectory}/js/containers/{{pascalCase name}}/{{pascalCase name}}.test.js`,
+					path: `${rootDirectory}/js/containers/{{camelCase name}}/{{pascalCase name}}.test.jsx`,
 					templateFile: 'generatorTemplates/component/Component.test.js.hbs',
 				},
 			];
@@ -169,7 +169,7 @@ module.exports = (plop) => {
 			if (isCssModules) {
 				actionsList.push({
 					type: 'add',
-					path: `${rootDirectory}/js/containers/{{pascalCase name}}/{{pascalCase name}}.scss`,
+					path: `${rootDirectory}/js/containers/{{camelCase name}}/{{pascalCase name}}.scss`,
 					templateFile: 'generatorTemplates/component/Component.scss.hbs',
 				});
 			} else {
@@ -257,7 +257,6 @@ module.exports = (plop) => {
 			];
 
 			//if store entity (directory) exists
-			console.log(isStoreEntityExist(data.reducerEntity));
 			if (isStoreEntityExist(data.reducerEntity)) {
 				actionsList.push({
 					type: 'append',
