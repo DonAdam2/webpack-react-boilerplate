@@ -106,6 +106,7 @@ module.exports = (env, options) => {
 								...(isCssModules
 									? {
 											modules: {
+												auto: (resourcePath) => !resourcePath.includes('node_modules'),
 												mode: (resourcePath) => {
 													if (/global.scss$/i.test(resourcePath)) {
 														return 'global';
