@@ -87,6 +87,7 @@ module.exports = (env, options) => {
 				},
 				{
 					test: /\.s?[ac]ss$/,
+					//removed (exclude: /node_modules/) to enable using external styles
 					use: [
 						{
 							// style-loader => insert styles in the head of the HTML as style tags or in blob links
@@ -106,6 +107,7 @@ module.exports = (env, options) => {
 								...(isCssModules
 									? {
 											modules: {
+												//exclude external styles from css modules transformation
 												auto: (resourcePath) => !resourcePath.includes('node_modules'),
 												mode: (resourcePath) => {
 													if (/global.scss$/i.test(resourcePath)) {
