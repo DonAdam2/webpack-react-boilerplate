@@ -69,7 +69,7 @@ module.exports = (env, options) => {
 			},
 		},
 		resolve: {
-			extensions: ['*', '.js', '.jsx', '.json'],
+			extensions: ['.js', '.jsx', '.json', '.css', '.scss', '.svg'],
 		},
 		module: {
 			rules: [
