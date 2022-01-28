@@ -43,22 +43,29 @@ function checkPort() {
 	});
 }
 
-checkPort().then((returnedPort) => {
-	if (returnedPort === null) {
-		return;
-	}
-	const config = webpackConfig(
-			{ WEBPACK_SERVE: true },
-			{
-				mode: 'development',
-				port: returnedPort,
-			}
-		),
-		compiler = Webpack(config),
-		devServerOptions = { ...config.devServer },
-		server = new WebpackDevServer(devServerOptions, compiler);
+checkPort()
+	.then((returnedPort) => {
+		if (returnedPort === null) {
+			return;
+		}
+		const config = webpackConfig(
+				{ WEBPACK_SERVE: true },
+				{
+					mode: 'development',
+					port: returnedPort,
+				}
+			),
+			compiler = Webpack(config),
+			devServerOptions = { ...config.devServer },
+			server = new WebpackDevServer(devServerOptions, compiler);
 
-	(async () => {
-		await server.start();
-	})();
-});
+		(async () => {
+			await server.start();
+		})();
+	})
+	.catch((err) => {
+		if (err && err.message) {
+			console.log(err.message);
+		}
+		process.exit(1);
+	});
