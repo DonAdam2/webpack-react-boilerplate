@@ -12,6 +12,11 @@ const { merge } = require('webpack-merge'),
 
 module.exports = (env, options) => {
 	return merge(common(env, options), {
+		performance: {
+			hints: false,
+			maxEntrypointSize: 512 * 1024,
+			maxAssetSize: 512 * 1024,
+		},
 		optimization: {
 			minimize: true,
 			minimizer: [
