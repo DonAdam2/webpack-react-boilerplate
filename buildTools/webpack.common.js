@@ -171,7 +171,7 @@ module.exports = (env, options) => {
 		},
 		plugins: [
 			new EsLintPlugin({
-				extensions: ['.js', '.jsx'],
+				extensions: ['.js', '.jsx', '.json'],
 			}),
 			new HtmlWebpackPlugin({
 				title,
