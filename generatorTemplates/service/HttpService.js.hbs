@@ -38,7 +38,7 @@ const responseInterceptorError = (error) => {
 	}*/
 
 	// handle internal server error by adding a retry
-	// logic after the given delay for the given time
+	// logic after the given delay for the given retry times
 	/*if (response?.status === 500) {
 		const clonedConfig = cloneDeep(config);
 		let retryTimes;
