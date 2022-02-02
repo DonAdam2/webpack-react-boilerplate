@@ -15,8 +15,8 @@ module.exports = {
 	// A map from regular expressions to paths to transformers
 	transform: {
 		'^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': 'babel-jest',
-		'^.+\\.css$': '<rootDir>/cssTransform.js',
-		'^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': '<rootDir>/fileTransform.js',
+		'^.+\\.css$': '<rootDir>/transforms/cssTransform.js',
+		'^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': '<rootDir>/transforms/fileTransform.js',
 	},
 	transformIgnorePatterns: [
 		'[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
