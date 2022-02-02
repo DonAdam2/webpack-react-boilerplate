@@ -123,7 +123,7 @@ Serves the app on `http://localhost:8080/` from the `dist` folder to check the p
 
 It allows you to analyze the bundle size.
 
-### `yarn test:all`
+### `yarn test`
 
 It runs all test files.
 
