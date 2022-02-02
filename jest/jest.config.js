@@ -25,7 +25,13 @@ module.exports = {
 	modulePaths: [],
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources, like images or styles with a single module.
 	moduleNameMapper: {
-		'^.+\\.(css|scss)$': 'identity-obj-proxy', // for css modules
+		// for css modules
+		'^.+\\.(css|scss)$': 'identity-obj-proxy',
+		// declaring alias for reducing the use of relative path
+		'^@/jest(.*)$': '<rootDir>$1',
+		'^@/js(.*)$': '<rootDir>/../src/js/$1',
+		'^@/scss(.*)$': '<rootDir>/../src/scss/$1',
+		'^@/img(.*)$': '<rootDir>/../src/assets/images/$1',
 	},
 	// An array of file extensions your modules use
 	moduleFileExtensions: ['js', 'ts', 'tsx', 'json', 'jsx', 'node'],
