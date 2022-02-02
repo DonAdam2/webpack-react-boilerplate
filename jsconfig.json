@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "@/jest/*": [ "./jest/*"],
+      "@/js/*": ["./src/js/*"],
+      "@/scss/*": ["./src/scss/*"],
+      "@/img/*": ["./src/assets/images"]
+    }
+  },
+  "exclude": ["node_modules"]
+}
