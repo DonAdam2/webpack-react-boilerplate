@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testComponent.jsx snapshot renders correctly, truthy values 1`] = `
+<div
+  className="container"
+>
+  <p>
+    Current environment API is 
+    <strong />
+  </p>
+  <p>
+    Testing the store 
+    <strong>
+      Initial test
+    </strong>
+  </p>
+  <button
+    data-testid="changeText"
+    onClick={[Function]}
+  >
+    Change text
+  </button>
+</div>
+`;

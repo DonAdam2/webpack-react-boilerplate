@@ -6,7 +6,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import ErrorBoundaryFallback from './js/generic/ErrorBoundaryFallback';
 //components
 import LoadingIcon from './js/components/shared/LoadingIcon';
-const TestComponent = lazy(() => import('./js/containers/TestComponent'));
+const TestComponent = lazy(() => import('./js/containers/testComponent/TestComponent'));
 
 const App = () => (
 	<ErrorBoundary

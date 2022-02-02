@@ -1,7 +1,9 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { cleanup, render, screen } from '@testing-library/react';
 //component
 import App from './App';
+
+afterEach(cleanup);
 
 describe('App Component', () => {
 	test('renders webpack react boilerplate', () => {

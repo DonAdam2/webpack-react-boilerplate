@@ -1,9 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //selectors
-import { getTestAction } from '../store/app/selectors/AppSelectors';
+import { getTestAction } from '../../store/app/selectors/AppSelectors';
 //actions
-import { setTestAction } from '../store/app/actions/AppActions';
+import { setTestAction } from '../../store/app/actions/AppActions';
 
 const TestComponent = () => {
 	const dispatch = useDispatch(),
@@ -17,7 +17,9 @@ const TestComponent = () => {
 			<p>
 				Testing the store <strong>{testAction}</strong>
 			</p>
-			<button onClick={() => dispatch(setTestAction())}>Change text</button>
+			<button onClick={() => dispatch(setTestAction())} data-testid="changeText">
+				Change text
+			</button>
 		</div>
 	);
 };
