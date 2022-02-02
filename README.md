@@ -15,6 +15,12 @@
 - Prop types
 - 2 environments {production: .env, development: .env.development}
 
+## It has the following mocks for Jest:
+
+- MockProvider => for mocking redux provider
+- MockReactIntlProvider => for mocking react-intl provider
+- MockRouter => for mocking react router
+
 ## Prerequisites:
 
 - nodeJS > 14.X.X or Docker
