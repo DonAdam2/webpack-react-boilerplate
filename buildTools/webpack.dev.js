@@ -23,10 +23,11 @@ module.exports = (env, options) => {
 			port: options.port,
 			// important for navigating to the app using browser (if you use any route other than /)
 			historyApiFallback: true,
+			// CORS :: https://github.com/webpack/webpack-dev-server/issues/533
 			headers: {
 				'Access-Control-Allow-Origin': '*',
-				'Access-Control-Allow-Methods': '*',
-				'Access-Control-Allow-Headers': '*',
+				'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+				'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
 			},
 			client: {
 				overlay: {
