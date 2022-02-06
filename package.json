@@ -1,6 +1,9 @@
 {
 	"name": "webpack-react-boilerplate",
 	"version": "1.0.0",
+	"engines": {
+		"node": ">=14.17.0"
+	},
 	"description": "Webpack react boilerplate",
 	"main": "index.js",
 	"browserslist": [
