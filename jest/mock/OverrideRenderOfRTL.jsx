@@ -7,14 +7,14 @@ import { render as rtlRender } from '@testing-library/react';
 import store from '@/jest/mock/store';
 
 function render(ui, { mockStore = store, locale = 'en', ...renderOptions } = {}) {
-	const Wrapper = ({ children }) => (
-		<IntlProvider locale={locale}>
-			<Provider store={mockStore}>
-				<BrowserRouter>{children}</BrowserRouter>
-			</Provider>
-		</IntlProvider>
-	);
-	return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
+  const Wrapper = ({ children }) => (
+    <IntlProvider locale={locale}>
+      <Provider store={mockStore}>
+        <BrowserRouter>{children}</BrowserRouter>
+      </Provider>
+    </IntlProvider>
+  );
+  return rtlRender(ui, { wrapper: Wrapper, ...renderOptions });
 }
 
 // re-export everything

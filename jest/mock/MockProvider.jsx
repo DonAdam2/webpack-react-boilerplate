@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 
 const MockProvider = ({ children, mockStore = store }) => (
-	<Provider store={mockStore}>{children}</Provider>
+  <Provider store={mockStore}>{children}</Provider>
 );
 
 export default MockProvider;

@@ -7,14 +7,14 @@ import LocalStorageManager from '../../managers/LocalStorageManger';
 import { getLoginPageUrl } from '../routingConstants/AppUrls';
 
 const PrivateRoute = ({ children }) => {
-	const location = useLocation();
+  const location = useLocation();
 
-	//to be revised
-	if (LocalStorageManager.getItem('token')) {
-		return children;
-	}
+  //to be revised
+  if (LocalStorageManager.getItem('token')) {
+    return children;
+  }
 
-	return <Navigate replace to={getLoginPageUrl()} state={{ from: location }} />;
+  return <Navigate replace to={getLoginPageUrl()} state={{ from: location }} />;
 };
 
 export default PrivateRoute;

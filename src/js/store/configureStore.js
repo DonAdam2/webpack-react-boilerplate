@@ -6,28 +6,28 @@ import rootReducer from './rootReducer';
 import thunkMiddleware from 'redux-thunk';
 
 const isDevelopment = process.env.NODE_ENV === 'development',
-	middlewares = [];
+  middlewares = [];
 
 // log redux data in development mode only
 if (isDevelopment) {
-	const { logger } = require('redux-logger');
-	middlewares.push(logger);
+  const { logger } = require('redux-logger');
+  middlewares.push(logger);
 }
 
 const configureStore = () => {
-	const apply = applyMiddleware(thunkMiddleware, ...middlewares),
-		store = createStore(
-			rootReducer,
-			/* preloadedState, */
-			//use redux dev tool in development only
-			isDevelopment ? composeWithDevTools(apply) : apply
-		);
+  const apply = applyMiddleware(thunkMiddleware, ...middlewares),
+    store = createStore(
+      rootReducer,
+      /* preloadedState, */
+      //use redux dev tool in development only
+      isDevelopment ? composeWithDevTools(apply) : apply
+    );
 
-	// enable hot loading in development mode only
-	if (isDevelopment && module.hot) {
-		module.hot.accept('./rootReducer', () => store.replaceReducer(rootReducer));
-	}
+  // enable hot loading in development mode only
+  if (isDevelopment && module.hot) {
+    module.hot.accept('./rootReducer', () => store.replaceReducer(rootReducer));
+  }
 
-	return store;
+  return store;
 };
 export default configureStore;

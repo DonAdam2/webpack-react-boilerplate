@@ -15,31 +15,31 @@ import TestComponent from './TestComponent';
 afterEach(cleanup);
 
 describe('testComponent.jsx', () => {
-	it('snapshot renders correctly, truthy values', () => {
-		const tree = renderer
-			.create(
-				<MockProvider>
-					<TestComponent />
-				</MockProvider>
-			)
-			.toJSON();
-		expect(tree).toMatchSnapshot();
-	});
-	it('should dispatch TEST_ACTION action when user clicks the button', () => {
-		const store = createMockStore({
-			app: {
-				testString: 'Initial test',
-			},
-		});
-		// using RTL render
-		/*render(
+  it('snapshot renders correctly, truthy values', () => {
+    const tree = renderer
+      .create(
+        <MockProvider>
+          <TestComponent />
+        </MockProvider>
+      )
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+  it('should dispatch TEST_ACTION action when user clicks the button', () => {
+    const store = createMockStore({
+      app: {
+        testString: 'Initial test',
+      },
+    });
+    // using RTL render
+    /*render(
 			<MockProvider mockStore={store}>
 				<TestComponent />
 			</MockProvider>
 		);*/
-		//using the custom render with all providers
-		render(<TestComponent />, { mockStore: store });
-		fireEvent.click(screen.getByTestId('changeText'));
-		expect(store.dispatch).toHaveBeenCalledTimes(1);
-	});
+    //using the custom render with all providers
+    render(<TestComponent />, { mockStore: store });
+    fireEvent.click(screen.getByTestId('changeText'));
+    expect(store.dispatch).toHaveBeenCalledTimes(1);
+  });
 });
