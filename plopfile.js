@@ -55,6 +55,58 @@ const createQuestion = (type) => {
   }
 };
 
+const generateContainerOrPage = (isPage = false) => {
+  let actionsList = [
+    {
+      type: 'add',
+      path: `${rootDirectory}/js/containers${isPage ? '/pages' : ''}/{{camelCase name}}${
+        isPage ? 'Page' : ''
+      }/{{pascalCase name}}${isPage ? 'Page' : ''}.jsx`,
+      templateFile: `generatorTemplates${isPage ? '/page/Page' : '/component/Component'}.js.hbs`,
+      data: { isCssModules },
+    },
+    {
+      type: 'add',
+      path: `${rootDirectory}/js/containers${isPage ? '/pages' : ''}/{{camelCase name}}${
+        isPage ? 'Page' : ''
+      }/{{pascalCase name}}${isPage ? 'Page' : ''}.test.jsx`,
+      templateFile: `generatorTemplates${
+        isPage ? '/page/Page' : '/component/Component'
+      }.test.js.hbs`,
+    },
+  ];
+
+  if (isCssModules) {
+    actionsList.push({
+      type: 'add',
+      path: `${rootDirectory}/js/containers${isPage ? '/pages' : ''}/{{camelCase name}}${
+        isPage ? 'Page' : ''
+      }/{{pascalCase name}}${isPage ? 'Page' : ''}.scss`,
+      templateFile: 'generatorTemplates/component/Component.scss.hbs',
+    });
+  } else {
+    actionsList.push(
+      {
+        type: 'add',
+        path: `${rootDirectory}/scss/containers${isPage ? '/pages' : ''}/_{{dashCase name}}${
+          isPage ? '-page' : ''
+        }.scss`,
+        templateFile: 'generatorTemplates/component/Component.scss.hbs',
+      },
+      {
+        type: 'append',
+        path: `${rootDirectory}/scss/_containers.scss`,
+        pattern: `/* PLOP_INJECT_IMPORT */`,
+        template: `@import './containers${isPage ? '/pages' : ''}/{{dashCase name}}${
+          isPage ? '-page' : ''
+        }';`,
+      }
+    );
+  }
+
+  return actionsList;
+};
+
 module.exports = (plop) => {
   plop.setGenerator('component', {
     description: 'Create a component',
@@ -95,7 +147,7 @@ module.exports = (plop) => {
             type: 'append',
             path: `${rootDirectory}/scss/_components.scss`,
             pattern: `/* PLOP_INJECT_IMPORT */`,
-            template: `@import 'components/{{dashCase name}}';`,
+            template: `@import './components/{{dashCase name}}';`,
           }
         );
       }
@@ -107,89 +159,13 @@ module.exports = (plop) => {
   plop.setGenerator('page', {
     description: 'Create a page',
     prompts: [createQuestion('page')],
-    actions: function (data) {
-      let actionsList = [
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/containers/pages/{{camelCase name}}Page/{{pascalCase name}}Page.jsx`,
-          templateFile: 'generatorTemplates/page/Page.js.hbs',
-          data: { isCssModules },
-        },
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/containers/pages/{{camelCase name}}Page/{{pascalCase name}}Page.test.jsx`,
-          templateFile: 'generatorTemplates/page/Page.test.js.hbs',
-        },
-      ];
-
-      if (isCssModules) {
-        actionsList.push({
-          type: 'add',
-          path: `${rootDirectory}/js/containers/pages/{{camelCase name}}Page/{{pascalCase name}}Page.scss`,
-          templateFile: 'generatorTemplates/component/Component.scss.hbs',
-        });
-      } else {
-        actionsList.push(
-          {
-            type: 'add',
-            path: `${rootDirectory}/scss/containers/pages/_{{dashCase name}}.scss`,
-            templateFile: 'generatorTemplates/component/Component.scss.hbs',
-          },
-          {
-            type: 'append',
-            path: `${rootDirectory}/scss/_containers.scss`,
-            pattern: `/* PLOP_INJECT_IMPORT */`,
-            template: `@import 'containers/pages/{{dashCase name}}';`,
-          }
-        );
-      }
-
-      return actionsList;
-    },
+    actions: generateContainerOrPage(true),
   });
 
   plop.setGenerator('container', {
     description: 'Create a container',
     prompts: [createQuestion('container')],
-    actions: function (data) {
-      let actionsList = [
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/containers/{{camelCase name}}/{{pascalCase name}}.jsx`,
-          templateFile: 'generatorTemplates/component/Component.js.hbs',
-          data: { isCssModules },
-        },
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/containers/{{camelCase name}}/{{pascalCase name}}.test.jsx`,
-          templateFile: 'generatorTemplates/component/Component.test.js.hbs',
-        },
-      ];
-
-      if (isCssModules) {
-        actionsList.push({
-          type: 'add',
-          path: `${rootDirectory}/js/containers/{{camelCase name}}/{{pascalCase name}}.scss`,
-          templateFile: 'generatorTemplates/component/Component.scss.hbs',
-        });
-      } else {
-        actionsList.push(
-          {
-            type: 'add',
-            path: `${rootDirectory}/scss/containers/_{{dashCase name}}.scss`,
-            templateFile: 'generatorTemplates/component/Component.scss.hbs',
-          },
-          {
-            type: 'append',
-            path: `${rootDirectory}/scss/_containers.scss`,
-            pattern: `/* PLOP_INJECT_IMPORT */`,
-            template: `@import 'containers/{{dashCase name}}';`,
-          }
-        );
-      }
-
-      return actionsList;
-    },
+    actions: generateContainerOrPage(),
   });
 
   plop.setGenerator('hook', {
