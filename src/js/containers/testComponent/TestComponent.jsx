@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 //selectors
 import { getTestAction } from '@/js/store/app/selectors/AppSelectors';

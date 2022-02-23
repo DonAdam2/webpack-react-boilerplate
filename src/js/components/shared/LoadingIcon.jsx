@@ -1,5 +1,3 @@
-import React from 'react';
-
 const LoadingIcon = () => (
   <div className="loader-wrapper">
     <div className="lds-ring">
