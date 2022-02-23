@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 
@@ -6,3 +7,4 @@ const MockReactIntlProvider = ({ children, locale = 'en' }) => (
 );
 
 export default MockReactIntlProvider;
+*/
