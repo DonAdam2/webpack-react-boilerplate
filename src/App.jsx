@@ -7,7 +7,7 @@ import ErrorBoundaryFallback from './js/generic/ErrorBoundaryFallback';
 //components
 import LoadingIcon from './js/components/shared/LoadingIcon';
 const TestComponent = lazy(() => import('./js/containers/testComponent/TestComponent'));
-
+//rest
 const App = () => (
   <ErrorBoundary
     FallbackComponent={ErrorBoundaryFallback}
