@@ -39,7 +39,7 @@ module.exports = (env, options) => {
   /*================ finish setup environments variables ===================*/
 
   return {
-    entry: `${PATHS.src}/index.js`,
+    entry: `${PATHS.src}/index.jsx`,
     output: {
       // __dirname is the absolute path to the root directory of our app
       path: PATHS.outputSrc,

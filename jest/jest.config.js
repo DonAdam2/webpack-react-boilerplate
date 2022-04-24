@@ -45,7 +45,7 @@ module.exports = {
   collectCoverageFrom: [
     `../${rootDirectory}/**/*.{js,jsx,ts,tsx}`,
     //ignore the following from coverage
-    `!../${rootDirectory}/index.js`,
+    `!../${rootDirectory}/index.jsx`,
     `!../${rootDirectory}/**/*.d.ts`,
     `!../${rootDirectory}/js/store/**/*.{js,ts}`,
     `!../${rootDirectory}/js/services/**/*.{js,ts}`,
