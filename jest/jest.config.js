@@ -58,6 +58,7 @@ module.exports = {
       lines: 80,
     },
   },
+  coveragePathIgnorePatterns: [`../${rootDirectory}/index.js`],
   // Make calling deprecated APIs throw helpful error messages
   errorOnDeprecated: true,
   // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
