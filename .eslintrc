@@ -1,9 +1,16 @@
 {
-	"extends": ["prettier", "plugin:react-hooks/recommended"],
+	"extends": [
+		"prettier",
+		"plugin:react-hooks/recommended",
+		"plugin:testing-library/react",
+		"plugin:jest-dom/recommended"
+	],
 	"plugins": [
 		"prettier",
 		"babel",
-		"react"
+		"react",
+		"testing-library",
+		"jest-dom"
 	],
 	"parser": "@babel/eslint-parser",
 	"env": {
