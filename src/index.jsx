@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 //import meta image
@@ -15,7 +15,7 @@ import './scss/global.scss';
 
 const store = configureStore();
 
-ReactDOM.render(
+render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
