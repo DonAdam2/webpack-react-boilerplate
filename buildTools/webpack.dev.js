@@ -1,20 +1,18 @@
-const webpack = require('webpack'),
-  // the following 2 lines is to merge common webpack configurations with this file
-  { merge } = require('webpack-merge'),
-  common = require('./webpack.common.js');
+// the following 2 lines is to merge common webpack configurations with this file
+const { merge } = require('webpack-merge'),
+  common = require('./webpack.common.js'),
+  //enables fast refresh (this is the new feature which overrides hot reloading)
+  ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
     mode: 'development',
-    resolve: {
-      alias: {
-        'react-dom': '@hot-loader/react-dom',
-      },
-    },
     devtool: 'inline-source-map',
     //required for hot reload
     target: 'web',
     devServer: {
+      //enable hot reloading
+      hot: true,
       // Enable gzip compression of generated files.
       compress: true,
       // open development server
@@ -37,8 +35,8 @@ module.exports = (env, options) => {
       },
     },
     plugins: [
-      // Only update what has changed on hot reload
-      new webpack.HotModuleReplacementPlugin(),
+      // enables fast refresh
+      new ReactRefreshWebpackPlugin(),
     ],
   });
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 //import meta image
@@ -13,13 +13,14 @@ import App from './App';
 //styles
 import './scss/global.scss';
 
-const store = configureStore();
+const store = configureStore(),
+  container = document.getElementById('root'),
+  root = createRoot(container);
 
-render(
+root.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')
+  </Provider>
 );
