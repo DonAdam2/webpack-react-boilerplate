@@ -243,7 +243,7 @@ module.exports = (plop) => {
       } else {
         actionsList.push({
           type: 'add',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase name}}ActionTypes.js`,
+          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase reducerEntity}}ActionTypes.js`,
           templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
         });
       }
