@@ -37,7 +37,7 @@
 		"@testing-library/react": "^13.2.0",
 		"@testing-library/react-hooks": "^8.0.0",
 		"autoprefixer": "^10.4.7",
-		"babel-jest": "^27.5.1",
+		"babel-jest": "^28.1.0",
 		"babel-loader": "^8.2.5",
 		"browserslist": "^4.20.3",
 		"camelcase": "^6.3.0",
