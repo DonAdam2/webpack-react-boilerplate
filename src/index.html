@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-		/>
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<!--facebook meta tags-->
-		<meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
-		<meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
-		<meta property="og:image" content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>" />
-		<meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>" />
-		<!--twitter meta tags-->
-		<meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
-		<meta name="twitter:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
-		<meta name="twitter:image" content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>" />
-		<meta name="twitter:card" content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>" />
-		<!--site meta tags-->
-		<title><%= htmlWebpackPlugin.options.title %></title>
-	</head>
-	<body>
-		<noscript>You need to enable JavaScript to run this app</noscript>
-		<div id="root"></div>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--facebook meta tags-->
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
+    <meta
+      property="og:image"
+      content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
+    />
+    <meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>" />
+    <!--twitter meta tags-->
+    <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
+    <meta
+      name="twitter:image"
+      content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
+    />
+    <meta
+      name="twitter:card"
+      content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
+    />
+    <!--site meta tags-->
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app</noscript>
+    <div id="root"></div>
+  </body>
 </html>
