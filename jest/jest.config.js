@@ -34,7 +34,7 @@ module.exports = {
     '^@/img(.*)$': '<rootDir>/../src/assets/images/$1',
   },
   // An array of file extensions your modules use
-  moduleFileExtensions: ['js', 'ts', 'tsx', 'json', 'jsx', 'node'],
+  moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx', 'node'],
   // This option allows you to use custom watch plugins
   watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
   // Automatically reset mock state before every test
