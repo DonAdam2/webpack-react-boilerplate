@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "es5",
     "module": "esnext",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/jest/*": [ "./jest/*"],
+      "@/jest/*": ["./jest/*"],
       "@/js/*": ["./src/js/*"],
       "@/scss/*": ["./src/scss/*"],
       "@/img/*": ["./src/assets/images"]
