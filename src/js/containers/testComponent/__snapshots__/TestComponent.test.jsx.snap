@@ -15,7 +15,6 @@ exports[`testComponent.jsx snapshot renders correctly, truthy values 1`] = `
     </strong>
   </p>
   <button
-    data-testid="changeText"
     onClick={[Function]}
   >
     Change text

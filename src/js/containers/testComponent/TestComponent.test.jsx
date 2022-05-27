@@ -6,7 +6,7 @@ import { render, screen, fireEvent } from '@/jest/mocks/OverrideRenderOfRTL';
 import renderer from 'react-test-renderer';
 // mock store provider
 import MockReduxProvider from '@/jest/mocks/MockReduxProvider';
-// mock store
+// create mock store
 import createMockStore from '@/jest/mocks/store/createMockStore';
 //components
 import TestComponent from './TestComponent';
@@ -36,7 +36,7 @@ describe('testComponent.jsx', () => {
 		);*/
     //using the custom render with all providers
     render(<TestComponent />, { mockStore: store });
-    fireEvent.click(screen.getByTestId('changeText'));
+    fireEvent.click(screen.getByRole('button', { name: 'Change text' }));
     expect(store.dispatch).toHaveBeenCalledTimes(1);
   });
 });
