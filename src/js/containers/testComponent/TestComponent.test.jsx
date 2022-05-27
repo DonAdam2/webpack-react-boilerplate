@@ -36,7 +36,7 @@ describe('testComponent.jsx', () => {
 		);*/
     //using the custom render with all providers
     render(<TestComponent />, { mockStore: store });
-    fireEvent.click(screen.getByRole('button', { name: 'Change text' }));
+    fireEvent.click(screen.getByRole('button', { name: /change text/i }));
     expect(store.dispatch).toHaveBeenCalledTimes(1);
   });
 });

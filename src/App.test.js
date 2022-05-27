@@ -11,7 +11,7 @@ describe('App Component', () => {
         <App />
       </MockReduxProvider>
     );
-    const title = await screen.findByText(/webpack react boilerplate/i);
+    const title = await screen.findByRole('heading', { name: /webpack react boilerplate/i });
     expect(title).toBeInTheDocument();
   });
 });
