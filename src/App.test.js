@@ -1,10 +1,8 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 //component
 import App from './App';
 // mock store provider
 import MockProvider from '@/jest/mock/MockProvider';
-
-afterEach(cleanup);
 
 describe('App Component', () => {
   test('renders webpack react boilerplate', async () => {
