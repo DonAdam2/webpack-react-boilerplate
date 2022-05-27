@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { render as rtlRender } from '@testing-library/react';
 // store
-import store from '@/jest/mock/store';
+import store from '@/jest/mocks/store';
 
 function render(ui, { mockStore = store, locale = 'en', ...renderOptions } = {}) {
   const Wrapper = ({ children }) => (

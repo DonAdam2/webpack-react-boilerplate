@@ -1,17 +1,15 @@
 // react testing library
 // import { cleanup, render, screen, fireEvent } from '@testing-library/react';
 // all providers mock
-import { cleanup, render, screen, fireEvent } from '@/jest/mock/OverrideRenderOfRTL';
+import { render, screen, fireEvent } from '@/jest/mocks/OverrideRenderOfRTL';
 // snapshots renderer
 import renderer from 'react-test-renderer';
 // mock store provider
-import MockProvider from '@/jest/mock/MockProvider';
+import MockProvider from '@/jest/mocks/MockProvider';
 // mock store
-import createMockStore from '@/jest/mock/store/createMockStore';
+import createMockStore from '@/jest/mocks/store/createMockStore';
 //components
 import TestComponent from './TestComponent';
-
-afterEach(cleanup);
 
 describe('testComponent.jsx', () => {
   it('snapshot renders correctly, truthy values', () => {
