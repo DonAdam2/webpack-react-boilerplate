@@ -5,7 +5,7 @@ import { render, screen, fireEvent } from '@/jest/mocks/OverrideRenderOfRTL';
 // snapshots renderer
 import renderer from 'react-test-renderer';
 // mock store provider
-import MockProvider from '@/jest/mocks/MockProvider';
+import MockReduxProvider from '@/jest/mocks/MockReduxProvider';
 // mock store
 import createMockStore from '@/jest/mocks/store/createMockStore';
 //components
@@ -15,9 +15,9 @@ describe('testComponent.jsx', () => {
   it('snapshot renders correctly, truthy values', () => {
     const tree = renderer
       .create(
-        <MockProvider>
+        <MockReduxProvider>
           <TestComponent />
-        </MockProvider>
+        </MockReduxProvider>
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -30,9 +30,9 @@ describe('testComponent.jsx', () => {
     });
     // using RTL render
     /*render(
-			<MockProvider mockStore={store}>
+			<MockReduxProvider mockStore={store}>
 				<TestComponent />
-			</MockProvider>
+			</MockReduxProvider>
 		);*/
     //using the custom render with all providers
     render(<TestComponent />, { mockStore: store });

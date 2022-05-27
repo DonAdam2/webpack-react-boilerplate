@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 // default store
 import store from './store';
 
-const MockProvider = ({ children, mockStore = store }) => (
+const MockReduxProvider = ({ children, mockStore = store }) => (
   <Provider store={mockStore}>{children}</Provider>
 );
 
-export default MockProvider;
+export default MockReduxProvider;

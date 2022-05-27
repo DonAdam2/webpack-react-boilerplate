@@ -17,7 +17,7 @@
 
 ## It has the following mocks for Jest:
 
-- MockProvider => for mocking redux provider
+- MockReduxProvider => for mocking redux provider
 - MockReactIntlProvider => for mocking react-intl provider (if you are using it you need to download it)
 - MockRouter => for mocking react router
 - OverrideRenderOfRTL => overrides the render method of RTL with all providers
