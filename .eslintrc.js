@@ -2,14 +2,16 @@ const path = require('path');
 
 module.exports = {
   extends: [
+    'eslint:recommended',
     'prettier',
+    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
     'plugin:testing-library/react',
     'plugin:jest-dom/recommended',
   ],
-  plugins: ['prettier', 'babel', 'react', 'jest', 'testing-library', 'jest-dom'],
+  plugins: ['babel', 'react', 'jest', 'testing-library', 'jest-dom', 'prettier'],
   parser: '@babel/eslint-parser',
   env: {
     browser: true,
@@ -37,6 +39,8 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
+    'react/prop-types': 0,
+    'react/react-in-jsx-scope': 'off',
   },
   ignorePatterns: ['**/src/**/*.json'],
 };
