@@ -4,7 +4,6 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'prettier',
-    'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'plugin:jest/recommended',
     'plugin:jest/style',
@@ -39,8 +38,9 @@ module.exports = {
   },
   rules: {
     'prettier/prettier': 'error',
-    'react/prop-types': 0,
-    'react/react-in-jsx-scope': 'off',
+    'react/jsx-uses-react': 'error',
+    'react/jsx-uses-vars': 'error',
+    'no-unused-vars': 'warn',
   },
   ignorePatterns: ['**/src/**/*.json'],
 };
