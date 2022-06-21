@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 //managers
@@ -33,10 +31,6 @@ const RestrictedRoute = ({ children, requiredPermissions }) => {
   } else {
     return <Navigate replace to={getLoginPageUrl()} state={{ from: location }} />;
   }
-};
-
-RestrictedRoute.propTypes = {
-  requiredPermissions: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
 };
 
 export default RestrictedRoute;

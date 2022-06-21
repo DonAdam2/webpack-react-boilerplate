@@ -1,6 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
 const PermissionsCannotAccess = ({ requiredPermissions }) => (
   <div>
     <h1>
@@ -19,9 +16,5 @@ const PermissionsCannotAccess = ({ requiredPermissions }) => (
     </ul>
   </div>
 );
-
-PermissionsCannotAccess.propTypes = {
-  requiredPermissions: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
-};
 
 export default PermissionsCannotAccess;
