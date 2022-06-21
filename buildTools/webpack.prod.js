@@ -7,8 +7,7 @@ const { merge } = require('webpack-merge'),
   TerserJSPlugin = require('terser-webpack-plugin'),
   { CleanWebpackPlugin } = require('clean-webpack-plugin'),
   //constants
-  { cssSubDirectory } = require('./constants'),
-  PATHS = require('./paths');
+  { cssSubDirectory } = require('./constants');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
