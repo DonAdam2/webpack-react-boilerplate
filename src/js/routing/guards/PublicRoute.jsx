@@ -5,7 +5,7 @@ import { getHomePageUrl } from '../routingConstants/AppUrls';
 import { isAuthenticated } from '@/js/constants/Helpers';
 
 //used to load authentication routes (ex: login, signup, ...etc) and public routes
-const PublicRoute = ({ restricted, children, redirect = false }) => {
+const PublicRoute = ({ restricted, children, redirect }) => {
   const location = useLocation();
 
   if (redirect) {
