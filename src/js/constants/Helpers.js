@@ -20,5 +20,4 @@ export const decryptData = (data) => {
   return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 };
 
-//to be revised
 export const isAuthenticated = () => LocalStorageManager.getItem('token');

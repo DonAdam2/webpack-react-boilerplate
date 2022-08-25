@@ -9,15 +9,15 @@ const RestrictedWrapper = ({ requiredPermissions, children, notPermittedComponen
   if (Array.isArray(requiredPermissions)) {
     for (let i = 0; i < requiredPermissions.length; i++) {
       for (let j = 0; j < userPermissionsList.length; j++) {
-        if (requiredPermissions[i] === userPermissionsList[j]) return children;
+        if (requiredPermissions[i] === userPermissionsList[j]) return <>{children}</>;
       }
     }
   }
   if (typeof requiredPermissions === 'string') {
     if (userPermissionsList.findIndex((permission) => permission === requiredPermissions) > -1)
-      return children;
+      return <>{children}</>;
   }
-  return notPermittedComponent;
+  return <>{notPermittedComponent}</>;
 };
 
 export default RestrictedWrapper;
