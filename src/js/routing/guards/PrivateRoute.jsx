@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
   const location = useLocation();
 
   if (isAuthenticated()) {
-    return children;
+    return <>{children}</>;
   }
 
   return <Navigate replace to={getLoginPageUrl()} state={{ from: location }} />;
