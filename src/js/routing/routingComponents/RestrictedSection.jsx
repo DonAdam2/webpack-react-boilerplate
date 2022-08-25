@@ -1,22 +1,9 @@
-import { useSelector } from 'react-redux';
-//replace the following with your own selector
-import { getUserPermissionsList } from '../../store/app/selectors/AppSelectors';
+import RestrictedWrapper from '@/js/routing/routingComponents/RestrictedWrapper';
 
-const RestrictedSection = ({ requiredPermissions, children }) => {
-  const userPermissionsList = useSelector((state) => getUserPermissionsList({ state }));
-
-  if (Array.isArray(requiredPermissions)) {
-    for (let i = 0; i < requiredPermissions.length; i++) {
-      for (let j = 0; j < userPermissionsList.length; j++) {
-        if (requiredPermissions[i] === userPermissionsList[j]) return children;
-      }
-    }
-  }
-  if (typeof requiredPermissions === 'string') {
-    if (userPermissionsList.findIndex((permission) => permission === requiredPermissions) > -1)
-      return children;
-  }
-  return null;
-};
+const RestrictedSection = ({ requiredPermissions, children }) => (
+  <RestrictedWrapper requiredPermissions={requiredPermissions} notPermittedComponent={null}>
+    {children}
+  </RestrictedWrapper>
+);
 
 export default RestrictedSection;
