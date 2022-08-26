@@ -85,6 +85,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce a cod
 ## Extra:
 
 - Private route guard => protect the given route based on a token.
+- Public route guard => used for public routes and authentication routes (ex: login, signup, ...etc) {if authenticated it will redirect the user to the home page}
 - Restricted route guard => protect the given route based on a token, and a list of permissions (can be an array or a string).
 - Restricted section => protect the given section based on a list of permissions (can be an array or a string).
 - Generic error boundary fallback component (you can customize it)
