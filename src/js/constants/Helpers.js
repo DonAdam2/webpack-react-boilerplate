@@ -1,6 +1,7 @@
 import CryptoJS from 'crypto-js';
 //managers
 import LocalStorageManager from '@/js/managers/LocalStorageManger';
+import { LocalStorageKeys } from '@/js/constants/Constants';
 
 const secretKey = 'we are the best of the best';
 
@@ -20,4 +21,4 @@ export const decryptData = (data) => {
   return JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
 };
 
-export const isAuthenticated = () => LocalStorageManager.getItem('token');
+export const isAuthenticated = () => LocalStorageManager.getItem(LocalStorageKeys.TOKEN);
