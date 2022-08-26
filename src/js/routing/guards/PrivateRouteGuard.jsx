@@ -4,7 +4,7 @@ import { getLoginPageUrl } from '../routingConstants/AppUrls';
 //constants
 import { isAuthenticated } from '@/js/constants/Helpers';
 
-const PrivateRoute = ({ children }) => {
+const PrivateRouteGuard = ({ children }) => {
   const location = useLocation();
 
   if (isAuthenticated()) {
@@ -14,4 +14,4 @@ const PrivateRoute = ({ children }) => {
   return <Navigate replace to={getLoginPageUrl()} state={{ from: location }} />;
 };
 
-export default PrivateRoute;
+export default PrivateRouteGuard;

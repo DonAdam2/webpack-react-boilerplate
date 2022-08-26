@@ -7,7 +7,7 @@ import { isAuthenticated } from '@/js/constants/Helpers';
 import PermissionsCannotAccess from '../routingComponents/PermissionsCannotAccess';
 import RestrictedWrapper from '@/js/routing/routingComponents/RestrictedWrapper';
 
-const RestrictedRoute = ({ children, requiredPermissions }) => {
+const RestrictedRouteGuard = ({ children, requiredPermissions }) => {
   const location = useLocation();
 
   if (isAuthenticated()) {
@@ -26,4 +26,4 @@ const RestrictedRoute = ({ children, requiredPermissions }) => {
   }
 };
 
-export default RestrictedRoute;
+export default RestrictedRouteGuard;
