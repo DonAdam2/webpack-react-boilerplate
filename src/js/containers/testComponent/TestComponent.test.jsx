@@ -22,7 +22,7 @@ describe('testComponent.jsx', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
-  it('should dispatch TEST_ACTION action when user clicks the button', () => {
+  it('should dispatch app/updateTestString action when user clicks the button', () => {
     const store = createMockStore({
       app: {
         testString: 'Initial test',

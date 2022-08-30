@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 //selectors
 import { getTestAction } from '@/js/store/app/selectors/AppSelectors';
 //actions
-import { setTestAction } from '@/js/store/app/actions/AppActions';
+import { updateTestString } from '@/js/store/app/slices/AppSlice';
 
 const TestComponent = () => {
   const dispatch = useDispatch(),
@@ -16,7 +16,7 @@ const TestComponent = () => {
       <p>
         Testing the store <strong>{testAction}</strong>
       </p>
-      <button onClick={() => dispatch(setTestAction())}>Change text</button>
+      <button onClick={() => dispatch(updateTestString())}>Change text</button>
     </div>
   );
 };

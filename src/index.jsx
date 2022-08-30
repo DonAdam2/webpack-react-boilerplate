@@ -7,14 +7,13 @@ import './assets/images/metaImage.jpg';
 // required for babel polyfills
 import 'regenerator-runtime/runtime';
 //store configuration
-import configureStore from './js/store/configureStore';
+import store from '@/js/store/store';
 //root component
 import App from './App';
 //styles
 import './scss/global.scss';
 
-const store = configureStore(),
-  container = document.getElementById('root'),
+const container = document.getElementById('root'),
   root = createRoot(container);
 
 root.render(

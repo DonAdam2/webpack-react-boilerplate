@@ -1,11 +1,10 @@
-import { combineReducers } from 'redux';
 // slices
-import app from './app/reducers/AppReducer';
+import app from '@/js/store/app/slices/AppSlice';
 /* PLOP_INJECT_IMPORT */
 
-const rootReducer = combineReducers({
+const rootReducer = {
   app,
   /* PLOP_INJECT_REDUCER_SLICE */
-});
+};
 
 export default rootReducer;
