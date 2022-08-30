@@ -1,0 +1,18 @@
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+  testString: 'Initial test',
+};
+
+const {{camelCase name}}Slice = createSlice({
+  name: '{{camelCase name}}',
+  initialState,
+  reducers: {
+    updateTestString: (state) => {
+      state.testString = 'Final test';
+    },
+  },
+});
+
+export const { updateTestString } = {{camelCase name}}Slice.actions;
+export default {{camelCase name}}Slice.reducer;

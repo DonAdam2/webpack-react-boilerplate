@@ -1,5 +1,5 @@
 // slices
-import app from '@/js/store/app/slices/AppSlice';
+import app from './app/slices/AppSlice';
 /* PLOP_INJECT_IMPORT */
 
 const rootReducer = {

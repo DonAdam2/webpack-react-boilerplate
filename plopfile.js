@@ -205,13 +205,8 @@ module.exports = (plop) => {
       let actionsList = [
         {
           type: 'add',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/actions/{{pascalCase name}}Actions.js`,
-          templateFile: 'generatorTemplates/reducer/Actions.js.hbs',
-        },
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer.js`,
-          templateFile: 'generatorTemplates/reducer/Reducer.js.hbs',
+          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/slices/{{pascalCase name}}Slice.js`,
+          templateFile: 'generatorTemplates/reducer/Slice.js.hbs',
         },
         {
           type: 'add',
@@ -222,7 +217,7 @@ module.exports = (plop) => {
           type: 'append',
           path: `${rootDirectory}/js/store/rootReducer.js`,
           pattern: `/* PLOP_INJECT_IMPORT */`,
-          template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/reducers/{{pascalCase name}}Reducer';`,
+          template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/slices/{{pascalCase name}}Slice';`,
         },
         {
           type: 'append',
@@ -232,12 +227,12 @@ module.exports = (plop) => {
         },
       ];
 
-      //if store entity (directory) exists
+      /*//if store entity (directory) exists
       if (isStoreEntityExist(data.reducerEntity)) {
         actionsList.push({
           type: 'append',
           path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase reducerEntity}}ActionTypes.js`,
-          pattern: `/* PLOP_INJECT_ACTION_TYPE */`,
+          pattern: `/!* PLOP_INJECT_ACTION_TYPE *!/`,
           template: `export const TEST_ACTION = '[{{pascalCase name}}] TEST_ACTION';`,
         });
       } else {
@@ -246,7 +241,7 @@ module.exports = (plop) => {
           path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase reducerEntity}}ActionTypes.js`,
           templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
         });
-      }
+      }*/
 
       return actionsList;
     },
