@@ -1,5 +1,4 @@
-const { isCssModules, rootDirectory } = require('./buildTools/constants'),
-  fs = require('fs');
+const { isCssModules, rootDirectory } = require('./buildTools/constants');
 
 const requireField = (fieldName) => {
   return (value) => {
@@ -18,9 +17,6 @@ const startsWithUseKeyWord = () => {
     return 'Custom hooks should start with use keyword';
   };
 };
-
-const isStoreEntityExist = (entityName) =>
-  fs.existsSync(`./${rootDirectory}/js/store/${entityName}`);
 
 const createQuestion = (type) => {
   const isReducer = type === 'reducer',
@@ -112,7 +108,7 @@ module.exports = (plop) => {
     description: 'Create a component',
     // User input prompts provided as arguments to the template
     prompts: [createQuestion('component')],
-    actions: function (data) {
+    actions: function () {
       let actionsList = [
         {
           // Add a new file
@@ -201,49 +197,29 @@ module.exports = (plop) => {
   plop.setGenerator('reducer', {
     description: 'Create a reducer',
     prompts: createQuestion('reducer'),
-    actions: function (data) {
-      let actionsList = [
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/slices/{{pascalCase name}}Slice.js`,
-          templateFile: 'generatorTemplates/reducer/Slice.js.hbs',
-        },
-        {
-          type: 'add',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/selectors/{{pascalCase name}}Selectors.js`,
-          templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
-        },
-        {
-          type: 'append',
-          path: `${rootDirectory}/js/store/rootReducer.js`,
-          pattern: `/* PLOP_INJECT_IMPORT */`,
-          template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/slices/{{pascalCase name}}Slice';`,
-        },
-        {
-          type: 'append',
-          path: `${rootDirectory}/js/store/rootReducer.js`,
-          pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
-          template: `{{camelCase name}},`,
-        },
-      ];
-
-      /*//if store entity (directory) exists
-      if (isStoreEntityExist(data.reducerEntity)) {
-        actionsList.push({
-          type: 'append',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase reducerEntity}}ActionTypes.js`,
-          pattern: `/!* PLOP_INJECT_ACTION_TYPE *!/`,
-          template: `export const TEST_ACTION = '[{{pascalCase name}}] TEST_ACTION';`,
-        });
-      } else {
-        actionsList.push({
-          type: 'add',
-          path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/{{pascalCase reducerEntity}}ActionTypes.js`,
-          templateFile: 'generatorTemplates/reducer/ActionTypes.js.hbs',
-        });
-      }*/
-
-      return actionsList;
-    },
+    actions: [
+      {
+        type: 'add',
+        path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/slices/{{pascalCase name}}Slice.js`,
+        templateFile: 'generatorTemplates/reducer/Slice.js.hbs',
+      },
+      {
+        type: 'add',
+        path: `${rootDirectory}/js/store/{{camelCase reducerEntity}}/selectors/{{pascalCase name}}Selectors.js`,
+        templateFile: 'generatorTemplates/reducer/Selectors.js.hbs',
+      },
+      {
+        type: 'append',
+        path: `${rootDirectory}/js/store/rootReducer.js`,
+        pattern: `/* PLOP_INJECT_IMPORT */`,
+        template: `import {{camelCase name}} from './{{camelCase reducerEntity}}/slices/{{pascalCase name}}Slice';`,
+      },
+      {
+        type: 'append',
+        path: `${rootDirectory}/js/store/rootReducer.js`,
+        pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
+        template: `{{camelCase name}},`,
+      },
+    ],
   });
 };
