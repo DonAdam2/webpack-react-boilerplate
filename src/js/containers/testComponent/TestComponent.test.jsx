@@ -1,42 +1,42 @@
-// react testing library
-// import { render, screen, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
 // all providers mock
-import { render, screen, fireEvent } from '@/jest/mocks/OverrideRenderOfRTL';
+import { screen, fireEvent } from '@testing-library/react';
 // snapshots renderer
 import renderer from 'react-test-renderer';
 // mock store provider
-import MockReduxProvider from '@/jest/mocks/MockReduxProvider';
-// create mock store
-import createMockStore from '@/jest/mocks/store/createMockStore';
+import renderWithRedux from '@/jest/mocks/RenderWithRedux';
+//mock store
+import setupStore from '@/jest/mocks/store';
 //components
 import TestComponent from './TestComponent';
 
 describe('testComponent.jsx', () => {
   it('snapshot renders correctly, truthy values', () => {
-    const tree = renderer
-      .create(
-        <MockReduxProvider>
+    const store = setupStore(),
+      tree = renderer.create(
+        <Provider store={store}>
           <TestComponent />
-        </MockReduxProvider>
-      )
-      .toJSON();
+        </Provider>
+      );
     expect(tree).toMatchSnapshot();
   });
-  it('should dispatch app/updateTestString action when user clicks the button', () => {
-    const store = createMockStore({
+  it('state should be updated when user clicks the button', () => {
+    // using setupStore function (You don't need to pass the preloaded state)
+    /*const store = setupStore({
       app: {
         testString: 'Initial test',
       },
     });
-    // using RTL render
-    /*render(
-			<MockReduxProvider mockStore={store}>
-				<TestComponent />
-			</MockReduxProvider>
-		);*/
-    //using the custom render with all providers
-    render(<TestComponent />, { mockStore: store });
+    renderWithRedux(<TestComponent />, { store });*/
+    //using custom render (You don't need to pass the preloaded state)
+    renderWithRedux(<TestComponent />, {
+      preloadedState: {
+        app: {
+          testString: 'Initial test',
+        },
+      },
+    });
     fireEvent.click(screen.getByRole('button', { name: /change text/i }));
-    expect(store.dispatch).toHaveBeenCalledTimes(1);
+    expect(screen.getByText(/final test/i)).toBeInTheDOM();
   });
 });

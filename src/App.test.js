@@ -1,11 +1,12 @@
+import { screen } from '@testing-library/react';
 // all providers mock
-import { render, screen } from '@/jest/mocks/OverrideRenderOfRTL';
+import renderWithProviders from '@/jest/mocks/RenderWithProviders';
 //component
 import App from './App';
 
 describe('App Component', () => {
   test('renders webpack react boilerplate', async () => {
-    render(<App />);
+    renderWithProviders(<App />);
     const title = await screen.findByRole('heading', { name: /webpack react boilerplate/i });
     expect(title).toBeInTheDocument();
   });
