@@ -4,7 +4,9 @@ process.env.NODE_ENV = 'development';
 const { merge } = require('webpack-merge'),
   common = require('./webpack.common.js'),
   //enables fast refresh (this is the new feature which overrides hot reloading)
-  ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+  ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'),
+  //constants
+  { protocol } = require('./constants');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
@@ -13,6 +15,8 @@ module.exports = (env, options) => {
     //required for hot reload
     target: 'web',
     devServer: {
+      //enable HTTPS
+      server: protocol,
       //enable hot reloading
       hot: true,
       // Enable gzip compression of generated files.

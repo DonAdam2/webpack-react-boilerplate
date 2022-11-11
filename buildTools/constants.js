@@ -1,6 +1,9 @@
+const protocol = process.env.HTTPS?.trim() === 'true' ? 'https' : 'http';
+
 module.exports = {
   port: 3000,
-  devServer: 'http://localhost',
+  protocol,
+  devServer: `${protocol}://localhost`,
   jestDirectory: 'jest',
   rootDirectory: 'src',
   outputDirectory: 'dist',

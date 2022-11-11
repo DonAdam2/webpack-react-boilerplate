@@ -42,9 +42,36 @@
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up --build`
 
-## Update environment variables:
+## Environments:
 
-Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn run build) if you update the environment file.
+### Available environments:
+- Development => _.env.development_
+- Production => _.env_
+
+### Override environment files:
+
+#### Development:
+- Come up with the required extension name. I will use **local** as my extension for demonstration purposes.
+- Create a file with the required extension in **/environments** directory, .e.g `.env.local`
+- Use **envExtension** to set custom key in start script, .e.g `"start": "set envExtension=local && node scripts/start.js"`
+
+#### Production:
+- Come up with the required extension name. I will use **prod** as my extension for demonstration purposes.
+- Create a file with the required extension in **/environments** directory, .e.g `.env.prod`
+- Use **envExtension** to set custom key in start script, .e.g `"build": "set envExtension=prod && webpack --mode=production  --config buildTools/webpack.prod.js --progress --color"`
+
+#### Staging (new production environment):
+- Come up with the required extension name. I will use **staging** as my extension for demonstration purposes.
+- Create a file with the required extension in **/environments** directory, .e.g `.env.staging`
+- Use **envExtension** to set custom key in start script, .e.g `"build:staging": "set envExtension=staging && webpack --mode=production  --config buildTools/webpack.prod.js --progress --color"`
+
+### Update environment variables:
+
+Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn build) if you update the environment file.
+
+## Enable HTTPS in development `yarn start`
+
+Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node scripts/start.js"`
 
 ## Configuring Prettier
 

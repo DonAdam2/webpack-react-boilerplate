@@ -26,7 +26,9 @@ module.exports = (env, options) => {
     // create a fallback path (the production .env)
     basePath = `${PATHS.environments}/.env`,
     // concatenate the environment name to the base path to specify the correct env file!
-    envPath = `${basePath}.${options.mode}`,
+    envPath = `${basePath}.${
+      process.env.envExtension ? process.env.envExtension.trim() : options.mode
+    }`,
     // check if the file exists, otherwise fall back to the production .env
     finalPath = fs.existsSync(envPath) ? envPath : basePath,
     // set the path parameter in the dotenv config
