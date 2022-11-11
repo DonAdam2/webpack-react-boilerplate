@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'development';
+
 // the following 2 lines is to merge common webpack configurations with this file
 const { merge } = require('webpack-merge'),
   common = require('./webpack.common.js'),

@@ -16,9 +16,9 @@
   ],
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "set NODE_ENV=production&& webpack --mode=production  --config buildTools/webpack.prod.js --progress --color",
+    "build": "webpack --mode=production  --config buildTools/webpack.prod.js --progress --color",
     "build:serve": "serve dist --cors -p 8080",
-    "analyze-bundle": "set NODE_ENV=production&& webpack --mode=production --config buildTools/webpack.prod.js --json > stats.json && webpack-bundle-analyzer stats.json dist",
+    "analyze-bundle": "webpack --mode=production --config buildTools/webpack.prod.js --json > stats.json && webpack-bundle-analyzer stats.json dist",
     "test": "jest -c jest/jest.config.js --verbose",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test:clear && yarn test --coverage",
