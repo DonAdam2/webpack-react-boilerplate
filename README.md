@@ -42,6 +42,18 @@
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up --build`
 
+## Has the following aliases:
+- @/js => for JS directory
+- @/scss => for SCSS directory
+- @/img => for images directory (don't forget to prepend the **tilde** symbol in scss files, e.g: `background-image: url('~@/img/favicon.png');`)
+- @/fonts => for fonts directory (don't forget to prepend the **tilde** symbol in scss files), e.g:
+```@font-face {
+  font-family: 'Roboto';
+  src: url('~@/fonts/Roboto-Regular.ttf');
+  }
+```
+- @/jest => for jest directory
+
 ## Environments:
 
 ### Available environments:

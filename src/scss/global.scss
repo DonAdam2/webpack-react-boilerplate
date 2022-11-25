@@ -3,8 +3,11 @@
 @import 'containers.scss';
 
 .container {
-  width: calc(100% - 30px);
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: calc(100vw - 1rem);
   max-width: 1170px;
-  margin: 10px auto;
   text-align: center;
 }

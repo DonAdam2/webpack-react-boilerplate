@@ -77,6 +77,7 @@ module.exports = (env, options) => {
         '@/js': `${PATHS.src}/js`,
         '@/scss': `${PATHS.src}/scss`,
         '@/img': `${PATHS.public}/assets/images`,
+        '@/fonts': `${PATHS.public}/assets/fonts`,
         '@/jest': PATHS.jest,
       },
     },
