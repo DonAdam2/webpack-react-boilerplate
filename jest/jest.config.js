@@ -31,7 +31,7 @@ module.exports = {
     '^@/jest(.*)$': '<rootDir>$1',
     '^@/js(.*)$': '<rootDir>/../src/js/$1',
     '^@/scss(.*)$': '<rootDir>/../src/scss/$1',
-    '^@/img(.*)$': '<rootDir>/../src/assets/images/$1',
+    '^@/img(.*)$': '<rootDir>/../public/assets/images/$1',
   },
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx', 'node'],

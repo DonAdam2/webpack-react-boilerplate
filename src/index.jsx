@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 //import meta image
-import './assets/images/metaImage.jpg';
+import '@/img/metaImage.jpg';
 // required for babel polyfills
 import 'regenerator-runtime/runtime';
 //store configuration

@@ -37,6 +37,6 @@ describe('testComponent.jsx', () => {
       },
     });
     fireEvent.click(screen.getByRole('button', { name: /change text/i }));
-    expect(screen.getByText(/final test/i)).toBeInTheDOM();
+    expect(screen.getByText(/final test/i)).toBeInTheDocument();
   });
 });

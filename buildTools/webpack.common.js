@@ -76,7 +76,7 @@ module.exports = (env, options) => {
       alias: {
         '@/js': `${PATHS.src}/js`,
         '@/scss': `${PATHS.src}/scss`,
-        '@/img': `${PATHS.src}/assets/images`,
+        '@/img': `${PATHS.public}/assets/images`,
         '@/jest': PATHS.jest,
       },
     },
@@ -189,10 +189,10 @@ module.exports = (env, options) => {
       }),
       new HtmlWebpackPlugin({
         title,
-        template: `${PATHS.src}/index.html`,
+        template: `${PATHS.public}/index.html`,
         filename: 'index.html',
         inject: 'body',
-        favicon: `${PATHS.src}/assets/images/favicon.png`,
+        favicon: `${PATHS.public}/assets/images/favicon.png`,
         meta: {
           description,
           keywords,

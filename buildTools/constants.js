@@ -6,6 +6,7 @@ module.exports = {
   devServer: `${protocol}://localhost`,
   jestDirectory: 'jest',
   rootDirectory: 'src',
+  publicDirectory: 'public',
   outputDirectory: 'dist',
   environmentsDirectory: 'environments',
   jsSubDirectory: 'js/',
