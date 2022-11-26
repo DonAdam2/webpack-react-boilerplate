@@ -7,8 +7,7 @@
       "@/jest/*": ["./jest/*"],
       "@/js/*": ["./src/js/*"],
       "@/scss/*": ["./src/scss/*"],
-      "@/img/*": ["./public/assets/images"],
-      "@/fonts/*": ["./public/assets/fonts"]
+      "@/public/*": ["./public/*"]
     }
   },
   "exclude": ["node_modules"]

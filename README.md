@@ -43,16 +43,19 @@
 - Start the development server => `docker-compose up --build`
 
 ## Has the following aliases:
+- @/jest => for jest directory
 - @/js => for JS directory
 - @/scss => for SCSS directory
-- @/img => for images directory (don't forget to prepend the **tilde** symbol in scss files, e.g: `background-image: url('~@/img/favicon.png');`)
-- @/fonts => for fonts directory (don't forget to prepend the **tilde** symbol in scss files), e.g:
-```@font-face {
-  font-family: 'Roboto';
-  src: url('~@/fonts/Roboto-Regular.ttf');
+- @/public => for the public directory, (don't forget to prepend the **tilde** symbol in scss files):
+  ```
+  background-image: url('~@/public/asstes/images/favicon.png');
+  ```
+  ```
+  @font-face {
+    font-family: 'Roboto';
+    src: url('~@/public/asstes/fonts/Roboto-Regular.ttf');
   }
-```
-- @/jest => for jest directory
+  ```
 
 ## Environments:
 

@@ -74,11 +74,10 @@ module.exports = (env, options) => {
       extensions: ['.js', '.jsx', '.json'],
       // declaring alias for reducing the use of relative path
       alias: {
+        '@/jest': PATHS.jest,
         '@/js': `${PATHS.src}/js`,
         '@/scss': `${PATHS.src}/scss`,
-        '@/img': `${PATHS.public}/assets/images`,
-        '@/fonts': `${PATHS.public}/assets/fonts`,
-        '@/jest': PATHS.jest,
+        '@/public': PATHS.public,
       },
     },
     module: {
