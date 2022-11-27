@@ -1,4 +1,5 @@
 const path = require('path'),
+  // __dirname is the absolute path to the root directory of our app
   projectPath = `${path.join(__dirname)}/../`,
   {
     outputDirectory,

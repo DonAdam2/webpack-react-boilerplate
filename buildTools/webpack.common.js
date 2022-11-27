@@ -43,7 +43,6 @@ module.exports = (env, options) => {
   return {
     entry: `${PATHS.src}/index.jsx`,
     output: {
-      // __dirname is the absolute path to the root directory of our app
       path: PATHS.outputSrc,
       // hashes are very important in production for caching purposes
       filename: jsSubDirectory + 'bundle.[contenthash:8].js',
@@ -51,7 +50,7 @@ module.exports = (env, options) => {
       chunkFilename: jsSubDirectory + '[name].[contenthash:8].js',
       publicPath: '/',
       assetModuleFilename: (pathData) => {
-        //allows us to have the same folder structure of assets as we have it in /src
+        //allows us to have the same folder structure of assets as we have it in /public
         const filepath = path.dirname(pathData.filename).split('/').slice(1).join('/');
         return `${filepath}/[name].[hash][ext][query]`;
       },
@@ -72,7 +71,7 @@ module.exports = (env, options) => {
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json'],
-      // declaring alias for reducing the use of relative path
+      // declaring aliases to reduce the use of relative path
       alias: {
         '@/jest': PATHS.jest,
         '@/js': `${PATHS.src}/js`,

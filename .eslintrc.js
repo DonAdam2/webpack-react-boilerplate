@@ -43,5 +43,5 @@ module.exports = {
     'no-unused-vars': 'warn',
     'no-empty': 'warn',
   },
-  ignorePatterns: ['**/src/**/*.json'],
+  ignorePatterns: ['**/src/**/*.json', '**/public/**/*.json'],
 };
