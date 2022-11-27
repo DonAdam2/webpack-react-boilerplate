@@ -2,7 +2,6 @@
 
 - Testing using **jest**, **react-testing-library**
 - **SCSS** preprocessor
-- To enable **CSS modules** (each component has its own styles "no conflict between different components styles") => just open `/buildTools/constants.js` and set **isCssModules** to **true**. Then in every component add the required import as follows: `import classes from './scss/requiredStyles'`
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
@@ -17,9 +16,9 @@
 
 ## It has the following mocks for Jest:
 
-- renderWithRedux => overrides the render method of RTL with redux
-- renderWithReactIntl => overrides the render method of RTL with react-intl provider (if you are using it you need to download it)
-- renderWithRouter => overrides the render method of RTL with react router
+- RenderWithRedux => overrides the render method of RTL with redux
+- RenderWithReactIntl => overrides the render method of RTL with react-intl provider (if you are using it you need to download it)
+- RenderWithRouter => overrides the render method of RTL with react router
 - RenderWithProviders => overrides the render method of RTL with all providers
 
 ## Prerequisites:
@@ -31,21 +30,21 @@
 ### Development (locally):
 
 - Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
-- `cd webpack-react-boilerplate`
+- Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies => `yarn install`
 - Start the development server => `yarn start`
 
 ### Development (using Docker):
 
 - Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
-- `cd webpack-react-boilerplate`
+- Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up --build`
 
 ## Has the following aliases:
-- @/jest => for jest directory
-- @/js => for JS directory
-- @/scss => for SCSS directory
+- @/jest => for the jest directory
+- @/js => for the JS directory
+- @/scss => for the SCSS directory
 - @/public => for the public directory, (don't forget to prepend the **tilde** symbol in scss files):
   ```
   background-image: url('~@/public/asstes/images/favicon.png');
@@ -84,6 +83,15 @@
 
 Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn build) if you update the environment file.
 
+## Enable CSS modules:
+### Each component has its own styles "no conflict between different components styles"
+
+- Open /buildTools/constants.js and set **isCssModules** to true
+- Then in every component add the required import as follows:
+  ```
+  import classes from './scss/requiredStyles'
+  ```
+
 ## Enable HTTPS in development `yarn start`
 
 Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node scripts/start.js"`
@@ -96,12 +104,11 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce a cod
 
   1- You can find steps on how to set up prettier formatter with WebStorm/PhpStorm [here](https://prettier.io/docs/en/webstorm.html#running-prettier-on-save-using-file-watcher).
 
-  Notes:
+  **Notes**:
 
-  - It's better to use the local `node_modules` version of prettier instead of a global one. This is to avoid version conflicts (in case the globally installed version does not match with the versions specified in `package.json`). So when setting up the file watcher when you follow the steps from the above link you can set `program` to `$ProjectFileDir$\node_modules\.bin\prettier` (warning this assumes that node_modules sits in the root of your project. This will need to change if your directory structure changes).
-  - You will have to create two file watchers. One for JSX files and one for JS files. The webpack build tools are already configured to work with `eslint` and `prettier`. The only thing needed is the two file watchers.
+  - It's better to use the local `node_modules` version of prettier instead of a global one. This is to avoid version conflicts (in case the globally installed version does not match with the versions specified in `package.json`).
 
-  2- Follow the next steps to set up **prettier** and **eslint** on **_VS Code_**:
+  2- Follow the next steps to set up **prettier** and **eslint** in **_VS Code_**:
 
   - Install `prettier` plugin
 
