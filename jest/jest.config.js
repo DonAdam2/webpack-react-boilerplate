@@ -1,4 +1,5 @@
-const { rootDirectory } = require('../buildTools/constants');
+const path = require('path'),
+  { rootDirectory, devServer, publicDirectory } = require('../buildTools/constants');
 
 module.exports = {
   // A list of paths to directories that Jest should use to search for files in.
@@ -14,7 +15,10 @@ module.exports = {
   testEnvironment: 'jsdom',
   // A map from regular expressions to paths to transformers
   transform: {
-    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': 'babel-jest',
+    '^.+\\.(js|jsx|mjs|cjs|ts|tsx)$': [
+      'babel-jest',
+      { configFile: path.join(__dirname, '../babel.config.js') },
+    ],
     '^.+\\.css$': '<rootDir>/transforms/cssTransform.js',
     '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': '<rootDir>/transforms/fileTransform.js',
   },
@@ -29,9 +33,9 @@ module.exports = {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
     // declaring alias for reducing the use of relative path
     '^@/jest(.*)$': '<rootDir>$1',
-    '^@/js(.*)$': '<rootDir>/../src/js/$1',
-    '^@/scss(.*)$': '<rootDir>/../src/scss/$1',
-    '^@/public(.*)$': '<rootDir>/../public/$1',
+    '^@/js(.*)$': `<rootDir>/../${rootDirectory}/js/$1`,
+    '^@/scss(.*)$': `<rootDir>/../${rootDirectory}/scss/$1`,
+    '^@/public(.*)$': `<rootDir>/../${publicDirectory}/$1`,
   },
   // An array of file extensions your modules use
   moduleFileExtensions: ['js', 'jsx', 'json', 'ts', 'tsx', 'node'],
@@ -62,6 +66,8 @@ module.exports = {
   },
   // Make calling deprecated APIs throw helpful error messages
   errorOnDeprecated: true,
-  // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
-  testURL: 'http://localhost',
+  testEnvironmentOptions: {
+    // This option sets the URL for the jsdom environment. It is reflected in properties such as location.href
+    url: devServer,
+  },
 };
