@@ -146,7 +146,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce a cod
 - Open constants.js file and update metaInfo object
 - Open public/assets/images and replace (favicon.png, metaImage.jpg) with your images but using the same name
 
-## Extra:
+## Extras:
 
 - Private route guard => protect the given route based on a token.
 - Public route guard => used for public routes and authentication routes (ex: login, signup, ...etc) {if authenticated it will redirect the user to the home page}
