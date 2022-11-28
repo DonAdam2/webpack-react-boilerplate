@@ -4,7 +4,7 @@
 - [Installing & getting started](#installing--getting-started)
 - [React configuration](#it-has-the-following-configuration-for-react)
 - [Jest mocks](#it-has-the-following-mocks-for-jest)
-- [Aliases](#has-the-following-aliases)
+- [Aliases](#it-has-the-following-aliases)
 - [Environments](#environments)
 - [Enable CSS modules](#enable-css-modules)
 - [Enable HTTPS in development](#enable-https-in-development-yarn-start)
@@ -56,7 +56,7 @@
 - RenderWithRouter => overrides the render method of RTL with react router
 - RenderWithProviders => overrides the render method of RTL with all providers
 
-## Has the following aliases:
+## It has the following aliases:
 - @/jest => for the jest directory
 - @/js => for the JS directory
 - @/scss => for the SCSS directory
