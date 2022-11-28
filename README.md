@@ -11,6 +11,7 @@
 - [Configuring prettier](#configuring-prettier)
 - [Site meta tags](#site-meta-tags)
 - [Extras](#extras)
+- [Code generators](#code-generators-using-plop)
 - [Available scripts](#available-scripts)
 
 ## This webpack (V5.75.0) boilerplate supports the following:
@@ -158,6 +159,15 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce a cod
 - Normalize styles `(scss/generic/_normalize.scss)`
 - App typography styles `(scss/generic/_typography.scss)`
 - 4 break points `(scss/generic/_variables.scss)`
+
+## Code generators (using plop):
+### It allows you to generate the following (yarn generate):
+- Components
+- Containers
+- Pages
+- Custom hooks
+- Services
+- Reducers
 
 ## Available Scripts
 
