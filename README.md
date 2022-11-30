@@ -121,7 +121,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
   **Notes**:
 
-  - It's better to use the local `node_modules` version of prettier instead of a global one. This is to avoid version conflicts (in case the globally installed version does not match the version specified in `package.json`).
+  - It's better to use the local `node_modules` version of prettier instead of a global one, to avoid version conflicts (in case the globally installed version does not match the version specified in `package.json`).
 
   2- Follow the next steps to set up **prettier** and **eslint** in **_VS Code_**:
 
