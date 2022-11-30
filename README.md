@@ -143,7 +143,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
 #### To update them:
 
-- Open constants.js file and update metaInfo object
+- Open /buildTools/constants.js file and update metaInfo object
 - Open public/assets/images and replace (favicon.png, metaImage.jpg) with your images but using the same name
 
 ## Extras:
