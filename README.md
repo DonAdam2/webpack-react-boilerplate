@@ -46,7 +46,7 @@
 ## It has the following configuration for React:
 
 - React router dom v6
-- Redux & Redux thunk & & Redux logger & Redux devTool
+- Redux & Redux thunk & Redux logger & Redux devTool
 - 2 environments {production: .env, development: .env.development}
 
 ## It has the following mocks for Jest:
