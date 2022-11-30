@@ -113,7 +113,7 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
 
 ## Configuring Prettier
 
-This build relies on [Prettier formatter](https://prettier.io/) to enforce code style. And [ESLint](https://eslint.org/) for identifying problematic patterns found in JavaScript code.
+This build relies on [Prettier formatter](https://prettier.io/) to enforce code style. And [ESLint](https://eslint.org/) for identifying problematic patterns found in the code.
 
 - Setting up prettier:
 
