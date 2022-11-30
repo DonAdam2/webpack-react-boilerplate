@@ -143,8 +143,8 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
 #### To update them:
 
-- Open **/buildTools/constants.js** file and update metaInfo object
-- Open public/assets/images and replace (favicon.png, metaImage.jpg) with your images but using the same name
+- Open **_/buildTools/constants.js_** file and update metaInfo object
+- Open **_public/assets/images_** and replace (favicon.png, metaImage.jpg) with your images but using the same name
 
 ## Extras:
 
@@ -153,7 +153,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - Restricted route guard => protect the given route based on a token, and a list of permissions (can be an array or a string).
 - Restricted section => protect the given section based on a list of permissions (can be an array or a string).
 - Generic error boundary fallback component (you can customize it)
-- Cookies, local storage and sessions storage mangers to store data in the browser. (**Note:** the data encrypted using crypto-js package before storing it.)
+- Cookies, local storage and sessions storage mangers to store data in the browser. (**Note:** the data is encrypted using crypto-js package before storing it.)
 - Basic mixins `(scss/generic/_mixins.scss)`
 - Normalize styles `(scss/generic/_normalize.scss)`
 - App typography styles `(scss/generic/_typography.scss)`
