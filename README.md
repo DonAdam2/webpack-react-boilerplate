@@ -101,7 +101,7 @@ Please keep in mind that environment variables configured using webpack which me
 ## Enable CSS modules:
 ### Each component has its own styles "no conflict between different components styles"
 
-- Open /buildTools/constants.js and set **isCssModules** to true
+- Open **/buildTools/constants.js** and set **isCssModules** to true
 - Then in every component add the required import as follows:
   ```
   import classes from './scss/requiredStyles'
@@ -143,7 +143,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
 #### To update them:
 
-- Open /buildTools/constants.js file and update metaInfo object
+- Open **/buildTools/constants.js** file and update metaInfo object
 - Open public/assets/images and replace (favicon.png, metaImage.jpg) with your images but using the same name
 
 ## Extras:
