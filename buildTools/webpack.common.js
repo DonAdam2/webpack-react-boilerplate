@@ -10,14 +10,12 @@ const path = require('path'),
   EsLintPlugin = require('eslint-webpack-plugin'),
   //constants
   {
-    port,
     devServer,
     jsSubDirectory,
     isCssModules,
     metaInfo: { title, description, url, keywords },
   } = require('./constants'),
-  PATHS = require('./paths'),
-  fullDevServerUrl = `${devServer}:${port}`;
+  PATHS = require('./paths');
 
 module.exports = (env, options) => {
   // the mode variable is passed in package.json scripts (development, production)
@@ -195,7 +193,8 @@ module.exports = (env, options) => {
         meta: {
           description,
           keywords,
-          url: isDevelopment ? fullDevServerUrl : url,
+          //coming from scripts/start.js file
+          url: isDevelopment ? `${devServer}:${options.port}` : url,
           'apple-mobile-web-app-capable': 'yes',
           'mobile-web-app-capable': 'yes',
         },
