@@ -13,7 +13,9 @@ module.exports = {
   cssSubDirectory: 'css/',
   isCssModules: false,
   metaInfo: {
+    //max 60 (recommended)
     title: 'Adam Morsi',
+    //max 150 (recommended)
     description: 'description',
     url: 'https://example.com',
     keywords: 'add you keywords',

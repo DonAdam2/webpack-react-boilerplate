@@ -139,7 +139,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
 ## Site meta tags:
 
-- This app includes facebook, twitter and regular meta tags
+- This app includes search engines, Facebook, Twitter and regular meta tags
 
 #### To update them:
 
