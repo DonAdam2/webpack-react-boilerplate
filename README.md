@@ -41,7 +41,7 @@
 - Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies (required for prettier) => `yarn install`
-- Start the development server => `docker-compose up --build`
+- Start the development server => `docker-compose up`
 
 ## It has the following configuration for React:
 
