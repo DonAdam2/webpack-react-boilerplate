@@ -21,7 +21,7 @@
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
-- Docker setup for development
+- Docker setup for development (basic setup for production)
 
 ## Prerequisites:
 
@@ -42,6 +42,11 @@
 - Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up`
+
+## Docker for production (_basic setup_) (modify it to your needs):
+- Update the **_production_** section of the **_Dockerfile_** to meet your needs
+- Run the following command to build your image => `docker build --tag react-boilerplate-production --target production .` 
+  - **Note**: you can update the tag **_react-production_** to the required tag name
 
 ## It has the following configuration for React:
 

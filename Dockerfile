@@ -21,6 +21,13 @@ RUN yarn install --silent
 CMD ["yarn", "start"]
 
 #################################
-# You can add as many environments as you want
-# following the development environment pattern
+# Starting from application_base image above
+# Build the application for production environment (update it to meet your needs)
 #################################
+FROM application_base as production
+
+COPY . ./
+
+RUN yarn install --silent
+
+RUN yarn build
