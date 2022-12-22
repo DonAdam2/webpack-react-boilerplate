@@ -41,12 +41,11 @@
 - Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies (required for prettier) => `yarn install`
-- Start the development server => `docker-compose up`
+- Start the development server => `docker-compose up web-dev`
 
 ## Docker for production (_basic setup_) (modify it to your needs):
 - Update the **_production_** section of the **_Dockerfile_** to meet your needs
-- Run the following command to build your image => `docker build --tag react-boilerplate-production --target production .` 
-  - **Note**: you can update the tag **_react-production_** to the required tag name
+- Run the following command to build your image => `docker-compose up web-prod`
 
 ## It has the following configuration for React:
 

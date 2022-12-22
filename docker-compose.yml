@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  web:
+  web-dev:
     build:
       context: .
       dockerfile: Dockerfile
@@ -10,3 +10,10 @@ services:
     volumes:
       - /usr/app/node_modules
       - .:/usr/app
+  web-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - '8080:80'
