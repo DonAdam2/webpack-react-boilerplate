@@ -8,8 +8,8 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - /usr/app/node_modules
       - .:/usr/app
+      - /usr/app/node_modules/
   web-prod:
     build:
       context: .
