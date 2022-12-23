@@ -2,9 +2,11 @@ FROM node:14 as application_base
 
 WORKDIR /usr/app
 
-COPY . ./
+COPY ["package.json", "yarn.lock", "/usr/app/"]
 
 RUN yarn install --silent
+
+COPY . ./
 
 #################################
 # Starting from application_base image above
