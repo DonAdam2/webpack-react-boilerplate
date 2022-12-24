@@ -3,10 +3,13 @@ process.env.NODE_ENV = 'development';
 // the following 2 lines is to merge common webpack configurations with this file
 const { merge } = require('webpack-merge'),
   common = require('./webpack.common.js'),
+  //plugins
+  Dotenv = require('dotenv-webpack'),
   //enables fast refresh (this is the new feature which overrides hot reloading)
   ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'),
   //constants
-  { protocol } = require('./constants');
+  { protocol } = require('./constants'),
+  PATHS = require('./paths');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
@@ -43,6 +46,10 @@ module.exports = (env, options) => {
     plugins: [
       // enables fast refresh
       new ReactRefreshWebpackPlugin(),
+      new Dotenv({
+        path: `${PATHS.environments}/.env.development`,
+        systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
+      }),
     ],
   });
 };

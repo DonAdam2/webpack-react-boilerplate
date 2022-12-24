@@ -8,8 +8,10 @@ const { merge } = require('webpack-merge'),
   CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
   TerserJSPlugin = require('terser-webpack-plugin'),
   { CleanWebpackPlugin } = require('clean-webpack-plugin'),
+  Dotenv = require('dotenv-webpack'),
   //constants
-  { cssSubDirectory } = require('./constants');
+  { cssSubDirectory } = require('./constants'),
+  PATHS = require('./paths');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
@@ -67,6 +69,10 @@ module.exports = (env, options) => {
         filename: cssSubDirectory + '[name].[contenthash:8].css',
         // used for the lazy loaded component
         chunkFilename: cssSubDirectory + '[id].[contenthash:8].css',
+      }),
+      new Dotenv({
+        path: `${PATHS.environments}/.env`,
+        systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
       }),
     ],
   });

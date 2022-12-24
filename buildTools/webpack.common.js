@@ -1,10 +1,5 @@
 const path = require('path'),
-  //used to check if the given file exists
-  fs = require('fs'),
-  //dotenv
-  dotenv = require('dotenv'),
   //plugins
-  { DefinePlugin } = require('webpack'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   MiniCssExtractPlugin = require('mini-css-extract-plugin'),
   EsLintPlugin = require('eslint-webpack-plugin'),
@@ -19,24 +14,7 @@ const path = require('path'),
 
 module.exports = (env, options) => {
   // the mode variable is passed in package.json scripts (development, production)
-  const isDevelopment = options.mode === 'development',
-    /*================ setup environments variables ===================*/
-    // create a fallback path (the production .env)
-    basePath = `${PATHS.environments}/.env`,
-    // concatenate the environment name to the base path to specify the correct env file!
-    envPath = `${basePath}.${
-      process.env.envExtension ? process.env.envExtension.trim() : options.mode
-    }`,
-    // check if the file exists, otherwise fall back to the production .env
-    finalPath = fs.existsSync(envPath) ? envPath : basePath,
-    // set the path parameter in the dotenv config
-    fileEnv = dotenv.config({ path: finalPath }).parsed,
-    // create an object from the current env file with all keys
-    envKeys = Object.keys(fileEnv).reduce((prev, next) => {
-      prev[`process.env.${next}`] = JSON.stringify(fileEnv[next]);
-      return prev;
-    }, {});
-  /*================ finish setup environments variables ===================*/
+  const isDevelopment = options.mode === 'development';
 
   return {
     entry: `${PATHS.src}/index.jsx`,
@@ -199,7 +177,6 @@ module.exports = (env, options) => {
           'mobile-web-app-capable': 'yes',
         },
       }),
-      new DefinePlugin(envKeys),
     ],
   };
 };

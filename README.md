@@ -84,19 +84,19 @@
 ### Override environment files:
 
 #### Development:
-- Come up with env extension name. I will use **local** as my extension for demonstration purposes.
 - Create a file with the chosen env extension in **/environments** directory, .e.g `.env.local`
-- Use **envExtension** to set the chosen env extension in **start script**, .e.g `"start": "set envExtension=local && node scripts/start.js"`
+- Install **env-cmd** package
+- Update your start script `"start": "env-cmd -f environments/.env.local node scripts/start.js",`
 
 #### Production:
-- Come up with env extension name. I will use **prod** as my extension for demonstration purposes.
 - Create a file with the chosen env extension in **/environments** directory, .e.g `.env.prod`
-- Use **envExtension** to set the chosen env extension in **build script**, .e.g `"build": "set envExtension=prod && webpack --mode=production  --config buildTools/webpack.prod.js --progress --color"`
+- Install **env-cmd** package
+- Update your build script `"build": "env-cmd -f environments/.env.prod webpack --config buildTools/webpack.prod.js --progress --color"`
 
 #### Staging (new production environment):
-- Come up with env extension name. I will use **staging** as my extension for demonstration purposes.
 - Create a file with the chosen env extension in **/environments** directory, .e.g `.env.staging`
-- Use **envExtension** to set the chosen env extension in **build:staging script**, .e.g `"build:staging": "set envExtension=staging && webpack --mode=production  --config buildTools/webpack.prod.js --progress --color"`
+- Install **env-cmd** package
+- Add a new build script `"build:staging": "env-cmd -f environments/.env.staging webpack --config buildTools/webpack.prod.js --progress --color"`
 
 ### Update environment variables:
 
