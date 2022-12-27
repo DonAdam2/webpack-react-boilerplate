@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 //root reducer
-import { rootReducer } from '@/js/store/rootReducer';
+import { reduxSlices } from '@/js/store/reduxSlices';
 
 // Create a replica of the actual store without redux dev tools
 const setupStore = (preloadedState) =>
   configureStore({
-    reducer: rootReducer,
+    reducer: reduxSlices,
     devTools: false,
     preloadedState,
   });

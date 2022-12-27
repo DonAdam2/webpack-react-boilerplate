@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 //root reducer
-import { rootReducer } from './rootReducer';
+import { reduxSlices } from './reduxSlices';
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 export default configureStore({
-  reducer: rootReducer,
+  reducer: reduxSlices,
   devTools: isDevelopment,
   middleware: (getDefaultMiddleware) => {
     if (isDevelopment) {
