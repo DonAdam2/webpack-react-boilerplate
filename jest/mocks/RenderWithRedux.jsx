@@ -7,7 +7,7 @@ import setupStore from '@/jest/mocks/store';
 function renderWithRedux(
   ui,
   {
-    preloadedState = {},
+    preloadedState,
     // Automatically create a store instance if no store was passed in
     store = setupStore(preloadedState),
     ...renderOptions

@@ -9,7 +9,7 @@ import setupStore from '@/jest/mocks/store';
 function renderWithProviders(
   ui,
   {
-    preloadedState = {},
+    preloadedState,
     // Automatically create a store instance if no store was passed in
     store = setupStore(preloadedState),
     locale = 'en',
