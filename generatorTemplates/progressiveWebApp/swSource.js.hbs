@@ -63,13 +63,12 @@ registerRoute(
 
 /************** cache images **************/
 const imagesCacheName = 'images',
-  imagesMatchCallback = ({ request }) => request.destination === 'image',
   //one month
   maxAgeOneMonth = 60 * 60 * 24 * 30,
   imagesMaxEntries = 60;
 
 registerRoute(
-  imagesMatchCallback,
+        ({ request }) => request.destination === 'image',
   new CacheFirst({
     cacheName: imagesCacheName,
     plugins: [
@@ -86,12 +85,10 @@ registerRoute(
 
 /************** cache static resources **************/
 //resources in index.html file (e.g: tailwind, bootstrap, ...etc)
-const staticResourcesMatchCallback = ({ request }) =>
-    request.destination === 'script' || request.destination === 'style',
-  staticResourcesCacheName = 'static-resources';
+const staticResourcesCacheName = 'static-resources';
 
 registerRoute(
-  staticResourcesMatchCallback,
+        ({ request }) => request.destination === 'script' || request.destination === 'style',
   new StaleWhileRevalidate({
     cacheName: staticResourcesCacheName,
   })
