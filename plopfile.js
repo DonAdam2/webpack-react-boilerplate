@@ -256,7 +256,8 @@ module.exports = (plop) => {
             <link
               rel="apple-touch-icon"
               href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/pwa/icon-192x192.png') %>"
-            />`,
+            />
+            <script async src="https://unpkg.com/pwacompat" crossorigin="anonymous"></script>`,
       },
       {
         type: 'append',
