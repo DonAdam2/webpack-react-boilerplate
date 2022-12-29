@@ -1,4 +1,9 @@
-const { isCssModules, rootDirectory } = require('./buildTools/constants');
+const {
+  isCssModules,
+  rootDirectory,
+  publicDirectory,
+  buildToolsDirectory,
+} = require('./buildTools/constants');
 
 const requireField = (fieldName) => {
   return (value) => {
@@ -219,6 +224,81 @@ module.exports = (plop) => {
         path: `${rootDirectory}/js/store/reduxSlices.js`,
         pattern: `/* PLOP_INJECT_REDUCER_SLICE */`,
         template: `{{camelCase name}},`,
+      },
+    ],
+  });
+
+  plop.setGenerator('progressiveWebApp', {
+    description: 'Add required files for progressive web app',
+    // prompts: [createQuestion('service')],
+    actions: [
+      {
+        type: 'add',
+        path: `${rootDirectory}/js/serviceWorker/src-sw.js`,
+        templateFile: 'generatorTemplates/progressiveWebApp/src-sw.js.hbs',
+      },
+      {
+        type: 'add',
+        path: `${rootDirectory}/js/serviceWorker/swRegistration.js`,
+        templateFile: 'generatorTemplates/progressiveWebApp/swRegistration.js.hbs',
+      },
+      {
+        type: 'add',
+        path: `${publicDirectory}/manifest.json`,
+        templateFile: 'generatorTemplates/progressiveWebApp/manifest.json.hbs',
+      },
+      {
+        type: 'append',
+        path: `${publicDirectory}/index.html`,
+        pattern: `<!-- PLOP_INJECT_PWA_META-->`,
+        template: `
+            <link rel="manifest" href="manifest.json" />
+            <meta name="theme-color" content="#ffffff" />
+            <link
+              rel="apple-touch-icon"
+              href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/pwa/icon-192x192.png') %>"
+            />
+            `,
+      },
+      {
+        type: 'append',
+        path: `${rootDirectory}/index.jsx`,
+        pattern: `/* PLOP_INJECT_PWA_IMPORTS */`,
+        template: `import registerServiceWorker from './serviceWorker/swRegistration';`,
+      },
+      {
+        type: 'append',
+        path: `${rootDirectory}/index.jsx`,
+        pattern: `/* PLOP_INJECT_PWA_REGISTERER */`,
+        template: `registerServiceWorker();`,
+      },
+      {
+        type: 'append',
+        path: `${buildToolsDirectory}/webpack.prod.js`,
+        pattern: `/* PLOP_INJECT_PWA_IMPORTS */`,
+        template: `
+        { InjectManifest } = require('workbox-webpack-plugin'),
+        CopyPlugin = require('copy-webpack-plugin'),
+        `,
+      },
+      {
+        type: 'append',
+        path: `${buildToolsDirectory}/webpack.prod.js`,
+        pattern: `/* PLOP_INJECT_PWA_PLUGINS */`,
+        template: `
+        new CopyPlugin({
+        patterns: [
+          { from: 'public/manifest.json', to: '' },
+          { from: 'public/assets/images/pwa', to: 'assets/images/pwa' },
+        ],
+        }),
+        new InjectManifest({
+          //this is the source of your service worker setup
+          swSrc: \`\${PATHS.src}/serviceWorker/src-sw.js\`,
+          //this is the output name of your service worker file
+          swDest: 'sw.js',
+        }),
+        `,
       },
     ],
   });

@@ -9,6 +9,7 @@ const { merge } = require('webpack-merge'),
   TerserJSPlugin = require('terser-webpack-plugin'),
   { CleanWebpackPlugin } = require('clean-webpack-plugin'),
   Dotenv = require('dotenv-webpack'),
+  /* PLOP_INJECT_PWA_IMPORTS */
   //constants
   { cssSubDirectory } = require('./constants'),
   PATHS = require('./paths');
@@ -74,6 +75,7 @@ module.exports = (env, options) => {
         path: `${PATHS.environments}/.env`,
         systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
       }),
+      /* PLOP_INJECT_PWA_PLUGINS */
     ],
   });
 };

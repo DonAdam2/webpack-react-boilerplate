@@ -8,6 +8,7 @@
 - [Environments](#environments)
 - [Enable CSS modules](#enable-css-modules)
 - [Enable HTTPS in development](#enable-https-in-development-yarn-start)
+- [Enable PWA (production only)](#enable-pwa-yarn-generate-progressivewebapp)
 - [Configuring prettier](#configuring-prettier)
 - [Site meta tags](#site-meta-tags)
 - [Extras](#extras)
@@ -114,6 +115,28 @@ Please keep in mind that environment variables configured using webpack which me
 ## Enable HTTPS in development `yarn start`
 
 Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node scripts/start.js"`
+
+## Enable PWA `yarn generate progressiveWebApp`
+
+- Run the given script to add required files for progressive web app
+- Install the following packages:
+  
+  ```
+  yarn add workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window
+  ```
+- Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
+  - icon-192x192.png
+  - icon-256x256.png
+  - icon-384x384.png
+  - icon-512x512.png
+- Open `/public/manifest.json` and update the following:
+  - theme_color
+  - background_color
+  - name
+  - short_name
+  - description
+- Open `/public/index.html` and update **theme-color** meta tag if you updated **theme_color** in **manifest.json** file
+- You are good to go.
 
 ## Configuring Prettier
 
@@ -225,6 +248,6 @@ It runs test coverage.
 
 Clears test cache.
 
-### `yarn generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_**
+### `yarn generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_** || **_progressiveWebApp_**
 
-- It creates a boilerplate for component, container, page, custom hook, service or reducer.
+- It creates a boilerplate for component, container, page, custom hook, service, reducer or progressive web app setup.

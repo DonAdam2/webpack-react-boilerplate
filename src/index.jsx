@@ -12,6 +12,7 @@ import store from '@/js/store/store';
 import App from './App';
 //styles
 import './scss/global.scss';
+/* PLOP_INJECT_PWA_IMPORTS */
 
 const container = document.getElementById('root'),
   root = createRoot(container);
@@ -25,3 +26,5 @@ root.render(
     </Provider>
   </StrictMode>
 );
+
+/* PLOP_INJECT_PWA_REGISTERER */

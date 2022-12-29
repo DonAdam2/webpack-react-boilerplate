@@ -7,13 +7,17 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- PLOP_INJECT_PWA_META-->
     <!--Google / Search Engine Tags-->
-    <meta name="robots" content="index,follow">
-    <meta itemprop="name" content="<%= htmlWebpackPlugin.options.title %>">
-    <meta itemprop="description" content="<%= htmlWebpackPlugin.options.meta.description %>">
-    <meta itemprop="image" content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>">
+    <meta name="robots" content="index,follow" />
+    <meta itemprop="name" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta itemprop="description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
+    <meta
+      itemprop="image"
+      content="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
+    />
     <!--facebook meta tags-->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="website" />
     <meta property="og:url" content="<%= htmlWebpackPlugin.options.meta.url %>" />
     <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
     <meta property="og:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
@@ -35,7 +39,7 @@
     />
     <!--site meta tags-->
     <title><%= htmlWebpackPlugin.options.title %></title>
-    <meta name="title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="title" content="<%= htmlWebpackPlugin.options.title %>" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app</noscript>
