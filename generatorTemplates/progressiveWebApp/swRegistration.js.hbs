@@ -3,7 +3,7 @@ import { Workbox } from 'workbox-window';
 export default async function registerServiceWorker() {
   if (process.env.NODE_ENV === 'production') {
     if ('serviceWorker' in navigator) {
-      const wb = new Workbox('sw.js');
+      const wb = new Workbox('serviceWorker.js');
 
       wb.addEventListener('installed', (event) => {
         if (event.isUpdate) {

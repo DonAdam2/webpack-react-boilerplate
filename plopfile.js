@@ -234,8 +234,8 @@ module.exports = (plop) => {
     actions: [
       {
         type: 'add',
-        path: `${rootDirectory}/serviceWorker/src-sw.js`,
-        templateFile: 'generatorTemplates/progressiveWebApp/src-sw.js.hbs',
+        path: `${rootDirectory}/serviceWorker/swSource.js`,
+        templateFile: 'generatorTemplates/progressiveWebApp/swSource.js.hbs',
       },
       {
         type: 'add',
@@ -289,9 +289,9 @@ module.exports = (plop) => {
         }),
         new InjectManifest({
           //this is the source of your service worker setup
-          swSrc: \`\${PATHS.src}/serviceWorker/src-sw.js\`,
+          swSrc: \`\${PATHS.src}/serviceWorker/swSource.js\`,
           //this is the output name of your service worker file
-          swDest: 'sw.js',
+          swDest: 'serviceWorker.js',
         }),`,
       },
     ],

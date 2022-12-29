@@ -136,7 +136,7 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
   - short_name
   - description
 - Open `/public/index.html` and update **theme-color** meta tag if you updated **theme_color** in **manifest.json** file
-- Update **cache APIs** section as needed in `/src/serviceWorker/src-sw` file
+- Update **cache APIs** section as needed in `/src/serviceWorker/swSource` file
 - You are good to go.
 
 ## Configuring Prettier
