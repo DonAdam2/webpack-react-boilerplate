@@ -122,7 +122,7 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
 - Install the following packages:
   
   ```
-  yarn add workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window
+  yarn add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window copy-webpack-plugin
   ```
 - Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
   - icon-192x192.png
