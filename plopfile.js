@@ -230,16 +230,16 @@ module.exports = (plop) => {
 
   plop.setGenerator('progressiveWebApp', {
     description: 'Add required files for progressive web app',
-    // prompts: [createQuestion('service')],
+    prompts: [],
     actions: [
       {
         type: 'add',
-        path: `${rootDirectory}/js/serviceWorker/src-sw.js`,
+        path: `${rootDirectory}/serviceWorker/src-sw.js`,
         templateFile: 'generatorTemplates/progressiveWebApp/src-sw.js.hbs',
       },
       {
         type: 'add',
-        path: `${rootDirectory}/js/serviceWorker/swRegistration.js`,
+        path: `${rootDirectory}/serviceWorker/swRegistration.js`,
         templateFile: 'generatorTemplates/progressiveWebApp/swRegistration.js.hbs',
       },
       {
@@ -251,14 +251,12 @@ module.exports = (plop) => {
         type: 'append',
         path: `${publicDirectory}/index.html`,
         pattern: `<!-- PLOP_INJECT_PWA_META-->`,
-        template: `
-            <link rel="manifest" href="manifest.json" />
+        template: `<link rel="manifest" href="manifest.json" />
             <meta name="theme-color" content="#ffffff" />
             <link
               rel="apple-touch-icon"
               href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/pwa/icon-192x192.png') %>"
-            />
-            `,
+            />`,
       },
       {
         type: 'append',
@@ -276,17 +274,14 @@ module.exports = (plop) => {
         type: 'append',
         path: `${buildToolsDirectory}/webpack.prod.js`,
         pattern: `/* PLOP_INJECT_PWA_IMPORTS */`,
-        template: `
-        { InjectManifest } = require('workbox-webpack-plugin'),
-        CopyPlugin = require('copy-webpack-plugin'),
-        `,
+        template: `{ InjectManifest } = require('workbox-webpack-plugin'),
+        CopyPlugin = require('copy-webpack-plugin'),`,
       },
       {
         type: 'append',
         path: `${buildToolsDirectory}/webpack.prod.js`,
         pattern: `/* PLOP_INJECT_PWA_PLUGINS */`,
-        template: `
-        new CopyPlugin({
+        template: `new CopyPlugin({
         patterns: [
           { from: 'public/manifest.json', to: '' },
           { from: 'public/assets/images/pwa', to: 'assets/images/pwa' },
@@ -297,8 +292,7 @@ module.exports = (plop) => {
           swSrc: \`\${PATHS.src}/serviceWorker/src-sw.js\`,
           //this is the output name of your service worker file
           swDest: 'sw.js',
-        }),
-        `,
+        }),`,
       },
     ],
   });
