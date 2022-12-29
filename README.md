@@ -139,6 +139,24 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
 - Update **cache APIs** section as needed in `/src/serviceWorker/swSource` file
 - You are good to go.
 
+**Notes**:
+
+- If you get the following error in production:
+  ```
+  Uncaught (in promise) bad-precaching-response: 
+  bad-precaching-response :: [{"url":"https:
+  ```
+  - Add the given package or file in exclude array of **InjectManifest** plugin in **webpack.prod.js** as follow:
+  ```
+  new InjectManifest({
+    //this is the source of your service worker setup
+    swSrc: \`\${PATHS.src}/serviceWorker/swSource.js\`,
+    //this is the output name of your service worker file
+    swDest: 'serviceWorker.js',
+    exclude: ['fileName'],
+  }),`,
+  ```
+
 ## Configuring Prettier
 
 This build relies on [Prettier formatter](https://prettier.io/) to enforce code style. And [ESLint](https://eslint.org/) for identifying problematic patterns found in the code.
