@@ -21,14 +21,6 @@ replaces it with the precache manifest (list of URLS to cache). If this
 variable isn't present, injectManifest will throw an error.*/
 precacheAndRoute(self.__WB_MANIFEST);
 
-/************** cache unpkg **************/
-registerRoute(
-        ({ url }) => url.origin === 'https://unpkg.com',
-  new StaleWhileRevalidate({
-    cacheName: 'unpkg',
-  })
-);
-
 /************** cache google fonts **************/
 const sheetCacheName = 'google-fonts-stylesheets',
   fontCacheName = 'google-fonts-webfonts',
