@@ -227,6 +227,8 @@ module.exports = (plop) => {
       },
     ],
   });
+  const dontCacheBustURLsMatching = /\.[0-9a-f]{8}\./;
+  // exclude = [/\.map$/, /asset-manifest\.json$/, /LICENSE/];
 
   plop.setGenerator('progressiveWebApp', {
     description: 'Add required files for progressive web app',
@@ -290,8 +292,7 @@ module.exports = (plop) => {
         new InjectManifest({
           //this is the source of your service worker setup
           swSrc: \`\${PATHS.src}/serviceWorker/swSource\`,
-          dontCacheBustURLsMatching: /\\.[0-9a-f]{8}\\./,
-          exclude: [/\\.map$/, /asset-manifest\\.json$/, /LICENSE/],
+          dontCacheBustURLsMatching: ${dontCacheBustURLsMatching},         
           // Bump up the default maximum size (2mb) to (5mb) that's precached,
           // to make lazy-loading failure scenarios less likely.
           maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
