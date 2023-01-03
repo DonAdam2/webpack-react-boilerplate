@@ -150,7 +150,11 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
   ```
   new InjectManifest({
     //this is the source of your service worker setup
-    swSrc: \`\${PATHS.src}/serviceWorker/swSource.js\`,
+    swSrc: \`\${PATHS.src}/serviceWorker/swSource\`,
+    dontCacheBustURLsMatching: ${dontCacheBustURLsMatching},         
+    // Bump up the default maximum size (2mb) to (5mb) that's precached,
+    // to make lazy-loading failure scenarios less likely.
+    maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     //this is the output name of your service worker file
     swDest: 'serviceWorker.js',
     exclude: ['fileName'],
