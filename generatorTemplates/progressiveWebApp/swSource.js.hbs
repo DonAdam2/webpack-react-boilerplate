@@ -1,5 +1,5 @@
 import { clientsClaim } from 'workbox-core';
-import { precacheAndRoute } from 'workbox-precaching';
+import { createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
 import { StaleWhileRevalidate } from 'workbox-strategies';
 import { CacheFirst } from 'workbox-strategies';
@@ -11,8 +11,6 @@ import { ExpirationPlugin } from 'workbox-expiration';
 // an event handler.
 clientsClaim();
 
-self.skipWaiting();
-
 /*When you use injectManifest, you're responsible
 for wiring up precaching logic. When injectManifest
 examines your input service worker, it looks
@@ -21,11 +19,42 @@ replaces it with the precache manifest (list of URLS to cache). If this
 variable isn't present, injectManifest will throw an error.*/
 precacheAndRoute(self.__WB_MANIFEST);
 
+//shared variables
+const maxAgeOneMonth = 60 * 60 * 24 * 30,
+  maxAgeOneYear = 60 * 60 * 24 * 365;
+
+/************** redirect routes to index.html **************/
+// Set up App Shell-style routing, so that all navigation requests
+// are fulfilled with your index.html shell. Learn more at
+// https://developers.google.com/web/fundamentals/architecture/app-shell
+const fileExtensionRegexp = new RegExp('/[^/?]+\\.[^/]+$');
+registerRoute(
+  // Return false to exempt requests from being fulfilled by index.html.
+  ({ request, url }) => {
+    // If this isn't a navigation, skip.
+    if (request.mode !== 'navigate') {
+      return false;
+    }
+
+    // If this is a URL that starts with /_, skip.
+    if (url.pathname.startsWith('/_')) {
+      return false;
+    }
+
+    // If this looks like a URL for a resource, because it contains // a file extension, skip.
+    if (url.pathname.match(fileExtensionRegexp)) {
+      return false;
+    }
+
+    // Return true to signal that we want to use the handler.
+    return true;
+  },
+  createHandlerBoundToURL(`${self.location.origin}/index.html`)
+);
+
 /************** cache google fonts **************/
 const sheetCacheName = 'google-fonts-stylesheets',
   fontCacheName = 'google-fonts-webfonts',
-  //one year
-  maxAgeOneYear = 60 * 60 * 24 * 365,
   maxEntries = 30;
 
 //cache google fonts with stale-while-revalidate strategy
@@ -33,7 +62,7 @@ const sheetCacheName = 'google-fonts-stylesheets',
 if present, and do (always) a new API to update the cache
 for the next time (which means having up-to-date resources at the maximum speed)*/
 registerRoute(
-          ({ url }) => url.origin === 'https://fonts.googleapis.com',
+  ({ url }) => url.origin === 'https://fonts.googleapis.com',
   new StaleWhileRevalidate({
     cacheName: sheetCacheName,
   })
@@ -44,8 +73,8 @@ registerRoute(
 Make an API only if the required content is not present in the cache,
 or cached content has expired. */
 registerRoute(
-        ({ url }) => url.origin === 'https://fonts.gstatic.com',
-  new CacheFirst({
+  ({ url }) => url.origin === 'https://fonts.gstatic.com',
+    new CacheFirst({
     cacheName: fontCacheName,
     plugins: [
       //cache successful responses only
@@ -62,15 +91,13 @@ registerRoute(
 );
 
 /************** cache images **************/
-const imagesCacheName = 'images',
-  //one month
-  maxAgeOneMonth = 60 * 60 * 24 * 30,
-  imagesMaxEntries = 60;
+const imagesMaxEntries = 60;
 
 registerRoute(
-        ({ request }) => request.destination === 'image',
+  //cache images only from the current origin
+  ({ request, url }) => url.origin === self.location.origin && request.destination === 'image',
   new CacheFirst({
-    cacheName: imagesCacheName,
+    cacheName: 'images',
     plugins: [
       new CacheableResponsePlugin({
         statuses: [0, 200],
@@ -88,15 +115,24 @@ registerRoute(
 const staticResourcesCacheName = 'static-resources';
 
 registerRoute(
-        ({ request }) => request.destination === 'script' || request.destination === 'style',
+  ({ request }) => request.destination === 'script' || request.destination === 'style',
   new StaleWhileRevalidate({
     cacheName: staticResourcesCacheName,
   })
 );
 
+/************** skipWaiting **************/
+// This allows the web app to trigger skipWaiting via
+// registration.waiting.postMessage({type: 'SKIP_WAITING'})
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
+});
+
 /************** cache APIs **************/
 registerRoute(
-        ({ url }) => url.origin === process.env.BASE_URL || url.pathname === '/your/required/endPoint',
+  ({ url }) => url.origin === process.env.BASE_URL || url.pathname === '/your/required/endPoint',
   new StaleWhileRevalidate({
     cacheName: 'name-of-api',
     plugins: [
