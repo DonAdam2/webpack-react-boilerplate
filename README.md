@@ -146,7 +146,7 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
   Uncaught (in promise) bad-precaching-response: 
   bad-precaching-response :: [{"url":"https:
   ```
-  - Add the given package or file in exclude array of **InjectManifest** plugin in `/buildTools/webpack.prod.js` as follows:
+  - Add the given package or file in exclude array of [InjectManifest](https://developer.chrome.com/docs/workbox/reference/workbox-webpack-plugin/#type-InjectManifest) plugin in `/buildTools/webpack.prod.js` as follows:
   ```
   new InjectManifest({
     //this is the source of your service worker setup
