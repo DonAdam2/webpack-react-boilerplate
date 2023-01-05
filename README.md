@@ -130,11 +130,14 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
   - icon-384x384.png
   - icon-512x512.png
 - Open `/public/manifest.json` and update the following:
-  - theme_color
-  - background_color
+  - start_url (indicates what page should launch when someone opens your progressive web app.)
+  - theme_color (This sometimes affects how the OS displays the site (e.g., on Android's task switcher, the theme color surrounds the site).)
+  - background_color (tells the browser what color to use on the startup splash screen that users will see when they launch your app.)
   - name
   - short_name
   - description
+  - orientation (you can enforce the orientation of your app, it can be ommited.)
+  - categories (This is intended to be used by app stores to categorize your app.)
 - Open `/public/index.html` and update **theme-color** meta tag if you updated **theme_color** in **manifest.json** file
 - Update **cache APIs** section as needed in `/src/serviceWorker/swSource` file
 - You are good to go.
