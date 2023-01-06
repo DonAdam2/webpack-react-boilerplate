@@ -10,9 +10,9 @@ const path = require('path'),
   } = require('./constants');
 
 module.exports = {
-  src: path.join(projectPath, rootDirectory),
-  public: path.join(projectPath, publicDirectory),
-  jest: path.join(projectPath, jestDirectory),
-  outputSrc: path.resolve(projectPath, outputDirectory),
-  environments: path.resolve(projectPath, environmentsDirectory),
+  srcPath: path.join(projectPath, rootDirectory),
+  publicDirPath: path.join(projectPath, publicDirectory),
+  jestPath: path.join(projectPath, jestDirectory),
+  outputSrcPath: path.resolve(projectPath, outputDirectory),
+  environmentsPath: path.resolve(projectPath, environmentsDirectory),
 };

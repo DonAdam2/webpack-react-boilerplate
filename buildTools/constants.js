@@ -18,7 +18,6 @@ module.exports = {
     title: 'Adam Morsi',
     //max 150 (recommended)
     description: 'description',
-    url: 'https://example.com',
     keywords: 'add you keywords',
   },
 };

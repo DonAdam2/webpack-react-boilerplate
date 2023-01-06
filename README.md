@@ -199,6 +199,11 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - Open **_/buildTools/constants.js_** file and update metaInfo object
 - Open **_public/assets/images_** and replace (favicon.png, metaImage.jpg) with your images but using the same name
 
+  **Notes**:
+
+  - It's very important to set `PRODUCTION_DOMAIN` in any production environment file, to generate site meta tags correctly
+  - `PRODUCTION_DOMAIN` is the domain of your deployed app
+
 ## Extras:
 
 - Private route guard => protect the given route based on a token.

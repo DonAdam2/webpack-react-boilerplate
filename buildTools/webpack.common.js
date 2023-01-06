@@ -8,18 +8,18 @@ const path = require('path'),
     devServer,
     jsSubDirectory,
     isCssModules,
-    metaInfo: { title, description, url, keywords },
+    metaInfo: { title, description, keywords },
   } = require('./constants'),
-  PATHS = require('./paths');
+  { publicDirPath, srcPath, outputSrcPath, jestPath } = require('./paths');
 
 module.exports = (env, options) => {
   // the mode variable is passed in package.json scripts (development, production)
   const isDevelopment = options.mode === 'development';
 
   return {
-    entry: `${PATHS.src}/index.jsx`,
+    entry: `${srcPath}/index.jsx`,
     output: {
-      path: PATHS.outputSrc,
+      path: outputSrcPath,
       // hashes are very important in production for caching purposes
       filename: jsSubDirectory + 'bundle.[contenthash:8].js',
       // used for the lazy loaded component
@@ -49,10 +49,10 @@ module.exports = (env, options) => {
       extensions: ['.js', '.jsx', '.json'],
       // declaring aliases to reduce the use of relative path
       alias: {
-        '@/jest': PATHS.jest,
-        '@/js': `${PATHS.src}/js`,
-        '@/scss': `${PATHS.src}/scss`,
-        '@/public': PATHS.public,
+        '@/jest': jestPath,
+        '@/js': `${srcPath}/js`,
+        '@/scss': `${srcPath}/scss`,
+        '@/public': publicDirPath,
       },
     },
     module: {
@@ -106,7 +106,7 @@ module.exports = (env, options) => {
                           return 'local';
                         },
                         localIdentName: isDevelopment ? '[name]_[local]' : '[contenthash:base64]',
-                        localIdentContext: PATHS.src,
+                        localIdentContext: srcPath,
                         localIdentHashSalt: 'react-boilerplate',
                         exportLocalsConvention: 'camelCaseOnly',
                       },
@@ -164,15 +164,16 @@ module.exports = (env, options) => {
       }),
       new HtmlWebpackPlugin({
         title,
-        template: `${PATHS.public}/index.html`,
+        template: `${publicDirPath}/index.html`,
         filename: 'index.html',
         inject: 'body',
-        favicon: `${PATHS.public}/assets/images/favicon.png`,
+        favicon: `${publicDirPath}/assets/images/favicon.png`,
         meta: {
+          title,
           description,
           keywords,
           //coming from scripts/start.js file
-          url: isDevelopment ? `${devServer}:${options.port}` : url,
+          ...(isDevelopment && { url: `${devServer}:${options.port}` }),
           'apple-mobile-web-app-capable': 'yes',
           'mobile-web-app-capable': 'yes',
         },
