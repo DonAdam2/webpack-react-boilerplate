@@ -32,7 +32,7 @@
 
 ### Development (locally):
 
-- Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
+- Clone repo => `git clone git@github.com:DonAdam2/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies => `yarn install`
 - Start the development server => `yarn start`
