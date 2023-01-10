@@ -39,10 +39,56 @@
 
 ### Development (using Docker):
 
-- Clone repo => `git clone git@github.com:react-custom-projects/webpack-react-boilerplate.git`
+- Clone repo => `git clone git@github.com:DonAdam2/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up web-dev`
+
+**Notes**:
+
+- If you are using Windows 11 or 10, it's recommended to use WSL2:
+  - [Install WSL on windows](https://pureinfotech.com/install-wsl-windows-11/)
+  - [Install docker on windows](https://docs.docker.com/desktop/install/windows-install/)
+  - Open docker desktop app:
+    - settings => resources => WSL integration => enable required Ubuntu integration
+  - [Setup SSH keys (if you want) on windows and share it with WSL](https://devblogs.microsoft.com/commandline/sharing-ssh-keys-between-windows-and-wsl-2/)
+  - Create a new directory in ubuntu:
+  ```
+  mkdir workspace
+  cd workspace
+  ```
+  - Clone this repo into the selected Ubuntu:
+  ```
+  git clone git@github.com:DonAdam2/webpack-react-boilerplate.git
+  ```
+  - Install curl in Ubuntu:
+  ```
+  sudo apt-get install curl
+  ```
+  - Install nvm:
+  ```
+  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  ```
+  - Install required node version:
+  ```
+  nvm install --lts
+  ```
+  - Install yarn globally:
+  ```
+  npm install -g yarn
+  ```
+  - Update permissions to be able to install NPM packages
+  ```
+  sudo chown -R $(whoami) ~/workspace/webpack-react-boilerplate
+  ```
+  - Install packages (for linting purposes):
+  ```
+  yarn install
+  ```
+  - Run docker for development:
+  ```
+  docker-compose up web-dev
+  ```
 
 ## Docker for production (_basic setup_) (modify it to your needs):
 - Update the **_production_** section of the **_Dockerfile_** to meet your needs
