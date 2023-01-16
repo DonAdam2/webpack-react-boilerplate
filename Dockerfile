@@ -6,19 +6,13 @@ COPY ["package.json", "yarn.lock", "/usr/app/"]
 
 RUN yarn install --silent
 
-COPY . ./
-
 #################################
 # Starting from application_base image above
 # Build the application for development environment
 #################################
 FROM application_base as development
 
-# Remove unwanted directories
-RUN rm -rf jest
-
-# Remove unwnated files
-RUN rm environments/.env
+# We are not copying anything because we are using bind mount in docker-compose file
 
 CMD ["yarn", "start"]
 
@@ -28,6 +22,8 @@ CMD ["yarn", "start"]
 #################################
 # step1 => build react app
 FROM application_base as build
+
+COPY . ./
 
 RUN yarn build
 
