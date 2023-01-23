@@ -5,7 +5,7 @@
 - [Windows subsystem for Linux (WSL2)](#windows-subsystem-for-linux-wsl2-for-docker)
 - [Available React configuration](#available-react-configurations)
 - [Available Jest mocks](#available-jest-mocks)
-- [Aliases](#available-aliases)
+- [Available aliases](#available-aliases)
 - [Environments](#environments)
 - [Enable CSS modules](#enable-css-modules)
 - [Enable HTTPS in development](#enable-https-in-development-yarn-start)
