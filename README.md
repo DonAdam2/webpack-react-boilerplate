@@ -23,7 +23,7 @@
 - Autoprefixer for CSS (it supports IE >= 11)
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
-- Docker setup for development (basic setup for production)
+- Docker setup for development (basic setup for production **using nginx**)
 
 ## Prerequisites:
 
