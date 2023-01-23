@@ -166,7 +166,7 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
 
 ## Enable PWA `yarn generate progressiveWebApp`
 
-- Run the given script to add required files for progressive web app
+- Run the given script to add the required files for progressive web app
 - Install the following packages:
   
   ```
