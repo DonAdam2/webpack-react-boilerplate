@@ -8,7 +8,9 @@ services:
     ports:
       - '3000:3000'
     volumes:
+      # bind mount (for hot reloading)
       - .:/usr/app
+      # anonymous volume for node_modules
       - /usr/app/node_modules/
   web-prod:
     build:
