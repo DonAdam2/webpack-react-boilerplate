@@ -3,9 +3,9 @@
 - [Prerequisites](#prerequisites)
 - [Installing & getting started](#installing--getting-started)
 - [Windows subsystem for Linux](#windows-subsystem-for-linux-wsl2-for-docker)
-- [React configuration](#it-has-the-following-configuration-for-react)
-- [Jest mocks](#it-has-the-following-mocks-for-jest)
-- [Aliases](#it-has-the-following-aliases)
+- [React configuration](#available-react-configurations)
+- [Jest mocks](#available-jest-mocks)
+- [Aliases](#available-aliases)
 - [Environments](#environments)
 - [Enable CSS modules](#enable-css-modules)
 - [Enable HTTPS in development](#enable-https-in-development-yarn-start)
@@ -95,20 +95,20 @@
 - Update the **_production_** section of the **_Dockerfile_** to meet your needs
 - Run the following command to build your image => `docker-compose up web-prod`
 
-## It has the following configuration for React:
+## Available React configurations:
 
 - React router dom v6
 - Redux toolkit with Redux logger & Redux devTool
 - 2 environments {production: .env, development: .env.development}
 
-## It has the following mocks for Jest:
+## Available Jest mocks:
 
 - RenderWithRedux => overrides the render method of RTL with redux
 - RenderWithReactIntl => overrides the render method of RTL with react-intl provider (if you are using it you need to download it)
 - RenderWithRouter => overrides the render method of RTL with react router
 - RenderWithProviders => overrides the render method of RTL with all providers
 
-## It has the following aliases:
+## Available aliases:
 - @/jest => for the jest directory
 - @/js => for the JS directory
 - @/scss => for the SCSS directory
@@ -272,6 +272,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - Custom hooks
 - Services
 - Reducers
+- progressiveWebApp
 
 ## Available Scripts
 
