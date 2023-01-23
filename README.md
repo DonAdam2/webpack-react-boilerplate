@@ -2,7 +2,7 @@
 - [Overview](#this-webpack-v5750-boilerplate-supports-the-following)
 - [Prerequisites](#prerequisites)
 - [Installing & getting started](#installing--getting-started)
-- [Windows subsystem for Linux](#windows-subsystem-for-linux--wsl2---for-docker--)
+- [Windows subsystem for Linux](#windows-subsystem-for-linux-wsl2-for-docker)
 - [React configuration](#it-has-the-following-configuration-for-react)
 - [Jest mocks](#it-has-the-following-mocks-for-jest)
 - [Aliases](#it-has-the-following-aliases)
