@@ -1,18 +1,19 @@
 # Table of Contents:
-- [Overview](#this-webpack-v5750-boilerplate-supports-the-following)
-- [Prerequisites](#prerequisites)
-- [Installing & getting started](#installing--getting-started)
-- [React configuration](#it-has-the-following-configuration-for-react)
-- [Jest mocks](#it-has-the-following-mocks-for-jest)
-- [Aliases](#it-has-the-following-aliases)
-- [Environments](#environments)
-- [Enable CSS modules](#enable-css-modules)
+- [Overview](#this-webpack--v5750--boilerplate-supports-the-following-)
+- [Prerequisites](#prerequisites-)
+- [Installing & getting started](#installing--getting-started-)
+- [Windows subsystem for Linux](#windows-subsystem-for-linux--wsl2---for-docker--)
+- [React configuration](#it-has-the-following-configuration-for-react-)
+- [Jest mocks](#it-has-the-following-mocks-for-jest-)
+- [Aliases](#it-has-the-following-aliases-)
+- [Environments](#environments-)
+- [Enable CSS modules](#enable-css-modules-)
 - [Enable HTTPS in development](#enable-https-in-development-yarn-start)
 - [Enable PWA (production only)](#enable-pwa-yarn-generate-progressivewebapp)
-- [Configuring prettier](#configuring-prettier)
-- [Site meta tags](#site-meta-tags)
-- [Extras](#extras)
-- [Code generator](#code-generator-using-plop)
+- [Configuring prettier](#configuring-prettier-)
+- [Site meta tags](#site-meta-tags-)
+- [Extras](#extras-)
+- [Code generator](#code-generator--using-plop--)
 - [Available scripts](#available-scripts)
 
 ## This webpack (V5.75.0) boilerplate supports the following:
@@ -44,7 +45,7 @@
 - Install dependencies (required for prettier) => `yarn install`
 - Start the development server => `docker-compose up web-dev`
 
-**Notes**:
+## Windows subsystem for linux "WSL2" (for Docker):
 
 - If you are using Windows 11 or 10, it's recommended to use WSL2:
   - [Install WSL on windows](https://pureinfotech.com/install-wsl-windows-11/)
@@ -210,7 +211,7 @@ Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node
   }),`,
   ```
 
-## Configuring Prettier
+## Configuring Prettier:
 
 This build relies on [Prettier formatter](https://prettier.io/) to enforce code style. And [ESLint](https://eslint.org/) for identifying problematic patterns found in the code.
 
