@@ -51,7 +51,7 @@
     "cli-color": "^2.0.3",
     "core-js": "^3.29.1",
     "css-loader": "^6.7.3",
-    "css-minimizer-webpack-plugin": "^4.2.2",
+    "css-minimizer-webpack-plugin": "^5.0.0",
     "detect-port": "^1.5.1",
     "dotenv-webpack": "^8.0.1",
     "eslint": "^8.36.0",
