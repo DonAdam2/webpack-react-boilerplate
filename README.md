@@ -16,7 +16,7 @@
 - [Code generator](#code-generator-using-plop)
 - [Available scripts](#available-scripts)
 
-## This webpack (V5.76.1) boilerplate supports the following:
+## This webpack (V5.76.3) boilerplate supports the following:
 
 - Testing using **jest**, **react-testing-library**
 - **SCSS** preprocessor
