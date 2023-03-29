@@ -1,5 +1,5 @@
 # Table of Contents:
-- [Overview](#this-webpack-v5761-boilerplate-supports-the-following)
+- [Overview](#this-webpack-v5763-boilerplate-supports-the-following)
 - [Prerequisites](#prerequisites)
 - [Installing & getting started](#installing--getting-started)
 - [Windows subsystem for Linux (WSL2)](#windows-subsystem-for-linux-wsl2-for-docker)
