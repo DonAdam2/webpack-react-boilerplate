@@ -1,9 +1,10 @@
 version: '3.8'
 services:
   web-dev:
+    container_name: web_dev
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
       target: development
     ports:
       - '3000:3000'
@@ -13,9 +14,10 @@ services:
       # anonymous volume for node_modules
       - /usr/app/node_modules/
   web-prod:
+    container_name: web_prod
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: docker/Dockerfile
       target: production
     ports:
       - '8080:80'
