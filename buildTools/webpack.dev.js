@@ -37,10 +37,7 @@ module.exports = (env, options) => {
         'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
       },
       client: {
-        overlay: {
-          errors: true,
-          warnings: false,
-        },
+        overlay: false,
       },
     },
     plugins: [
