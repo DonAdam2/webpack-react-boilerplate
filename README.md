@@ -1,5 +1,5 @@
 # Table of Contents:
-- [Overview](#this-webpack-v5763-boilerplate-supports-the-following)
+- [Overview](#this-webpack-v5790-boilerplate-supports-the-following)
 - [Prerequisites](#prerequisites)
 - [Installing & getting started](#installing--getting-started)
 - [Windows subsystem for Linux (WSL2)](#windows-subsystem-for-linux-wsl2-for-docker)
@@ -16,7 +16,7 @@
 - [Code generator](#code-generator-using-plop)
 - [Available scripts](#available-scripts)
 
-## This webpack (V5.76.3) boilerplate supports the following:
+## This webpack (V5.79.0) boilerplate supports the following:
 
 - Testing using **jest**, **react-testing-library**
 - **SCSS** preprocessor
