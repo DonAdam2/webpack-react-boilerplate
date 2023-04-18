@@ -3,9 +3,9 @@ import { render, screen } from '@testing-library/react';
 import {{pascalCase name}}Page from './{{pascalCase name}}Page';
 
 describe('<{{pascalCase name}}Page />', () => {
-    test('renders page name ({{camelCase name}}Page)', () => {
-            render(<{{pascalCase name}}Page />);
-            const title = screen.getByText(/{{camelCase name}}Page/i);
-            expect(title).toBeInTheDocument();
-        });
+  test('renders page name ({{camelCase name}}Page)', () => {
+    render(<{{pascalCase name}}Page />);
+    const title = screen.getByText(/{{camelCase name}}Page/i);
+    expect(title).toBeInTheDocument();
+  });
 });

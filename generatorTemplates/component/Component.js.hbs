@@ -1,18 +1,18 @@
 {{#if isCssModules}}
-    // styles
-    import classes from './{{pascalCase name}}.scss';
+  // styles
+  import classes from './{{pascalCase name}}.scss';
 {{/if}}
 
 const {{pascalCase name}} = (props) => {
-    return (
-        {{#if isCssModules}}
-            <div  className={classes.{{camelCase name}}Wrapper}>
-        {{else}}
-            <div  className="{{dashCase name}}-wrapper">
-        {{/if}}
-            {{pascalCase name}}
-        </div>
-    );
+  return (
+    {{#if isCssModules}}
+      <div  className={classes.{{camelCase name}}Wrapper}>
+    {{else}}
+      <div  className="{{dashCase name}}-wrapper">
+    {{/if}}
+      {{pascalCase name}}
+    </div>
+  );
 };
 
 export default {{pascalCase name}};
