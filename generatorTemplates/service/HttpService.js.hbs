@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, {AxiosHeaders} from 'axios';
 // lodash
 // import { cloneDeep } from 'lodash';
 
@@ -10,7 +10,13 @@ const createNewBaseUrl = (url) =>
 const apiService = createNewBaseUrl(process.env.BASE_URL);
 
 const requestInterceptor = (config) => {
-	return config;
+  config.headers = new AxiosHeaders({
+    //add this function
+    ...getHeaders(),
+    ...config.headers,
+  });
+
+  return config;
 };
 
 const requestInterceptorError = (error) => {
