@@ -123,7 +123,7 @@ module.exports = (env, options) => {
                   plugins: [
                     'postcss-flexbugs-fixes',
                     postcssPresetEnv({
-                      stage: 3,
+                      stage: 0,
                       //uncomment the following if you want to prefix grid properties
                       // autoprefixer: { grid: true },
                     }),
