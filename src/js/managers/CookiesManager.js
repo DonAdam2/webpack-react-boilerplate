@@ -16,7 +16,8 @@ class CookiesManager {
     let name = cname + '=';
     let ca = document.cookie.split(';');
     for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
+      //remove double quotes from cookies value
+      let c = ca[i].replace(/^"(.*)"$/, '$1');
       while (c.charAt(0) === ' ') {
         c = c.substring(1);
       }
