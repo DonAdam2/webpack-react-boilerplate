@@ -3,13 +3,13 @@ import { decryptData, encryptData } from '../constants/Helpers';
 
 class LocalStorageManager {
   static setItem(key, data) {
-    if (this.storageAvailable()) {
+    if (this.isStorageAvailable()) {
       const encryptedValue = encryptData(data);
       localStorage.setItem(key, encryptedValue);
     }
   }
   static getItem(key) {
-    if (this.storageAvailable()) {
+    if (this.isStorageAvailable()) {
       const value = localStorage.getItem(key);
       try {
         return decryptData(value);
@@ -20,7 +20,7 @@ class LocalStorageManager {
     return undefined;
   }
   static removeItem(key) {
-    if (this.storageAvailable()) {
+    if (this.isStorageAvailable()) {
       const value = this.getItem(key);
       localStorage.removeItem(key);
       return value;
@@ -28,13 +28,13 @@ class LocalStorageManager {
     return undefined;
   }
   static clear() {
-    if (this.storageAvailable()) {
+    if (this.isStorageAvailable()) {
       localStorage.clear();
     }
   }
   //used to solve the following issue
   //SecurityError: The operation is insecure.
-  static storageAvailable() {
+  static isStorageAvailable() {
     let storage;
     try {
       storage = window.localStorage;
