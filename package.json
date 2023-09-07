@@ -84,7 +84,7 @@
     "react-refresh": "^0.14.0",
     "react-test-renderer": "^18.2.0",
     "redux-logger": "^3.0.6",
-    "regenerator-runtime": "^0.13.11",
+    "regenerator-runtime": "^0.14.0",
     "resolve-url-loader": "^5.0.0",
     "rework": "^1.0.1",
     "rework-visit": "^1.0.0",
