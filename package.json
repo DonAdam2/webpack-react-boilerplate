@@ -21,7 +21,7 @@
     "analyze-bundle": "pnpm build --json=stats.json && webpack-bundle-analyzer stats.json dist",
     "test": "jest -c jest/jest.config.js --verbose",
     "test:watch": "pnpm run test --watch",
-    "test:coverage": "pnpm run test:clear && pnpm run test --coverage",
+    "test:coverage": "pnpm test:clear && pnpm run test --coverage",
     "test:clear": "pnpm run test --clearCache",
     "generate": "plop"
   },
