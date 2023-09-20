@@ -8,8 +8,8 @@
 - [Available aliases](#available-aliases)
 - [Environments](#environments)
 - [Enable CSS modules](#enable-css-modules)
-- [Enable HTTPS in development](#enable-https-in-development-yarn-start)
-- [Enable PWA (production only)](#enable-pwa-yarn-generate-progressivewebapp)
+- [Enable HTTPS in development](#enable-https-in-development-pnpm-start)
+- [Enable PWA (production only)](#enable-pwa-pnpm-generate-progressivewebapp)
 - [Configuring prettier](#configuring-prettier)
 - [Site meta tags](#site-meta-tags)
 - [Extras](#extras)
@@ -36,14 +36,14 @@
 
 - Clone repo => `git clone git@github.com:DonAdam2/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
-- Install dependencies => `yarn install`
-- Start the development server => `yarn start`
+- Install dependencies => `pnpm install`
+- Start the development server => `pnpm start`
 
 ### Development (using Docker):
 
 - Clone repo => `git clone git@github.com:DonAdam2/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
-- Install dependencies (required for prettier) => `yarn install`
+- Install dependencies (required for prettier) => `pnpm install`
 - Start the development server => `docker-compose up web-dev`
 
 ### Windows subsystem for linux "WSL2" (for Docker):
@@ -75,9 +75,9 @@
   ```
   nvm install --lts
   ```
-  - Install yarn globally:
+  - Install pnpm globally:
   ```
-  npm install -g yarn
+  npm install -g pnpm
   ```
   - Update permissions to be able to install NPM packages
   ```
@@ -85,7 +85,7 @@
   ```
   - Install packages (for linting purposes):
   ```
-  yarn install
+  pnpm install
   ```
   - Run docker for development:
   ```
@@ -149,7 +149,7 @@
 
 ### Update environment variables:
 
-Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (yarn start, yarn build) if you update the environment file.
+Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (pnpm start, pnpm build) if you update the environment file.
 
 ## Enable CSS modules:
 ### Each component has its own styles "no conflict between different components styles"
@@ -167,17 +167,17 @@ Please keep in mind that environment variables configured using webpack which me
     - In development class names will be in (componentName_class-name) format => e.g. `box_box-wrapper`
     - In production class names will be in (letter_letter) unique format to **reduce the bundle size** => e.g. `a_i`
 
-## Enable HTTPS in development `yarn start`
+## Enable HTTPS in development `pnpm start`
 
-Add `set HTTPS=true` to `yarn start` script => `"start": "set HTTPS=true && node scripts/start.js"`
+Add `set HTTPS=true` to `pnpm start` script => `"start": "set HTTPS=true && node scripts/start.js"`
 
-## Enable PWA `yarn generate progressiveWebApp`
+## Enable PWA `pnpm generate progressiveWebApp`
 
 - Run the given script to add the required files for progressive web app
 - Install the following packages:
   
   ```
-  yarn add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window copy-webpack-plugin
+  pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window copy-webpack-plugin
   ```
 - Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
   - icon-192x192.png
@@ -273,7 +273,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - 4 break points `(scss/generic/_variables.scss)`
 
 ## Code generator (using plop):
-### It allows you to generate the following (yarn generate):
+### It allows you to generate the following (pnpm generate):
 - Components
 - Containers
 - Pages
@@ -286,7 +286,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
 In the project directory, you can run:
 
-### `yarn start`
+### `pnpm start`
 
 Runs the app in the development mode.<br>
 It will open [http://localhost:3000](http://localhost:3000) automatically in the browser to see your app.
@@ -300,7 +300,7 @@ You will see in the console the following:
   1. Linting errors.
   2. Code format errors (because of [prettier](https://prettier.io/))
 
-### `yarn build`
+### `pnpm build`
 
 Builds the app for production to the `dist` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -308,33 +308,33 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
-### `yarn build:serve`
+### `pnpm build:serve`
 
 Serves the app on `http://localhost:8080/` from the `dist` folder to check the production version.
 
-**_Note:_** Use this script only if you ran the build script `yarn build`.
+**_Note:_** Use this script only if you ran the build script `pnpm build`.
 
-### `yarn analyze-bundle`
+### `pnpm analyze-bundle`
 
 It allows you to analyze the bundle size.
 
-### `yarn test`
+### `pnpm test`
 
 It runs all test files.
 
-### `yarn test:watch`
+### `pnpm test:watch`
 
 - It runs all unit test files in `/src` directory using watch mode.
 - Will run all your tests once then again on every change of your source code
 
-### `yarn test:coverage`
+### `pnpm test:coverage`
 
 It runs test coverage.
 
-### `yarn test:clear`
+### `pnpm test:clear`
 
 Clears test cache.
 
-### `yarn generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_** || **_progressiveWebApp_**
+### `pnpm generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_** || **_progressiveWebApp_**
 
 - It creates a boilerplate for component, container, page, custom hook, service, reducer or progressive web app setup.
