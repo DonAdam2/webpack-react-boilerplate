@@ -157,7 +157,7 @@ Please keep in mind that environment variables configured using webpack which me
 - Open **/buildTools/constants.js** and set **isCssModules** to true
 - Then in every component add the required import as follows:
   ```
-  import classes from './requiredStyles'
+  import classes from './requiredStyles.scss'
   ```
 - Use it as follows:
   ```
