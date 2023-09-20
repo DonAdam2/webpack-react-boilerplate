@@ -157,8 +157,15 @@ Please keep in mind that environment variables configured using webpack which me
 - Open **/buildTools/constants.js** and set **isCssModules** to true
 - Then in every component add the required import as follows:
   ```
-  import classes from './scss/requiredStyles'
+  import classes from './requiredStyles'
   ```
+- Use it as follows:
+  ```
+  <div className={classes.wrapper} />
+  ```
+  - Note:
+    - In development class names will be in (componentName_class-name) format => e.g. `box_box-wrapper`
+    - In production class names will be in (letter_letter) unique format to **reduce the bundle size** => e.g. `a_i`
 
 ## Enable HTTPS in development `yarn start`
 
