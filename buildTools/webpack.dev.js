@@ -8,7 +8,7 @@ const { merge } = require('webpack-merge'),
   //enables fast refresh (this is the new feature which overrides hot reloading)
   ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'),
   //constants
-  { protocol } = require('./constants'),
+  { protocol, openInBrowser } = require('./constants'),
   { environmentsPath } = require('./paths');
 
 module.exports = (env, options) => {
@@ -25,7 +25,7 @@ module.exports = (env, options) => {
       // Enable gzip compression of generated files.
       compress: true,
       // open development server
-      open: true,
+      open: openInBrowser,
       //coming from scripts/start.js file
       port: options.port,
       // important for navigating to the app using browser (if you use any route other than /)

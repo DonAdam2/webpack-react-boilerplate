@@ -9,6 +9,7 @@
 - [Environments](#environments)
 - [Enable CSS modules](#enable-css-modules)
 - [Enable HTTPS in development](#enable-https-in-development-pnpm-start)
+- [Start the development server without opening the app in the browser](#start-the-development-server-without-opening-the-app-in-the-browser-pnpm-start)
 - [Enable PWA (production only)](#enable-pwa-pnpm-generate-progressivewebapp)
 - [Configuring prettier](#configuring-prettier)
 - [Site meta tags](#site-meta-tags)
@@ -170,6 +171,10 @@ Please keep in mind that environment variables configured using webpack which me
 ## Enable HTTPS in development `pnpm start`
 
 Add `set HTTPS=true` to `pnpm start` script => `"start": "set HTTPS=true && node scripts/start.js"`
+
+## Start the development server without opening the app in the browser `pnpm start`
+
+Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && node scripts/start.js"`
 
 ## Enable PWA `pnpm generate progressiveWebApp`
 

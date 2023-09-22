@@ -1,9 +1,11 @@
-const protocol = process.env.HTTPS?.trim() === 'true' ? 'https' : 'http';
+const protocol = process.env.HTTPS?.trim() === 'true' ? 'https' : 'http',
+  openInBrowser = process.env.BROWSER?.trim() !== 'none';
 
 module.exports = {
   port: 3000,
   protocol,
   devServer: `${protocol}://localhost`,
+  openInBrowser,
   jestDirectory: 'jest',
   rootDirectory: 'src',
   buildToolsDirectory: 'buildTools',
