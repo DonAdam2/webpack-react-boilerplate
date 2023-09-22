@@ -71,6 +71,7 @@
     "jest-resolve": "^29.7.0",
     "jest-watch-typeahead": "^2.2.2",
     "mini-css-extract-plugin": "2.7.6",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "plop": "^4.0.0",
     "postcss": "^8.4.30",
     "postcss-flexbugs-fixes": "^5.0.2",

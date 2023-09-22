@@ -1,4 +1,5 @@
-const path = require('path'),
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin'),
+  path = require('path'),
   //plugins
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   MiniCssExtractPlugin = require('mini-css-extract-plugin'),
@@ -187,6 +188,7 @@ module.exports = (env, options) => {
           'mobile-web-app-capable': 'yes',
         },
       }),
+      new NodePolyfillPlugin(),
     ],
   };
 };
