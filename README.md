@@ -286,7 +286,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
     ```
 - Open `cypress.config.js` file and add the baseUrl:
   ```
-   baseUrl: 'http://localhost:3001/',
+   baseUrl: 'http://localhost:3000/',
   ```
 - Add **e2e directory** in **cypress directory** then add your test files inside it using the following convention `fileName.cy.js`
 - If you would like to add code coverage for **E2E**, do the following [Documentations](https://github.com/cypress-io/code-coverage):
