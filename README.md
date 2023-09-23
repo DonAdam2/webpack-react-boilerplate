@@ -275,7 +275,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
   ```
   "cypress:prepare": "set BROWSER=none && set ENV=test && pnpm start", //starts the app without opening it in the browser
   "cypress:start": "start-server-and-test cypress:prepare 3000", //Runs the previous command and waits for localhost to start up
-  "cypress:open": "pnpm cypress:start \"cypress open\"", //Runs cypress tests in electron browser (recommended by cypress) and generates a coverage report
+  "cypress:open": "pnpm cypress:start \"cypress open\"", //Runs cypress tests in electron browser (recommended by cypress)
   "cypress:run": "pnpm cypress:start \"cypress run\"" //Runs cypress tests in headless mode (no browser)
   ```
 
