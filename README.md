@@ -284,6 +284,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
     ```
     "cypress:open": "pnpm cypress:start \"cypress open --e2e -b electron\""
     ```
+- Run `cypress:open` command and choose E2E to configure it
 - Open `cypress.config.js` file and add the baseUrl:
   ```
    baseUrl: 'http://localhost:3000/',
