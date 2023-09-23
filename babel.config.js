@@ -14,8 +14,7 @@ const hasJsxRuntime = (() => {
 module.exports = (api) => {
   api.cache.using(() => process.env.NODE_ENV);
 
-  return {
-    presets: [
+  const presets = [
       [
         '@babel/preset-env',
         {
@@ -28,11 +27,15 @@ module.exports = (api) => {
       ],
       ['@babel/preset-react', { runtime: hasJsxRuntime ? 'automatic' : 'classic' }],
     ],
-    plugins: [
+    plugins = [
       '@babel/plugin-transform-runtime',
       '@babel/plugin-syntax-dynamic-import',
       // Applies the react-refresh Babel plugin on non-production modes only
       ...(api.env() === 'development' ? ['react-refresh/babel'] : []),
-    ],
+    ];
+
+  return {
+    presets,
+    plugins,
   };
 };

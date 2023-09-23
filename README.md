@@ -13,6 +13,7 @@
 - [Enable PWA (production only)](#enable-pwa-pnpm-generate-progressivewebapp)
 - [Configuring prettier](#configuring-prettier)
 - [Site meta tags](#site-meta-tags)
+- [Add Cypress](#add-cypress)
 - [Extras](#extras)
 - [Code generator](#code-generator-using-plop)
 - [Available scripts](#available-scripts)
@@ -263,6 +264,59 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
   - It's very important to set `PRODUCTION_DOMAIN` in any production environment file, to generate site meta tags correctly
   - `PRODUCTION_DOMAIN` is the domain of your deployed app
+
+## Add Cypress:
+
+- Install the following packages:
+  ```
+  pnpm add -D cypress start-server-and-test
+  ```
+- Add the following scripts in `package.json`:
+  ```
+  "cypress:prepare": "set BROWSER=none && set ENV=test && pnpm start", //starts the app without opening it in the browser
+  "cypress:start": "start-server-and-test cypress:prepare 3000", //Runs the previous command and waits for localhost to start up
+  "cypress:open": "pnpm cypress:start \"cypress open\"", //Runs cypress tests in electron browser (recommended by cypress) and generates a coverage report
+  "cypress:run": "pnpm cypress:start \"cypress run\"" //Runs cypress tests in headless mode (no browser)
+  ```
+
+  - Note:
+    - If you would like to start the E2E tests automatically you can update `cypress:open` command to the following, but after running it at least once:
+    ```
+    "cypress:open": "pnpm cypress:start \"cypress open --e2e -b electron\""
+    ```
+- Open `cypress.config.js` file and add the baseUrl:
+  ```
+   baseUrl: 'http://localhost:3001/',
+  ```
+- Add **e2e directory** in **cypress directory** then add your test files inside it using the following convention `fileName.cy.js`
+- If you would like to add code coverage for **E2E**, do the following [Documentations](https://github.com/cypress-io/code-coverage):
+  - Install the following package:
+    ```
+    pnpm add -D @cypress/code-coverage
+    ```
+  - Import the installed package in `cypress.config.js` file:
+    ```
+    setupNodeEvents(on, config) {
+      require('@cypress/code-coverage/task')(on, config);
+      // include any other plugin code...
+
+      // It's IMPORTANT to return the config object
+      // with any changed environment variables
+      return config;
+    },
+    ```
+  - Add the following import in `cypress/support/e2e.js` file:
+    ```
+    import '@cypress/code-coverage/support';
+    ```
+  - Add the following to `babel.config.js` file before the return:
+    ```
+    if (process.env['ENV']?.trim() === 'test') {
+      plugins.push('istanbul');
+    }
+    ```
+    - Note:
+      - To open the coverage report go to `/coverage/lcov-report/index.html`
 
 ## Extras:
 
