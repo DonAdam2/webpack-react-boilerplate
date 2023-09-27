@@ -183,7 +183,7 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
 - Install the following packages:
   
   ```
-  pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window copy-webpack-plugin
+  pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window
   ```
 - Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
   - icon-192x192.png
