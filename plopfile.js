@@ -245,22 +245,6 @@ module.exports = (plop) => {
         templateFile: 'generatorTemplates/progressiveWebApp/swRegistration.js.hbs',
       },
       {
-        type: 'add',
-        path: `${publicDirectory}/manifest.json`,
-        templateFile: 'generatorTemplates/progressiveWebApp/manifest.json.hbs',
-      },
-      {
-        type: 'append',
-        path: `${publicDirectory}/index.html`,
-        pattern: `<!-- PLOP_INJECT_PWA_META-->`,
-        template: `<link rel="manifest" href="manifest.json" />
-            <meta name="theme-color" content="#ffffff" />
-            <link
-              rel="apple-touch-icon"
-              href="<%= htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/pwa/icon-192x192.png') %>"
-            />`,
-      },
-      {
         type: 'append',
         path: `${rootDirectory}/index.jsx`,
         pattern: `/* PLOP_INJECT_PWA_IMPORTS */`,
@@ -277,18 +261,60 @@ module.exports = (plop) => {
         path: `${buildToolsDirectory}/webpack.prod.js`,
         pattern: `/* PLOP_INJECT_PWA_IMPORTS */`,
         template: `{ InjectManifest } = require('workbox-webpack-plugin'),
-        CopyPlugin = require('copy-webpack-plugin'),`,
+                   WebpackPwaManifest = require('webpack-pwa-manifest'),`,
+      },
+      {
+        type: 'append',
+        path: `${buildToolsDirectory}/webpack.prod.js`,
+        pattern: `/* PLOP_INJECT_PWA_PATH_IMPORTS */`,
+        template: 'srcPath, publicDirPath',
       },
       {
         type: 'append',
         path: `${buildToolsDirectory}/webpack.prod.js`,
         pattern: `/* PLOP_INJECT_PWA_PLUGINS */`,
-        template: `new CopyPlugin({
-        patterns: [
-          { from: 'public/manifest.json', to: '' },
-          { from: 'public/assets/images/pwa', to: 'assets/images/pwa' },
+        template: `new WebpackPwaManifest({
+        theme_color: '#ffffff',
+        background_color: '#000000',
+        display: 'standalone',
+        scope: '/',
+        start_url: '/',
+        id: '/',
+        orientation: 'any',
+        name: 'website long name',
+        short_name: 'website short name',
+        description: 'website description',
+        categories: ['technology', 'web'],
+        icons: [
+          {
+            src: \`${publicDirPath}/assets/images/pwa/icon-192x192.png\`,
+            sizes: '192x192',
+            type: 'image/png',
+            purpose: 'maskable',
+            destination: \`assets/images/pwa\`,
+            ios: true,
+          },
+          {
+            src: \`${publicDirPath}/assets/images/pwa/icon-256x256.png\`,
+            sizes: '256x256',
+            type: 'image/png',
+            destination: \`assets/images/pwa\`,
+          },
+          {
+            src: \`${publicDirPath}/assets/images/pwa/icon-384x384.png\`,
+            sizes: '384x384',
+            type: 'image/png',
+            destination: \`assets/images/pwa\`,
+          },
+          {
+            src: \`${publicDirPath}/assets/images/pwa/icon-512x512.png\`,
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any',
+            destination: \`assets/images/pwa\`,
+          },
         ],
-        }),
+      }),
         new InjectManifest({
           //this is the source of your service worker setup
           swSrc: \`\${PATHS.src}/serviceWorker/swSource\`,

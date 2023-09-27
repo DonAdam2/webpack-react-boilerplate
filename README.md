@@ -183,14 +183,14 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
 - Install the following packages:
   
   ```
-  pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window
+  pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window webpack-pwa-manifest
   ```
 - Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
   - icon-192x192.png
   - icon-256x256.png
   - icon-384x384.png
   - icon-512x512.png
-- Open `/public/manifest.json` and update the following:
+- Open `/buildTools/webpack.prod.js` file and update manifest data in `WebpackPwaManifest` plugin:
   - start_url (indicates what page should launch when someone opens your progressive web app.)
   - theme_color (This sometimes affects how the OS displays the site (e.g., on Android's task switcher, the theme color surrounds the site).)
   - background_color (tells the browser what color to use on the startup splash screen that users will see when they launch your app.)
@@ -199,7 +199,6 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
   - description
   - orientation (you can enforce the orientation of your app, it can be ommited.)
   - categories (This is intended to be used by app stores to categorize your app.)
-- Open `/public/index.html` and update **theme-color** meta tag if you updated **theme_color** in **manifest.json** file
 - Update **cache APIs** section as needed in `/src/serviceWorker/swSource` file
 - You are good to go.
 

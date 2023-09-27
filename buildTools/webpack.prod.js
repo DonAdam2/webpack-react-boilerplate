@@ -13,7 +13,10 @@ const { merge } = require('webpack-merge'),
   /* PLOP_INJECT_PWA_IMPORTS */
   //constants
   { cssSubDirectory } = require('./constants'),
-  { environmentsPath } = require('./paths'),
+  {
+    environmentsPath,
+    /* PLOP_INJECT_PWA_PATH_IMPORTS */
+  } = require('./paths'),
   //helpers
   { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
 
