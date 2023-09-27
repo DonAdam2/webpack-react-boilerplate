@@ -283,37 +283,37 @@ module.exports = (plop) => {
         categories: ['technology', 'web'],
         icons: [
           {
-            src: \`${publicDirPath}/assets/images/pwa/icon-192x192.png\`,
+            src: \`\${publicDirPath}/assets/images/pwa/icon-192x192.png\`,
             sizes: '192x192',
             type: 'image/png',
             purpose: 'maskable',
-            destination: \`assets/images/pwa\`,
+            destination: 'assets/images/pwa',
             ios: true,
           },
           {
-            src: \`${publicDirPath}/assets/images/pwa/icon-256x256.png\`,
+            src: \`\${publicDirPath}/assets/images/pwa/icon-256x256.png\`,
             sizes: '256x256',
             type: 'image/png',
-            destination: \`assets/images/pwa\`,
+            destination: 'assets/images/pwa',
           },
           {
-            src: \`${publicDirPath}/assets/images/pwa/icon-384x384.png\`,
+            src: \`\${publicDirPath}/assets/images/pwa/icon-384x384.png\`,
             sizes: '384x384',
             type: 'image/png',
-            destination: \`assets/images/pwa\`,
+            destination: 'assets/images/pwa',
           },
           {
-            src: \`${publicDirPath}/assets/images/pwa/icon-512x512.png\`,
+            src: \`\${publicDirPath}/assets/images/pwa/icon-512x512.png\`,
             sizes: '512x512',
             type: 'image/png',
             purpose: 'any',
-            destination: \`assets/images/pwa\`,
+            destination: 'assets/images/pwa',
           },
         ],
       }),
         new InjectManifest({
           //this is the source of your service worker setup
-          swSrc: \`\${PATHS.src}/serviceWorker/swSource\`,
+          swSrc: \`\${srcPath}/serviceWorker/swSource\`,
           dontCacheBustURLsMatching: ${dontCacheBustURLsMatching},         
           // Bump up the default maximum size (2mb) to (5mb) that's precached,
           // to make lazy-loading failure scenarios less likely.
