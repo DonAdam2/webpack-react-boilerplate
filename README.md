@@ -186,10 +186,10 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
   pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window webpack-pwa-manifest
   ```
 - Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
-  - icon-192x192.png
-  - icon-256x256.png
-  - icon-384x384.png
-  - icon-512x512.png
+  - icon_192x192.png
+  - icon_256x256.png
+  - icon_384x384.png
+  - icon_512x512.png
 - Open `/buildTools/webpack.prod.js` file and update manifest data in `WebpackPwaManifest` plugin:
   - start_url (indicates what page should launch when someone opens your progressive web app.)
   - theme_color (This sometimes affects how the OS displays the site (e.g., on Android's task switcher, the theme color surrounds the site).)
