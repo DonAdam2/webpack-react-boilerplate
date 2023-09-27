@@ -8,13 +8,28 @@ const { merge } = require('webpack-merge'),
   CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
   TerserJSPlugin = require('terser-webpack-plugin'),
   { CleanWebpackPlugin } = require('clean-webpack-plugin'),
+  CopyPlugin = require('copy-webpack-plugin'),
   Dotenv = require('dotenv-webpack'),
   /* PLOP_INJECT_PWA_IMPORTS */
   //constants
   { cssSubDirectory } = require('./constants'),
-  { environmentsPath } = require('./paths');
+  { environmentsPath } = require('./paths'),
+  //helpers
+  { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
 
 module.exports = (env, options) => {
+  const containedDirectoriesInPublicDirectory = getDirectoryDirectories('public'),
+    containedDirectoriesInAssetsDirectory = getDirectoryDirectories('public/assets'),
+    containedFilesInPublicDirectory = getDirectoryFiles('public'),
+    containedFilesInAssetsDirectory = getDirectoryFiles('public/assets'),
+    inPublicOtherDirectories = containedDirectoriesInPublicDirectory.filter(
+      (el) => el !== 'assets'
+    ),
+    inAssetsOtherDirectories = containedDirectoriesInAssetsDirectory.filter(
+      (el) => el !== 'fonts' && el !== 'images'
+    ),
+    inPublicOtherFiles = containedFilesInPublicDirectory.filter((el) => el !== 'index.html');
+
   return merge(common(env, options), {
     performance: {
       hints: false,
@@ -75,6 +90,30 @@ module.exports = (env, options) => {
         path: `${environmentsPath}/.env`,
         systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
       }),
+      ...(inPublicOtherDirectories.length > 0 ||
+      inAssetsOtherDirectories.length > 0 ||
+      inPublicOtherFiles.length > 0 ||
+      containedFilesInAssetsDirectory.length > 0
+        ? [
+            new CopyPlugin({
+              patterns: [
+                {
+                  from: `public`,
+                  globOptions: {
+                    ignore: [
+                      //ignore __index.html__ file because it's injected using __HtmlWebpackPlugin__
+                      '**/index.html',
+                      //ignore images and fonts directory in public directory because it's handled using __asset/resource__ module
+                      '**/public/assets/images/**/*',
+                      '**/public/assets/fonts/**/*',
+                    ],
+                  },
+                  to: '',
+                },
+              ],
+            }),
+          ]
+        : []),
       /* PLOP_INJECT_PWA_PLUGINS */
     ],
   });

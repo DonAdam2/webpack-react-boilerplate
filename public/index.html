@@ -40,6 +40,7 @@
       name="twitter:image"
       content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
     />
+    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicon.png') %>" />
     <!--site meta tags-->
     <title><%= htmlWebpackPlugin.options.title %></title>
     <%if (process.env.NODE_ENV === 'production') { %>

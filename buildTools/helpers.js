@@ -1,5 +1,6 @@
-//the following module is used to generate incremental IDs for every entry
-const incstr = require('incstr');
+const fs = require('fs'),
+  //the following module is used to generate incremental IDs for every entry
+  incstr = require('incstr');
 
 const createUniqueIdGenerator = () => {
   const index = {};
@@ -37,4 +38,15 @@ module.exports = {
 
     return uniqueIdGenerator(componentName) + '_' + uniqueIdGenerator(localName);
   },
+  //git directories list of the given directory
+  getDirectoryDirectories: (dir) =>
+    fs.readdirSync(dir).filter(function (file) {
+      return fs.statSync(dir + '/' + file).isDirectory();
+    }),
+  //get files list of the given directory
+  getDirectoryFiles: (dir) =>
+    fs
+      .readdirSync(dir, { withFileTypes: true })
+      .filter((item) => !item.isDirectory())
+      .map((item) => item.name),
 };

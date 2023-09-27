@@ -180,7 +180,6 @@ module.exports = (env, options) => {
             template: `${publicDirPath}/index.html`,
             title,
             filename: 'index.html',
-            favicon: `${publicDirPath}/assets/images/favicon.png`,
             meta: {
               title,
               description,
