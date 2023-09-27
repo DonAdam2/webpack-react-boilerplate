@@ -1,9 +1,5 @@
-const {
-  isCssModules,
-  rootDirectory,
-  publicDirectory,
-  buildToolsDirectory,
-} = require('./buildTools/constants');
+const { isCssModules, rootDirectory, buildToolsDirectory } = require('./buildTools/constants'),
+  { publicDirPath } = require('./buildTools/paths');
 
 const requireField = (fieldName) => {
   return (value) => {
