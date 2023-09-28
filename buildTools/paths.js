@@ -13,7 +13,7 @@ module.exports = {
   jsDirectoryPath: resolveApp(`${rootDirectory}/js`),
   stylesDirectoryPath: resolveApp(`${rootDirectory}/scss`),
   swSourcePath: resolveApp(`${rootDirectory}/serviceWorker/swSource`),
-  swIconPath: (imageSrc) => resolveApp(`${rootDirectory}/${imageSrc}`),
+  swIconPath: (imageSrc) => resolveApp(`${publicDirectory}/${imageSrc}`),
   publicDirPath: resolveApp(publicDirectory),
   indexHtmlPath: resolveApp(`${publicDirectory}/index.html`),
   jestPath: resolveApp(jestDirectory),
