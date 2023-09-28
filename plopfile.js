@@ -262,7 +262,7 @@ module.exports = (plop) => {
         type: 'append',
         path: `${buildToolsDirectory}/webpack.prod.js`,
         pattern: `/* PLOP_INJECT_PWA_PATH_IMPORTS */`,
-        template: 'srcPath, publicDirPath',
+        template: 'swSourcePath, swIconPath',
       },
       {
         type: 'append',
@@ -282,7 +282,7 @@ module.exports = (plop) => {
           categories: ['technology', 'web'],
           icons: [
             {
-              src: \`\${publicDirPath}/assets/images/pwa/icon_192x192.png\`,
+              src: swIconPath('assets/images/pwa/icon_192x192.png),
               sizes: '192x192',
               type: 'image/png',
               purpose: 'maskable',
@@ -290,19 +290,19 @@ module.exports = (plop) => {
               ios: true,
             },
             {
-              src: \`\${publicDirPath}/assets/images/pwa/icon_256x256.png\`,
+              src: swIconPath('assets/images/pwa/icon_256x256.png),
               sizes: '256x256',
               type: 'image/png',
               destination: 'assets/images/pwa',
             },
             {
-              src: \`\${publicDirPath}/assets/images/pwa/icon_384x384.png\`,
+              src: swIconPath('assets/images/pwa/icon_384x384.png),
               sizes: '384x384',
               type: 'image/png',
               destination: 'assets/images/pwa',
             },
             {
-              src: \`\${publicDirPath}/assets/images/pwa/icon_512x512.png\`,
+              src: swIconPath('assets/images/pwa/icon_512x512.png),
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any',
@@ -312,7 +312,7 @@ module.exports = (plop) => {
         }),
         new InjectManifest({
           //this is the source of your service worker setup
-          swSrc: \`\${srcPath}/serviceWorker/swSource\`,
+          swSrc: swSourcePath,
           dontCacheBustURLsMatching: ${dontCacheBustURLsMatching},         
           // Bump up the default maximum size (2mb) to (5mb) that's precached,
           // to make lazy-loading failure scenarios less likely.

@@ -12,6 +12,8 @@ module.exports = {
   appIndexPath: resolveApp(`${rootDirectory}/index`),
   jsDirectoryPath: resolveApp(`${rootDirectory}/js`),
   stylesDirectoryPath: resolveApp(`${rootDirectory}/scss`),
+  swSourcePath: resolveApp(`${rootDirectory}/serviceWorker/swSource`),
+  swIconPath: (imageSrc) => resolveApp(`${rootDirectory}/${imageSrc}`),
   publicDirPath: resolveApp(publicDirectory),
   indexHtmlPath: resolveApp(`${publicDirectory}/index.html`),
   jestPath: resolveApp(jestDirectory),
