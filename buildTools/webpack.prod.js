@@ -14,7 +14,7 @@ const { merge } = require('webpack-merge'),
   //constants
   { cssSubDirectory } = require('./constants'),
   {
-    environmentsPath,
+    envProductionPath,
     /* PLOP_INJECT_PWA_PATH_IMPORTS */
   } = require('./paths'),
   //helpers
@@ -90,7 +90,7 @@ module.exports = (env, options) => {
         chunkFilename: cssSubDirectory + '[id].[contenthash:8].css',
       }),
       new Dotenv({
-        path: `${environmentsPath}/.env`,
+        path: envProductionPath,
         systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
       }),
       ...(inPublicOtherDirectories.length > 0 ||

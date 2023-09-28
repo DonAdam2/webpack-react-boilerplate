@@ -1,18 +1,21 @@
-const path = require('path'),
-  // __dirname is the absolute path to the root directory of our app
-  projectPath = `${path.join(__dirname)}/../`,
-  {
+const {
     outputDirectory,
     rootDirectory,
     publicDirectory,
     environmentsDirectory,
     jestDirectory,
-  } = require('./constants');
+  } = require('./constants'),
+  { resolveApp } = require('./helpers');
 
 module.exports = {
-  srcPath: path.join(projectPath, rootDirectory),
-  publicDirPath: path.join(projectPath, publicDirectory),
-  jestPath: path.join(projectPath, jestDirectory),
-  outputSrcPath: path.resolve(projectPath, outputDirectory),
-  environmentsPath: path.resolve(projectPath, environmentsDirectory),
+  srcPath: resolveApp(rootDirectory),
+  appIndexPath: resolveApp(`${rootDirectory}/index`),
+  jsDirectoryPath: resolveApp(`${rootDirectory}/js`),
+  stylesDirectoryPath: resolveApp(`${rootDirectory}/scss`),
+  publicDirPath: resolveApp(publicDirectory),
+  indexHtmlPath: resolveApp(`${publicDirectory}/index.html`),
+  jestPath: resolveApp(jestDirectory),
+  outputSrcPath: resolveApp(outputDirectory),
+  envDevelopmentPath: resolveApp(`${environmentsDirectory}/.env.development`),
+  envProductionPath: resolveApp(`${environmentsDirectory}/.env`),
 };

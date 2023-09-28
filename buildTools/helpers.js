@@ -1,4 +1,5 @@
 const fs = require('fs'),
+  path = require('path'),
   //the following module is used to generate incremental IDs for every entry
   incstr = require('incstr');
 
@@ -31,6 +32,9 @@ const createUniqueIdGenerator = () => {
 
 const uniqueIdGenerator = createUniqueIdGenerator();
 
+//link of our app directory
+const appDirectory = fs.realpathSync(process.cwd());
+
 module.exports = {
   //generates unique names => a_b, g_i, .etc
   generateScopedName: (localName, resourcePath) => {
@@ -49,4 +53,6 @@ module.exports = {
       .readdirSync(dir, { withFileTypes: true })
       .filter((item) => !item.isDirectory())
       .map((item) => item.name),
+  //get required link
+  resolveApp: (relativePath) => path.resolve(appDirectory, relativePath),
 };

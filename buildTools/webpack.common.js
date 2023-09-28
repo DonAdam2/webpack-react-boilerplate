@@ -12,7 +12,16 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin'),
     isCssModules,
     metaInfo: { title, description, keywords },
   } = require('./constants'),
-  { publicDirPath, srcPath, outputSrcPath, jestPath } = require('./paths'),
+  {
+    publicDirPath,
+    srcPath,
+    outputSrcPath,
+    jestPath,
+    appIndexPath,
+    jsDirectoryPath,
+    stylesDirectoryPath,
+    indexHtmlPath,
+  } = require('./paths'),
   //helpers
   { generateScopedName } = require('./helpers');
 
@@ -21,7 +30,7 @@ module.exports = (env, options) => {
   const isDevelopment = options.mode === 'development';
 
   return {
-    entry: `${srcPath}/index.jsx`,
+    entry: appIndexPath,
     output: {
       path: outputSrcPath,
       // hashes are very important in production for caching purposes
@@ -54,8 +63,8 @@ module.exports = (env, options) => {
       // declaring aliases to reduce the use of relative path
       alias: {
         '@/jest': jestPath,
-        '@/js': `${srcPath}/js`,
-        '@/scss': `${srcPath}/scss`,
+        '@/js': jsDirectoryPath,
+        '@/scss': stylesDirectoryPath,
         '@/public': publicDirPath,
       },
     },
@@ -177,7 +186,7 @@ module.exports = (env, options) => {
           {},
           {
             inject: true,
-            template: `${publicDirPath}/index.html`,
+            template: indexHtmlPath,
             title,
             filename: 'index.html',
             meta: {

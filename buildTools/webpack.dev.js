@@ -9,7 +9,7 @@ const { merge } = require('webpack-merge'),
   ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'),
   //constants
   { protocol, openInBrowser } = require('./constants'),
-  { environmentsPath } = require('./paths');
+  { envDevelopmentPath } = require('./paths');
 
 module.exports = (env, options) => {
   return merge(common(env, options), {
@@ -44,7 +44,7 @@ module.exports = (env, options) => {
       // enables fast refresh
       new ReactRefreshWebpackPlugin(),
       new Dotenv({
-        path: `${environmentsPath}/.env.development`,
+        path: envDevelopmentPath,
         systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)
       }),
     ],
