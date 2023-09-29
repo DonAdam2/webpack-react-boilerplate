@@ -42,7 +42,7 @@ module.exports = {
 
     return uniqueIdGenerator(componentName) + '_' + uniqueIdGenerator(localName);
   },
-  //git directories list of the given directory
+  //get directories list of the given directory
   getDirectoryDirectories: (dir) =>
     fs.readdirSync(dir).filter(function (file) {
       return fs.statSync(dir + '/' + file).isDirectory();
