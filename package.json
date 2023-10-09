@@ -76,6 +76,7 @@
     "mini-css-extract-plugin": "2.7.6",
     "node-polyfill-webpack-plugin": "^2.0.1",
     "plop": "^4.0.0",
+    "plop-action-eslint": "^0.4.0",
     "postcss": "^8.4.31",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-loader": "^7.3.3",
