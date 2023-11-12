@@ -12,7 +12,6 @@
       content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
     />
     <!--facebook meta tags-->
-    <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.meta.siteName %>" />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
@@ -25,22 +24,22 @@
       content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
     />
     <!--twitter meta tags-->
-    <meta
-      name="twitter:card"
-      content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
-    />
-    <meta
-      name="twitter:url"
-      content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %>"
-    />
     <meta name="twitter:title" content="<%= htmlWebpackPlugin.options.title %>" />
     <meta name="twitter:description" content="<%= htmlWebpackPlugin.options.meta.description %>" />
     <meta
       name="twitter:image"
       content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
     />
+    <meta
+      name="twitter:url"
+      content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %>"
+    />
     <!--site meta tags-->
-    <link rel="icon" type="image/png" href="<%= require('./assets/images/favicon.png') %>" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/favicon.png') %>"
+    />
     <title><%= htmlWebpackPlugin.options.title %></title>
     <%if (process.env.NODE_ENV === 'production') { %>
     <meta name="url" content="<%= process.env.PRODUCTION_DOMAIN %>" />

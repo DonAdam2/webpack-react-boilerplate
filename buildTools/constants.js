@@ -23,5 +23,6 @@ module.exports = {
     //max 150 (recommended)
     description: 'description',
     keywords: 'add you keywords',
+    twitterCardType: 'summary', //summary - summary_large_image - app
   },
 };
