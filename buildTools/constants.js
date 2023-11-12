@@ -16,8 +16,10 @@ module.exports = {
   cssSubDirectory: 'css/',
   isCssModules: false,
   metaInfo: {
+    //displayed in search engines at the top of URL
+    siteName: 'App site name',
     //max 60 (recommended)
-    title: 'Adam Morsi',
+    title: 'App title',
     //max 150 (recommended)
     description: 'description',
     keywords: 'add you keywords',

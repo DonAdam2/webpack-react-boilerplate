@@ -10,7 +10,7 @@ const NodePolyfillPlugin = require('node-polyfill-webpack-plugin'),
     devServer,
     jsSubDirectory,
     isCssModules,
-    metaInfo: { title, description, keywords },
+    metaInfo: { title, description, keywords, siteName },
   } = require('./constants'),
   {
     publicDirPath,
@@ -193,6 +193,7 @@ module.exports = (env, options) => {
               title,
               description,
               keywords,
+              siteName,
               //coming from scripts/start.js file
               ...(isDevelopment && { url: `${devServer}:${options.port}` }),
               'apple-mobile-web-app-capable': 'yes',
