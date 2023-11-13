@@ -12,6 +12,7 @@
       content="<%= process.env.NODE_ENV === 'production' ? process.env.PRODUCTION_DOMAIN : htmlWebpackPlugin.options.meta.url %><%= require('./assets/images/metaImage.jpg') %>"
     />
     <!--facebook meta tags-->
+    <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.meta.siteName %>" />
     <meta property="og:type" content="website" />
     <meta
       property="og:url"
