@@ -1,6 +1,6 @@
 import { useLocation, Navigate } from 'react-router-dom';
 //routes
-import { getLoginPageUrl } from '../routingConstants/AppUrls';
+import { getLoginPageUrl } from '@/js/routing/routingConstants/AppUrls';
 //constants
 import { isAuthenticated } from '@/js/constants/Helpers';
 
