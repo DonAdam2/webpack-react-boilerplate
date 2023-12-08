@@ -5,7 +5,7 @@ import renderWithProviders from '@/jest/mocks/RenderWithProviders';
 import App from './App';
 
 describe('App Component', () => {
-  test('renders webpack react boilerplate', async () => {
+  it('Should render app title', async () => {
     renderWithProviders(<App />);
     const title = await screen.findByRole('heading', { name: /webpack react boilerplate/i });
     expect(title).toBeInTheDocument();
