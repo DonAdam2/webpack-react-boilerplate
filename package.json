@@ -17,7 +17,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "webpack --config buildTools/webpack.prod.js --progress --color",
-    "build:serve": "serve dist --cors -p 8080",
+    "build:serve": "serve -s dist --cors -p 8080",
     "analyze-bundle": "pnpm build --json=stats.json && webpack-bundle-analyzer stats.json dist",
     "test": "jest -c jest/jest.config.js --verbose",
     "test:watch": "pnpm run test --watch",
