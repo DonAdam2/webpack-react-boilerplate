@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`testComponent.jsx snapshot renders correctly, truthy values 1`] = `
+exports[`TestComponent should render snapshot correctly, truthy values 1`] = `
 <div
   className="container"
 >
