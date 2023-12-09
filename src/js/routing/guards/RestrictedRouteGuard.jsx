@@ -4,7 +4,7 @@ import { getLoginPageUrl } from '../routingConstants/AppUrls';
 //constants
 import { isAuthenticated } from '@/js/constants/Helpers';
 //components
-import PermissionsCannotAccess from '../routingComponents/PermissionsCannotAccess';
+import PermissionsCannotAccess from '../routingComponents/permissionsCannotAccess/PermissionsCannotAccess';
 import RestrictedWrapper from '@/js/routing/routingComponents/RestrictedWrapper';
 
 const RestrictedRouteGuard = ({ children, requiredPermissions }) => {

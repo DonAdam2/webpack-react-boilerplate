@@ -10,7 +10,7 @@ import setupStore from '@/jest/mocks/store';
 import TestComponent from './TestComponent';
 
 describe('TestComponent', () => {
-  it('should render snapshot correctly, truthy values', () => {
+  it('renders snapshot correctly, truthy values', () => {
     const store = setupStore(),
       tree = renderer.create(
         <Provider store={store}>
@@ -20,17 +20,17 @@ describe('TestComponent', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should render environment API', () => {
+  it('renders environment API', () => {
     renderWithRedux(<TestComponent />);
     expect(screen.getByText(/Current environment API is/i)).toBeInTheDocument();
   });
 
-  it('should render testAction from store', () => {
+  it('renders testAction from store', () => {
     renderWithRedux(<TestComponent />);
     expect(screen.getByText(/initial test/i)).toBeInTheDocument();
   });
 
-  it('should update testAction when user clicks the button', () => {
+  it('updates testAction when user clicks the button', () => {
     //pass preloadedState if you need to pass custom state to the store
     /*renderWithRedux(<TestComponent />, {
       preloadedState: {

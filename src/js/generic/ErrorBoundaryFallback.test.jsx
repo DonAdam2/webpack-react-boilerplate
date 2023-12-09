@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import ErrorBoundaryFallback from './ErrorBoundaryFallback';
 
 describe('ErrorBoundaryFallback', () => {
-  it('should display error message and a reset button', () => {
+  it('displays error message and a reset button', () => {
     const errorMessage = 'An error has occurred';
     const resetErrorBoundary = jest.fn();
 

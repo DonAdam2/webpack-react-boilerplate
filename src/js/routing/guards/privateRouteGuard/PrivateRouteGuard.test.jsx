@@ -13,7 +13,7 @@ jest.mock('@/js/constants/Helpers', () => ({
 }));
 
 describe('PrivateRouteGuard', () => {
-  it('should render children when authenticated', async () => {
+  it('renders children when authenticated', async () => {
     isAuthenticated.mockReturnValue(true);
     const children = <div>Test</div>,
       { container } = renderWithRouter(<PrivateRouteGuard>{children}</PrivateRouteGuard>);
@@ -21,7 +21,7 @@ describe('PrivateRouteGuard', () => {
     await waitFor(() => expect(container).toContainHTML('<div>Test</div>'));
   });
 
-  it('should redirect to login page when not authenticated', async () => {
+  it('redirects to login page when not authenticated', async () => {
     isAuthenticated.mockReturnValue(false);
     const adminRoute = '/admin',
       routesConfig = [
