@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRouteGuard from '@/js/routing/guards/privateRouteGuard/PrivateRouteGuard';
 //constants
 import { isAuthenticated } from '@/js/constants/Helpers';
+import { getLoginPageUrl } from '@/js/routing/routingConstants/AppUrls';
 //jest mocks
 import renderWithRouter from '@/jest/mocks/RenderWithRouter';
 
@@ -26,7 +27,7 @@ describe('PrivateRouteGuard', () => {
     const adminRoute = '/admin',
       routesConfig = [
         { path: '/', element: <>Home Page</> },
-        { path: '/login', element: <>Login Page</> },
+        { path: getLoginPageUrl(), element: <>Login Page</> },
         {
           path: adminRoute,
           element: (

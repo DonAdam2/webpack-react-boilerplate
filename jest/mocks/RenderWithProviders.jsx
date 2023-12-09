@@ -1,7 +1,6 @@
-import React from 'react';
 // import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 // store
 import setupStore from '@/jest/mocks/store';
@@ -12,6 +11,8 @@ function renderWithProviders(
     preloadedState,
     // Automatically create a store instance if no store was passed in
     store = setupStore(preloadedState),
+    //use it if you want to navigate to a specific route
+    initialEntries = ['/'],
     locale = 'en',
     ...renderOptions
   } = {}
@@ -20,7 +21,7 @@ function renderWithProviders(
     return (
       // <IntlProvider locale={locale}>
       <Provider store={store}>
-        <BrowserRouter>{children}</BrowserRouter>
+        <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
       </Provider>
       // </IntlProvider>
     );
