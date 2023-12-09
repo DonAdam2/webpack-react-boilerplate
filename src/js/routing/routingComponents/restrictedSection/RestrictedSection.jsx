@@ -1,4 +1,4 @@
-import RestrictedWrapper from '@/js/routing/routingComponents/RestrictedWrapper';
+import RestrictedWrapper from '@/js/routing/routingComponents/restrictedWrapper/RestrictedWrapper';
 
 const RestrictedSection = ({ requiredPermissions, children }) => (
   <RestrictedWrapper requiredPermissions={requiredPermissions}>{children}</RestrictedWrapper>

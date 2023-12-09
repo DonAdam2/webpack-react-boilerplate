@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   testString: 'Initial test',
+  permissions: ['search', 'createUser', 'updateSubscription'],
 };
 
 const appSlice = createSlice({
