@@ -1,5 +1,5 @@
 ARG APP_ROOT_PATH="/usr/app"
-ARG NODE_VERSION="14"
+ARG NODE_VERSION="17"
 ARG PRODUCTION_ENV_FILE=".env"
 
 ##########################################################
@@ -10,9 +10,10 @@ ARG APP_ROOT_PATH
 
 WORKDIR $APP_ROOT_PATH
 
-COPY ../package.json ../yarn.lock $APP_ROOT_PATH
+COPY ../package.json ../pnpm-lock.yaml $APP_ROOT_PATH
 
-RUN yarn install --silent
+RUN npm install -g pnpm
+RUN pnpm install --silent
 
 ###################################################
 # Starting from application_base image above
@@ -22,7 +23,7 @@ FROM application_base as development
 
 # We are not copying anything because we are using bind mount in docker-compose file
 
-CMD ["yarn", "start"]
+CMD ["pnpm", "start"]
 
 ######################################################
 # Create reusable nginx (update it to meet your needs)
@@ -61,7 +62,7 @@ FROM build_base as production_build
 
 COPY ../environments/$PRODUCTION_ENV_FILE ./environments/$PRODUCTION_ENV_FILE
 
-RUN yarn build
+RUN pnpm build
 
 # step2 => copy react build from production_build into nginx
 FROM nginx_base as production

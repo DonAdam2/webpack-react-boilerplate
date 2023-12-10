@@ -2,7 +2,8 @@
   "name": "webpack-react-boilerplate",
   "version": "1.0.0",
   "engines": {
-    "node": ">=14.17.0"
+    "node": ">=17.0.0",
+    "pnpm": ">=8.0.0"
   },
   "repository": {
     "type": "git",

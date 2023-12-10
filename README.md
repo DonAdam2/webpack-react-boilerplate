@@ -30,7 +30,7 @@
 
 ## Prerequisites:
 
-- nodeJS > 14.X.X or Docker
+- nodeJS > 17.X.X or Docker
 
 ## Installing / Getting Started:
 
@@ -41,7 +41,7 @@
 - Install dependencies => `pnpm install`
 - Start the development server => `pnpm start`
 
-### Development (using Docker):
+### Development (using Docker) (port 3000):
 
 - Clone repo => `git clone git@github.com:DonAdam2/webpack-react-boilerplate.git`
 - Navigate to project directory `cd webpack-react-boilerplate`
@@ -94,7 +94,7 @@
   docker-compose up web-dev
   ```
 
-## Docker for production (_basic setup_) (modify it to your needs):
+## Docker for production (_basic setup_) (port 8080) (modify it to your needs):
 - Update the **_production_** section of the **_Dockerfile_** to meet your needs
 - Run the following command to build your image => `docker-compose up web-prod`
 
