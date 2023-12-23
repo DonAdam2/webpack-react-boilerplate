@@ -34,9 +34,9 @@ module.exports = (env, options) => {
     output: {
       path: outputSrcPath,
       // hashes are very important in production for caching purposes
-      filename: jsSubDirectory + 'bundle.[contenthash:8].js',
+      filename: jsSubDirectory + '[name].[contenthash:8].js',
       // used for the lazy loaded component
-      chunkFilename: jsSubDirectory + '[name].[contenthash:8].js',
+      chunkFilename: jsSubDirectory + 'chunk.[contenthash:8].js',
       publicPath: '/',
       assetModuleFilename: (pathData) => {
         //allows us to have the same folder structure of assets as we have it in /public
