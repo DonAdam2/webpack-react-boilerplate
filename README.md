@@ -50,6 +50,8 @@
 - Install dependencies (required for prettier) => `pnpm install`
 - Start the development server => `docker-compose up web-dev`
 
+<p dir="rtl"><a href="#table-of-contents">Back to top</a></p>
+
 ### Windows subsystem for linux "WSL2" (for Docker):
 
 - If you are using Windows 11 or 10, it's recommended to use WSL2:
