@@ -28,6 +28,8 @@
 - Docker setup for development
 - Docker setup for production (basic setup **using nginx**)
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Prerequisites:
 
 - nodeJS > 17.X.X or Docker
@@ -94,9 +96,13 @@
   docker-compose up web-dev
   ```
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Docker for production (_basic setup_) (port 8080) (modify it to your needs):
 - Update the **_production_** section of the **_Dockerfile_** to meet your needs
 - Run the following command to build your image => `docker-compose up web-prod`
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
 
 ## Available React configurations:
 
@@ -104,12 +110,16 @@
 - Redux toolkit with Redux logger & Redux devTool
 - 2 environments {production: .env, development: .env.development}
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Available Jest mocks:
 
 - RenderWithRedux => overrides the render method of RTL with redux
 - RenderWithReactIntl => overrides the render method of RTL with react-intl provider (if you are using it you need to download it)
 - RenderWithRouter => overrides the render method of RTL with react router
 - RenderWithProviders => overrides the render method of RTL with all providers
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
 
 ## Available aliases:
 - @/jest => for the jest directory
@@ -125,6 +135,8 @@
     src: url('~@/public/asstes/fonts/Roboto-Regular.ttf');
   }
   ```
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
 
 ## Environments:
 
@@ -153,6 +165,8 @@
 
 Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (pnpm start, pnpm build) if you update the environment file.
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Enable CSS modules:
 ### Each component has its own styles "no conflict between different components styles"
 
@@ -169,13 +183,19 @@ Please keep in mind that environment variables configured using webpack which me
     - In development class names will be in (componentName_class-name) format => e.g. `box_box-wrapper`
     - In production class names will be in (letter_letter) unique format to **reduce the bundle size** => e.g. `a_i`
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Enable HTTPS in development `pnpm start`
 
 Add `set HTTPS=true` to `pnpm start` script => `"start": "set HTTPS=true && node scripts/start.js"`
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Start the development server without opening the app in the browser `pnpm start`
 
 Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && node scripts/start.js"`
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
 
 ## Enable PWA `pnpm generate progressiveWebApp`
 
@@ -224,6 +244,8 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
   }),`,
   ```
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Configuring Prettier
 
 This build relies on [Prettier formatter](https://prettier.io/) to enforce code style. And [ESLint](https://eslint.org/) for identifying problematic patterns found in the code.
@@ -250,6 +272,8 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
   3- Please refer to other tutorials if you are using a different IDE.
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Site meta tags:
 
 - This app includes search engines, Facebook, Twitter and regular meta tags
@@ -263,6 +287,8 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
   - It's very important to set `PRODUCTION_DOMAIN` in any production environment file, to generate site meta tags correctly
   - `PRODUCTION_DOMAIN` is the domain of your deployed app
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
 
 ## Add Cypress:
 
@@ -318,6 +344,8 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
     - Note:
       - To open the coverage report go to `/coverage/lcov-report/index.html`
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Extras:
 
 - Private route guard => protect the given route based on a token.
@@ -331,6 +359,8 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - App typography styles `(scss/generic/_typography.scss)`
 - 4 break points `(scss/generic/_variables.scss)`
 
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+
 ## Code generator (using plop):
 ### It allows you to generate the following (pnpm generate):
 - Components
@@ -340,6 +370,8 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - Services
 - Reducers
 - progressiveWebApp
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
 
 ## Available Scripts
 
@@ -397,3 +429,5 @@ Clears test cache.
 ### `pnpm generate` **_component_** || **_container_** || **_page_** || **_hook_** || **_service_** || **_reducer_** || **_progressiveWebApp_**
 
 - It creates a boilerplate for component, container, page, custom hook, service, reducer or progressive web app setup.
+
+<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
