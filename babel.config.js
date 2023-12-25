@@ -29,7 +29,6 @@ module.exports = (api) => {
     ],
     plugins = [
       '@babel/plugin-transform-runtime',
-      '@babel/plugin-syntax-dynamic-import',
       'babel-plugin-macros',
       // Applies the react-refresh Babel plugin on non-production modes only
       ...(api.env() === 'development' ? ['react-refresh/babel'] : []),
