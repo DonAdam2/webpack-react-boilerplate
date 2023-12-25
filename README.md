@@ -28,7 +28,7 @@
 - Docker setup for development
 - Docker setup for production (basic setup **using nginx**)
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Prerequisites:
 
@@ -96,13 +96,13 @@
   docker-compose up web-dev
   ```
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Docker for production (_basic setup_) (port 8080) (modify it to your needs):
 - Update the **_production_** section of the **_Dockerfile_** to meet your needs
 - Run the following command to build your image => `docker-compose up web-prod`
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Available React configurations:
 
@@ -110,7 +110,7 @@
 - Redux toolkit with Redux logger & Redux devTool
 - 2 environments {production: .env, development: .env.development}
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Available Jest mocks:
 
@@ -119,7 +119,7 @@
 - RenderWithRouter => overrides the render method of RTL with react router
 - RenderWithProviders => overrides the render method of RTL with all providers
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Available aliases:
 - @/jest => for the jest directory
@@ -136,7 +136,7 @@
   }
   ```
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Environments:
 
@@ -165,7 +165,7 @@
 
 Please keep in mind that environment variables configured using webpack which means that you need to re-run the corresponding environment script (pnpm start, pnpm build) if you update the environment file.
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Enable CSS modules:
 ### Each component has its own styles "no conflict between different components styles"
@@ -183,19 +183,19 @@ Please keep in mind that environment variables configured using webpack which me
     - In development class names will be in (componentName_class-name) format => e.g. `box_box-wrapper`
     - In production class names will be in (letter_letter) unique format to **reduce the bundle size** => e.g. `a_i`
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Enable HTTPS in development `pnpm start`
 
 Add `set HTTPS=true` to `pnpm start` script => `"start": "set HTTPS=true && node scripts/start.js"`
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Start the development server without opening the app in the browser `pnpm start`
 
 Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && node scripts/start.js"`
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Enable PWA `pnpm generate progressiveWebApp`
 
@@ -244,7 +244,7 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
   }),`,
   ```
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Configuring Prettier
 
@@ -272,7 +272,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 
   3- Please refer to other tutorials if you are using a different IDE.
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Site meta tags:
 
@@ -288,7 +288,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
   - It's very important to set `PRODUCTION_DOMAIN` in any production environment file, to generate site meta tags correctly
   - `PRODUCTION_DOMAIN` is the domain of your deployed app
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Add Cypress:
 
@@ -344,7 +344,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
     - Note:
       - To open the coverage report go to `/coverage/lcov-report/index.html`
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Extras:
 
@@ -359,7 +359,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - App typography styles `(scss/generic/_typography.scss)`
 - 4 break points `(scss/generic/_variables.scss)`
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Code generator (using plop):
 ### It allows you to generate the following (pnpm generate):
@@ -371,7 +371,7 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
 - Reducers
 - progressiveWebApp
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
 
 ## Available Scripts
 
@@ -430,4 +430,4 @@ Clears test cache.
 
 - It creates a boilerplate for component, container, page, custom hook, service, reducer or progressive web app setup.
 
-<div style="text-align: right"><a href="#table-of-contents">Back to top</a></div>
+<p style="text-align: right"><a href="#table-of-contents">Back to top</a></p>
