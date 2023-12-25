@@ -34,7 +34,7 @@
     "test:clear": "pnpm run test --clearCache",
     "generate": "plop"
   },
-  "author": "Adam Morsi",
+  "author": "Adam Morsi <adam.morsi@yahoo.com> (https://github.com/DonAdam2)",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.23.5",
