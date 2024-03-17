@@ -161,8 +161,8 @@ devDependencies:
     specifier: ^4.0.1
     version: 4.0.1
   plop-action-eslint:
-    specifier: ^0.4.0
-    version: 0.4.0(eslint@8.57.0)(plop@4.0.1)
+    specifier: ^1.0.0
+    version: 1.0.0(eslint@8.57.0)(plop@4.0.1)
   postcss:
     specifier: ^8.4.35
     version: 8.4.35
@@ -9002,12 +9002,12 @@ packages:
       find-up: 6.3.0
     dev: true
 
-  /plop-action-eslint@0.4.0(eslint@8.57.0)(plop@4.0.1):
-    resolution: {integrity: sha512-MyJob45CVtoUEusGp/OQ13cSfY/raJ2S3z1Em3GvGPPXYKGjmaf7GrrCu6N7CudmzbPCdN2lKOYVq5YMMue/bg==}
-    engines: {node: ^14.13.1 || ^16.x || ^18.x}
+  /plop-action-eslint@1.0.0(eslint@8.57.0)(plop@4.0.1):
+    resolution: {integrity: sha512-i8eOU9PPg6pnYYniRwWpqNfQ4GzMUZylCVFbCTvYk1+0xc3ybUE5MyUlzFBqISpbfjakNydRsaTHO9JFPBJ6Hg==}
+    engines: {node: '>=18'}
     peerDependencies:
       eslint: ^8.19.0
-      plop: ^3.1.1
+      plop: ^3.1.2
     dependencies:
       eslint: 8.57.0
       plop: 4.0.1
