@@ -114,10 +114,10 @@
     "webpack-merge": "5.10.0"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "2.2.1",
+    "@reduxjs/toolkit": "2.2.3",
     "crypto-js": "4.2.0",
     "react-error-boundary": "4.0.13",
-    "react-redux": "9.1.0",
+    "react-redux": "9.1.1",
     "react-router-dom": "6.22.3"
   }
 }
