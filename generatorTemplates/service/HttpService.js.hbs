@@ -1,11 +1,11 @@
-import axios, {AxiosHeaders} from 'axios';
+import axios, { AxiosHeaders } from 'axios';
 // lodash
 // import { cloneDeep } from 'lodash';
 
 const createNewBaseUrl = (url) =>
-	axios.create({
-		baseURL: url,
-	});
+  axios.create({
+    baseURL: url,
+  });
 
 const apiService = createNewBaseUrl(process.env.BASE_URL);
 
@@ -20,13 +20,13 @@ const requestInterceptor = (config) => {
 };
 
 const requestInterceptorError = (error) => {
-	console.log('there is a request error', error);
-	return Promise.reject(error);
+  console.log('there is a request error', error);
+  return Promise.reject(error);
 };
 
 const responseInterceptor = (response) => {
-	// console.log('response interceptor:', response);
-	return response;
+  // console.log('response interceptor:', response);
+  return response;
 };
 
 // delay the required request using the given time
@@ -36,38 +36,38 @@ const responseInterceptor = (response) => {
 	});*/
 
 const responseInterceptorError = (error) => {
-	const { config, response } = error;
-	console.log('response interceptor error:', response);
+  const { config, response } = error;
+  console.log('response interceptor error:', response);
 
-	/*if (response?.status === 401) {
-		// handle authorization error
-	}*/
+  /*if (response?.status === 401) {
+    // handle authorization error
+  }*/
 
-	// handle internal server error by adding a retry
-	// logic after the given delay for the given retry times
-	/*if (response?.status === 500) {
-		const clonedConfig = cloneDeep(config);
-		let retryTimes;
-		if (clonedConfig.retryTimes === undefined) {
-			// it should be (required retry times - 1)
-			// (eg: if required retry times is 5 then retryTimes = 4)
-			retryTimes = 4;
-		} else if (clonedConfig.retryTimes > 0) {
-			retryTimes = clonedConfig.retryTimes - 1;
-		}
+  // handle internal server error by adding a retry
+  // logic after the given delay for the given retry times
+  /*if (response?.status === 500) {
+    const clonedConfig = cloneDeep(config);
+    let retryTimes;
+    if (clonedConfig.retryTimes === undefined) {
+      // it should be (required retry times - 1)
+      // (eg: if required retry times is 5 then retryTimes = 4)
+      retryTimes = 4;
+    } else if (clonedConfig.retryTimes > 0) {
+      retryTimes = clonedConfig.retryTimes - 1;
+    }
 
-		if (retryTimes !== undefined) {
-			clonedConfig.retryTimes = retryTimes;
-			return delayRequest({ delay: 5000, originalRequest: clonedConfig });
-		}
-	}*/
+    if (retryTimes !== undefined) {
+      clonedConfig.retryTimes = retryTimes;
+      return delayRequest({ delay: 5000, originalRequest: clonedConfig });
+    }
+  }*/
 
-	return Promise.reject(error);
+  return Promise.reject(error);
 };
 
 const addInterceptors = (axiosInstance) => {
-	axiosInstance.interceptors.request.use(requestInterceptor, requestInterceptorError);
-	axiosInstance.interceptors.response.use(responseInterceptor, responseInterceptorError);
+  axiosInstance.interceptors.request.use(requestInterceptor, requestInterceptorError);
+  axiosInstance.interceptors.response.use(responseInterceptor, responseInterceptorError);
 };
 
 addInterceptors(apiService);

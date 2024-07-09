@@ -44,7 +44,7 @@ FROM application_base as build_base
 
 COPY ../buildTools ./buildTools
 COPY ../babel.config.js ./babel.config.js
-COPY ../.eslintrc.js ./.eslintrc.js
+COPY ../eslint.config.js ./eslint.config.js
 COPY ../jsconfig.json ./jsconfig.json
 COPY ../.prettierrc ./.prettierrc
 COPY ../.prettierignore ./.prettierignore

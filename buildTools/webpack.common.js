@@ -59,7 +59,7 @@ module.exports = (env, options) => {
       },
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.json'],
+      extensions: ['.js', '.jsx', '.mjs', '.json'],
       // declaring aliases to reduce the use of relative path
       alias: {
         '@/jest': jestPath,
@@ -180,6 +180,8 @@ module.exports = (env, options) => {
     plugins: [
       new EsLintPlugin({
         extensions: ['.js', '.jsx', '.json'],
+        configType: 'flat',
+        eslintPath: 'eslint/use-at-your-own-risk',
       }),
       new HtmlWebpackPlugin(
         Object.assign(

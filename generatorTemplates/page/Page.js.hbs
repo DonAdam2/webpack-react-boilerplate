@@ -1,18 +1,10 @@
 {{#if isCssModules}}
-  // styles
-  import classes from './{{pascalCase name}}Page.scss';
-{{/if}}
+// styles
+import classes from './{{pascalCase name}}Page.scss';
 
+{{/if}}
 const {{pascalCase name}}Page = () => {
-  return (
-    {{#if isCssModules}}
-      <div  className={classes.{{camelCase name}}Wrapper}>
-    {{else}}
-      <div  className="{{dashCase name}}-wrapper">
-    {{/if}}
-      {{pascalCase name}}Page
-    </div>
-  );
+  return {{#if isCssModules}}<div className={classes.{{camelCase name}}Wrapper}>{{else}}<div className="{{dashCase name}}-wrapper">{{/if}}{{pascalCase name}}Page</div>;
 };
 
 export default {{pascalCase name}}Page;
