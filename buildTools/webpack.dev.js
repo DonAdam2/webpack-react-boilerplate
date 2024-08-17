@@ -11,10 +11,10 @@ const { merge } = require('webpack-merge'),
   { protocol, openInBrowser } = require('./constants'),
   { envDevelopmentPath } = require('./paths');
 
-module.exports = (env, options) => {
-  return merge(common(env, options), {
+module.exports = (env, options) =>
+  merge(common(env, options), {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'eval',
     //required for hot reload
     target: 'web',
     devServer: {
@@ -49,4 +49,3 @@ module.exports = (env, options) => {
       }),
     ],
   });
-};

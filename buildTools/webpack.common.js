@@ -111,13 +111,8 @@ module.exports = (env, options) => {
                       modules: {
                         //exclude external styles from css modules transformation
                         auto: (resourcePath) => !resourcePath.includes('node_modules'),
-                        mode: (resourcePath) => {
-                          if (/global.scss$/i.test(resourcePath)) {
-                            return 'global';
-                          }
-
-                          return 'local';
-                        },
+                        mode: (resourcePath) =>
+                          /global.scss$/i.test(resourcePath) ? 'global' : 'local',
                         ...(isDevelopment
                           ? {
                               //e.g. box_box-wrapper
