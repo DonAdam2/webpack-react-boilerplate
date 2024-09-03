@@ -125,7 +125,7 @@ module.exports = (env, options) => {
                             }),
                         localIdentContext: srcPath,
                         localIdentHashSalt: 'react-boilerplate',
-                        exportLocalsConvention: 'camelCaseOnly',
+                        exportLocalsConvention: 'camel-case-only',
                         namedExport: false,
                       },
                     }
