@@ -135,6 +135,9 @@
   @font-face {
     font-family: 'Roboto';
     src: url('~@/public/asstes/fonts/Roboto-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
   }
   ```
 
