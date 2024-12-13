@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom';
-import { cleanup } from '@testing-library/react';
+import { TextEncoder, TextDecoder } from 'util';
 
-afterEach(() => {
-  cleanup();
-});
+global.TextEncoder = TextEncoder;
+global.TextDecoder = TextDecoder;

@@ -7,7 +7,7 @@ const Webpack = require('webpack'),
   //used to enforce user input
   prompts = require('prompts'),
   //used to detect if the selected port is in use or not and to suggest the next available port
-  detect = require('detect-port'),
+  { detect } = require('detect-port'),
   //constants
   { port } = require('../buildTools/constants');
 
