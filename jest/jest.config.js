@@ -23,7 +23,7 @@ module.exports = {
     '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json)$)': '<rootDir>/transforms/fileTransform.js',
   },
   transformIgnorePatterns: [
-    '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|cjs|ts|tsx)$',
+    '[/\\\\]node_modules[/\\\\](?!.*react-error-boundary).+\\.(js|jsx|mjs|cjs|ts|tsx)$',
     '^.+\\.(css|sass|scss)$',
   ],
   modulePaths: [],
@@ -31,8 +31,6 @@ module.exports = {
   moduleNameMapper: {
     // for css modules
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
-    // mock ES modules packages
-    '^react-error-boundary$': '<rootDir>/mocks/ReactErrorBoundary.jsx',
     // declaring alias for reducing the use of relative path
     '^@/jest(.*)$': '<rootDir>$1',
     '^@/js(.*)$': `<rootDir>/../${rootDirectory}/js/$1`,
