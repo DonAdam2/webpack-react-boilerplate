@@ -31,6 +31,8 @@ module.exports = {
   moduleNameMapper: {
     // for css modules
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
+    // mock ES modules packages
+    '^react-error-boundary$': '<rootDir>/mocks/ReactErrorBoundary.jsx',
     // declaring alias for reducing the use of relative path
     '^@/jest(.*)$': '<rootDir>$1',
     '^@/js(.*)$': `<rootDir>/../${rootDirectory}/js/$1`,

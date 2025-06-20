@@ -15,6 +15,7 @@ class LocalStorageManager {
       try {
         return decryptData(value);
       } catch (e) {
+        console.error(`Error decrypting data for key "${key}":`, e);
         return value;
       }
     }
