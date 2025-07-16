@@ -178,8 +178,19 @@ module.exports = (env, options) => {
     plugins: [
       new EsLintPlugin({
         extensions: ['.js', '.jsx', '.json'],
-        configType: 'flat',
-        eslintPath: 'eslint/use-at-your-own-risk',
+        context: srcPath,
+        cache: true,
+        cacheLocation: path.resolve('node_modules/.cache/.eslintcache'),
+        // Development-specific options
+        failOnError: !isDevelopment,
+        failOnWarning: false,
+        emitError: true,
+        emitWarning: true,
+        // Only display errors/warnings on the overlay, don't block compilation in dev
+        ...(isDevelopment && {
+          quiet: false,
+          fix: false,
+        }),
       }),
       new HtmlWebpackPlugin(
         Object.assign(

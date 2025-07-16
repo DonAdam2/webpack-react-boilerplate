@@ -84,6 +84,7 @@ module.exports = [
       'no-unused-vars': 'warn',
       'no-empty': 'warn',
       'react/prop-types': 'off',
+      'react/no-unescaped-entities': 'off',
 
       // Ensure React hooks rules are active
       'react-hooks/rules-of-hooks': 'error',
