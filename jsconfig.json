@@ -5,7 +5,15 @@
     "baseUrl": ".",
     "paths": {
       "@/jest/*": ["./jest/*"],
-      "@/js/*": ["./src/js/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/managers/*": ["./src/managers/*"],
+      "@/routing/*": ["./src/routing/*"],
+      "@/store/*": ["./src/store/*"],
+      "@/services/*": ["./src/services/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/components/*": ["./src/components/*"],
       "@/scss/*": ["./src/scss/*"],
       "@/public/*": ["./public/*"]
     }

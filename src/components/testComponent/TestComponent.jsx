@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 //selectors
-import { getTestAction } from '@/js/store/app/selectors/AppSelectors';
+import { getTestAction } from '@/store/app/selectors/AppSelectors';
 //actions
-import { updateTestString } from '@/js/store/app/slices/AppSlice';
+import { updateTestString } from '@/store/app/slices/AppSlice';
 
 const TestComponent = () => {
   const dispatch = useDispatch(),

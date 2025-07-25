@@ -1,7 +1,7 @@
 //constants
-import { decryptData, encryptData } from '../constants/Helpers';
+import { decryptData, encryptData } from '@/constants/Helpers';
 //managers
-import SharedManager, { AvailableStorages } from '@/js/managers/SharedManager';
+import SharedManager, { AvailableStorages } from './SharedManager';
 
 class SessionStorageManager {
   static setItem(key, data) {

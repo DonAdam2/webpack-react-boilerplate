@@ -1,15 +1,15 @@
 import { waitFor } from '@testing-library/react';
 import { Routes, Route } from 'react-router-dom';
 //routing
-import PrivateRouteGuard from '@/js/routing/guards/privateRouteGuard/PrivateRouteGuard';
+import PrivateRouteGuard from './PrivateRouteGuard';
 //constants
-import { isAuthenticated } from '@/js/constants/Helpers';
-import { getLoginPageUrl } from '@/js/routing/routingConstants/AppUrls';
+import { isAuthenticated } from '@/constants/Helpers';
+import { getLoginPageUrl } from '@/routing/routingConstants/AppUrls';
 //jest mocks
 import renderWithRouter from '@/jest/mocks/RenderWithRouter';
 
 //mock isAuthenticated function
-jest.mock('@/js/constants/Helpers', () => ({
+jest.mock('@/constants/Helpers', () => ({
   isAuthenticated: jest.fn(),
 }));
 

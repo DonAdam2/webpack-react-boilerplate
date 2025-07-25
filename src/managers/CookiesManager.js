@@ -1,5 +1,5 @@
 //constants
-import { decryptData, encryptData } from '../constants/Helpers';
+import { decryptData, encryptData } from '@/constants/Helpers';
 
 class CookiesManager {
   //used to:

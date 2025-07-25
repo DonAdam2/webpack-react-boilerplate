@@ -1,11 +1,11 @@
 import { Navigate, useLocation } from 'react-router-dom';
 //routes
-import { getLoginPageUrl } from '../../routingConstants/AppUrls';
+import { getLoginPageUrl } from '@/routing/routingConstants/AppUrls';
 //constants
-import { isAuthenticated } from '@/js/constants/Helpers';
+import { isAuthenticated } from '@/constants/Helpers';
 //components
-import PermissionsCannotAccess from '../../routingComponents/permissionsCannotAccess/PermissionsCannotAccess';
-import RestrictedWrapper from '@/js/routing/routingComponents/restrictedWrapper/RestrictedWrapper';
+import PermissionsCannotAccess from '@/routing/routingComponents/permissionsCannotAccess/PermissionsCannotAccess';
+import RestrictedWrapper from '@/routing/routingComponents/restrictedWrapper/RestrictedWrapper';
 
 const RestrictedRouteGuard = ({ children, requiredPermissions }) => {
   const location = useLocation();

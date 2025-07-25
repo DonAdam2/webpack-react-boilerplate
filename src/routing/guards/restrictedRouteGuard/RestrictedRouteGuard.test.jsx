@@ -2,15 +2,15 @@ import { waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Route, Routes } from 'react-router-dom';
 //routing
-import RestrictedRouteGuard from '@/js/routing/guards/restrictedRouteGuard/RestrictedRouteGuard';
+import RestrictedRouteGuard from './RestrictedRouteGuard';
 //jest mocks
 import renderWithProviders from '@/jest/mocks/RenderWithProviders';
 //constants
-import { isAuthenticated } from '@/js/constants/Helpers';
-import { getLoginPageUrl } from '@/js/routing/routingConstants/AppUrls';
+import { isAuthenticated } from '@/constants/Helpers';
+import { getLoginPageUrl } from '@/routing/routingConstants/AppUrls';
 
 //mock isAuthenticated function
-jest.mock('@/js/constants/Helpers', () => ({
+jest.mock('@/constants/Helpers', () => ({
   isAuthenticated: jest.fn(),
 }));
 

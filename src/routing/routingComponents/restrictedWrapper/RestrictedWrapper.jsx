@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 //selectors
 //replace the following with your own selector
-import { getAppUserPermissionsList } from '@/js/store/app/selectors/AppSelectors';
+import { getAppUserPermissionsList } from '@/store/app/selectors/AppSelectors';
 
 const RestrictedWrapper = ({ requiredPermissions, children, notPermittedComponent }) => {
   const userPermissionsList = useSelector((state) => getAppUserPermissionsList({ state }));
