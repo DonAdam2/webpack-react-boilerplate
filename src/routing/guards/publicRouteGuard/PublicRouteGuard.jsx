@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
-//routes
+
 import { getHomePageUrl } from '@/routing/routingConstants/AppUrls';
-//constants
+
 import { isAuthenticated } from '@/constants/Helpers';
 
 //used to load authentication routes (ex: login, signup, ...etc) and public routes

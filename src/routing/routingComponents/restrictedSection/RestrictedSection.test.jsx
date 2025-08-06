@@ -1,6 +1,8 @@
 import { screen } from '@testing-library/react';
-import RestrictedSection from './RestrictedSection';
+
 import renderWithRedux from '@/jest/mocks/RenderWithRedux';
+
+import RestrictedSection from './RestrictedSection';
 
 const mockPermissions = ['search', 'createUser'];
 

@@ -1,5 +1,5 @@
-//constants
 import { decryptData, encryptData } from '@/constants/Helpers';
+
 import SharedManager, { AvailableStorages } from './SharedManager';
 
 class LocalStorageManager {

@@ -7,6 +7,7 @@ const path = require('path'),
   jestDom = require('eslint-plugin-jest-dom'),
   prettier = require('eslint-plugin-prettier'),
   prettierConfig = require('eslint-config-prettier'),
+  importPlugin = require('eslint-plugin-import'),
   babelParser = require('@babel/eslint-parser'),
   globals = require('globals');
 
@@ -16,6 +17,11 @@ module.exports = [
 
   // Prettier config (disables conflicting rules)
   prettierConfig,
+
+  // Ignore ESLint config files
+  {
+    ignores: ['eslint.config.js', 'eslint.config.*.js'],
+  },
 
   // Main configuration
   {
@@ -61,6 +67,7 @@ module.exports = [
       'testing-library': testingLibrary,
       'jest-dom': jestDom,
       prettier: prettier,
+      import: importPlugin,
     },
     rules: {
       // React recommended rules
@@ -79,6 +86,103 @@ module.exports = [
       // Jest DOM recommended
       ...jestDom.configs.recommended.rules,
 
+      // Import sorting and organization
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin', // Node.js built-in modules
+            'external', // External packages
+            'internal', // Internal modules (@ prefixed)
+            'parent', // Parent imports (../)
+            'sibling', // Sibling imports (./)
+            'index', // Index imports (./)
+          ],
+          pathGroups: [
+            {
+              pattern: 'react',
+              group: 'external',
+              position: 'before',
+            },
+            {
+              pattern: 'react-**',
+              group: 'external',
+              position: 'before',
+            },
+            {
+              pattern: '@/jest/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/store/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/services/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/hooks/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/managers/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/routing/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/pages/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/components/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/constants/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/scss/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/assets/**',
+              group: 'internal',
+              position: 'before',
+            },
+            {
+              pattern: '@/public/**',
+              group: 'internal',
+              position: 'before',
+            },
+          ],
+          pathGroupsExcludedImportTypes: ['react'],
+          'newlines-between': 'always',
+          alphabetize: {
+            order: 'asc',
+            caseInsensitive: true,
+          },
+        },
+      ],
+      'import/no-unresolved': 'error',
+      'import/named': 'error',
+      'import/default': 'error',
+      'import/export': 'error',
+
       // Custom overrides
       'prettier/prettier': 'error',
       'no-unused-vars': 'warn',
@@ -91,7 +195,12 @@ module.exports = [
       'react-hooks/exhaustive-deps': 'warn',
     },
     settings: {
-      'import/resolver': 'webpack',
+      'import/resolver': {
+        webpack: {
+          config: path.join(__dirname, 'buildTools/webpack.common.js'),
+        },
+      },
+      'import/internal-regex': '^@/',
       react: {
         version: 'detect',
       },

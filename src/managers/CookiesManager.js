@@ -1,4 +1,3 @@
-//constants
 import { decryptData, encryptData } from '@/constants/Helpers';
 
 class CookiesManager {

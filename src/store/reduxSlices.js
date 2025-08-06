@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-// slices
+
 /* PLOP_INJECT_IMPORT */
 import app from './app/slices/AppSlice';
 

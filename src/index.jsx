@@ -1,16 +1,17 @@
 import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
-//import meta image
+import { BrowserRouter } from 'react-router-dom';
+
+import { createRoot } from 'react-dom/client';
+
 import '@/public/assets/images/metaImage.jpg';
-// required for babel polyfills
+
 import 'regenerator-runtime/runtime';
-//store configuration
-import store from './store/store';
-//root component
+
 import App from './App';
-//styles
+import store from './store/store';
+
 import './scss/global.scss';
 /* PLOP_INJECT_PWA_IMPORTS */
 

@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-//selectors
+
 //replace the following with your own selector
 import { getAppUserPermissionsList } from '@/store/app/selectors/AppSelectors';
 

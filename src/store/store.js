@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-//root reducer
+
 import { reduxSlices } from './reduxSlices';
 
 const isDevelopment = process.env.NODE_ENV === 'development';

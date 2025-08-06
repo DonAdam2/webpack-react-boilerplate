@@ -1,6 +1,5 @@
-//constants
 import { decryptData, encryptData } from '@/constants/Helpers';
-//managers
+
 import SharedManager, { AvailableStorages } from './SharedManager';
 
 class SessionStorageManager {

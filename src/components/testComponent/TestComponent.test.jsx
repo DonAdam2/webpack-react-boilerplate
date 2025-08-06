@@ -1,7 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
-// mock store provider
+
 import renderWithRedux from '@/jest/mocks/RenderWithRedux';
-//components
+
 import TestComponent from './TestComponent';
 
 describe('TestComponent', () => {

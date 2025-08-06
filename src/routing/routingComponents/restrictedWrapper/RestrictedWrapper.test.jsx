@@ -1,7 +1,9 @@
 import { screen } from '@testing-library/react';
+
 import '@testing-library/jest-dom';
-import RestrictedWrapper from './RestrictedWrapper';
 import renderWithRedux from '@/jest/mocks/RenderWithRedux';
+
+import RestrictedWrapper from './RestrictedWrapper';
 
 const mockPermissions = ['search', 'createUser'];
 
