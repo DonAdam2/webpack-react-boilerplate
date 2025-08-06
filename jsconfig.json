@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es5",
-    "module": "esnext",
     "baseUrl": ".",
+    "module": "esnext",
     "paths": {
-      "@/jest/*": ["./jest/*"],
       "@/assets/*": ["./src/assets/*"],
-      "@/constants/*": ["./src/constants/*"],
-      "@/managers/*": ["./src/managers/*"],
-      "@/routing/*": ["./src/routing/*"],
-      "@/store/*": ["./src/store/*"],
-      "@/services/*": ["./src/services/*"],
-      "@/hooks/*": ["./src/hooks/*"],
-      "@/pages/*": ["./src/pages/*"],
       "@/components/*": ["./src/components/*"],
+      "@/constants/*": ["./src/constants/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/jest/*": ["./jest/*"],
+      "@/managers/*": ["./src/managers/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/public/*": ["./public/*"],
+      "@/routing/*": ["./src/routing/*"],
       "@/scss/*": ["./src/scss/*"],
-      "@/public/*": ["./public/*"]
-    }
+      "@/services/*": ["./src/services/*"],
+      "@/store/*": ["./src/store/*"]
+    },
+    "target": "es5"
   },
   "exclude": ["node_modules"]
 }
