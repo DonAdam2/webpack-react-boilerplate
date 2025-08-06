@@ -1,15 +1,16 @@
-const path = require('path'),
-  js = require('@eslint/js'),
-  react = require('eslint-plugin-react'),
-  reactHooks = require('eslint-plugin-react-hooks'),
-  jest = require('eslint-plugin-jest'),
-  testingLibrary = require('eslint-plugin-testing-library'),
-  jestDom = require('eslint-plugin-jest-dom'),
-  prettier = require('eslint-plugin-prettier'),
-  prettierConfig = require('eslint-config-prettier'),
-  importPlugin = require('eslint-plugin-import'),
-  babelParser = require('@babel/eslint-parser'),
-  globals = require('globals');
+const path = require('path');
+
+const babelParser = require('@babel/eslint-parser');
+const js = require('@eslint/js');
+const prettierConfig = require('eslint-config-prettier');
+const importPlugin = require('eslint-plugin-import');
+const jest = require('eslint-plugin-jest');
+const jestDom = require('eslint-plugin-jest-dom');
+const prettier = require('eslint-plugin-prettier');
+const react = require('eslint-plugin-react');
+const reactHooks = require('eslint-plugin-react-hooks');
+const testingLibrary = require('eslint-plugin-testing-library');
+const globals = require('globals');
 
 module.exports = [
   // ESLint recommended
@@ -18,9 +19,9 @@ module.exports = [
   // Prettier config (disables conflicting rules)
   prettierConfig,
 
-  // Ignore ESLint config files
+  // Ignore ESLint config files and Jest setup
   {
-    ignores: ['eslint.config.js', 'eslint.config.*.js'],
+    ignores: ['jest.config.js'],
   },
 
   // Main configuration

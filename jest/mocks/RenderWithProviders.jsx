@@ -1,8 +1,9 @@
 // import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
+
 import { render } from '@testing-library/react';
-// store
+
 import setupStore from '@/jest/mocks/store';
 
 function renderWithProviders(

@@ -1,5 +1,6 @@
-const path = require('path'),
-  { rootDirectory, devServer, publicDirectory } = require('../buildTools/constants');
+const path = require('path');
+
+const { rootDirectory, devServer, publicDirectory } = require('../buildTools/constants');
 
 module.exports = {
   // A list of paths to directories that Jest should use to search for files in.

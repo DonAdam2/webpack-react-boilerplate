@@ -1,6 +1,7 @@
-import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
-//setup store
+
+import { render } from '@testing-library/react';
+
 import setupStore from '@/jest/mocks/store';
 
 function renderWithRedux(
