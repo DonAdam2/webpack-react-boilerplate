@@ -22,7 +22,7 @@
 
 - Testing using **jest**, **react-testing-library**
 - **SCSS** preprocessor
-- Autoprefixer for CSS (it supports IE >= 11)
+- Autoprefixer for CSS
 - Hot reloading for **JS** & **CSS** and **redux** store (in development)
 - Prettier (for code format)
 - Docker setup for development
@@ -32,7 +32,7 @@
 
 ## Prerequisites:
 
-- nodeJS > 17.X.X or Docker
+- nodeJS >= 20.X.X or Docker
 
 ## Installing / Getting Started:
 
@@ -125,7 +125,15 @@
 
 ## Available aliases:
 - @/jest => for the jest directory
-- @/js => for the JS directory
+- @/assets => for the assets directory
+- @/constants => for the constants directory
+- @/managers => for the managers directory
+- @/routing => for the routing directory
+- @/store => for the store directory
+- @/services => for the services directory
+- @/hooks => for the hooks directory
+- @/pages => for the pages directory
+- @/components => for the components directory
 - @/scss => for the SCSS directory
 - @/public => for the public directory, (don't forget to prepend the **tilde** symbol in scss files):
   ```
@@ -192,29 +200,38 @@ Please keep in mind that environment variables configured using webpack which me
 
 ## Enable HTTPS in development `pnpm start`
 
-Add `set HTTPS=true` to `pnpm start` script => `"start": "set HTTPS=true && node scripts/start.js"`
+Update the `pnpm start` script based on your OS:
+
+- **macOS/Linux** => `"start": "HTTPS=true node scripts/start.js"`
+- **Windows (cmd)** => `"start": "set HTTPS=true && node scripts/start.js"`
 
 <p dir="rtl"><a href="#table-of-contents">Back to top</a></p>
 
 ## Start the development server without opening the app in the browser `pnpm start`
 
-Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && node scripts/start.js"`
+Update the `pnpm start` script based on your OS:
+
+- **macOS/Linux** => `"start": "BROWSER=none node scripts/start.js"`
+- **Windows (cmd)** => `"start": "set BROWSER=none && node scripts/start.js"`
 
 <p dir="rtl"><a href="#table-of-contents">Back to top</a></p>
 
 ## Enable PWA `pnpm generate progressiveWebApp`
 
-- Run the given script to add the required files for progressive web app
+- Run the given script to add the required files for progressive web app:
+  ```
+  pnpm generate progressiveWebApp
+  ```
 - Install the following packages:
   
   ```
   pnpm add -D workbox-webpack-plugin workbox-cacheable-response workbox-core workbox-expiration workbox-precaching workbox-routing workbox-strategies workbox-window webpack-pwa-manifest
   ```
 - Add **pwa** directory `/public/assets/images/pwa`, then add your PWA images using the following names:
-  - icon_192x192.png
-  - icon_256x256.png
-  - icon_384x384.png
-  - icon_512x512.png
+  - icon-192x192.png
+  - icon-256x256.png
+  - icon-384x384.png
+  - icon-512x512.png
 - Open `/buildTools/webpack.prod.js` file and update manifest data in `WebpackPwaManifest` plugin:
   - start_url (indicates what page should launch when someone opens your progressive web app.)
   - theme_color (This sometimes affects how the OS displays the site (e.g., on Android's task switcher, the theme color surrounds the site).)
@@ -222,7 +239,7 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
   - name
   - short_name
   - description
-  - orientation (you can enforce the orientation of your app, it can be ommited.)
+  - orientation (you can enforce the orientation of your app, it can be omitted.)
   - categories (This is intended to be used by app stores to categorize your app.)
 - Update **cache APIs** section as needed in `/src/serviceWorker/swSource` file
 - You are good to go.
@@ -238,15 +255,15 @@ Add `set BROWSER=none` to `pnpm start` script => `"start": "set BROWSER=none && 
   ```
   new InjectManifest({
     //this is the source of your service worker setup
-    swSrc: \`\${PATHS.src}/serviceWorker/swSource\`,
-    dontCacheBustURLsMatching: ${dontCacheBustURLsMatching},         
+    swSrc: swSourcePath,
+    dontCacheBustURLsMatching: /\.[0-9a-f]{8}\./,
     // Bump up the default maximum size (2mb) to (5mb) that's precached,
     // to make lazy-loading failure scenarios less likely.
     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     //this is the output name of your service worker file
     swDest: 'serviceWorker.js',
     exclude: ['fileName'],
-  }),`,
+  }),
   ```
 
 <p dir="rtl"><a href="#table-of-contents">Back to top</a></p>
@@ -301,12 +318,21 @@ This build relies on [Prettier formatter](https://prettier.io/) to enforce code 
   ```
   pnpm add -D cypress start-server-and-test
   ```
-- Add the following scripts in `package.json`:
+- Add the following scripts in `package.json` based on your OS:
+
+  **macOS/Linux:**
   ```
-  "cypress:prepare": "set BROWSER=none && set ENV=test && pnpm start", //starts the app without opening it in the browser
+  "cypress:prepare": "BROWSER=none ENV=test pnpm start", //starts the app without opening it in the browser
   "cypress:start": "start-server-and-test cypress:prepare 3000", //Runs the previous command and waits for localhost to start up
   "cypress:open": "pnpm cypress:start \"cypress open\"", //Runs cypress tests in electron browser (recommended by cypress)
   "cypress:run": "pnpm cypress:start \"cypress run\"" //Runs cypress tests in headless mode (no browser)
+  ```
+  **Windows (cmd):**
+  ```
+  "cypress:prepare": "set BROWSER=none && set ENV=test && pnpm start",
+  "cypress:start": "start-server-and-test cypress:prepare 3000",
+  "cypress:open": "pnpm cypress:start \"cypress open\"",
+  "cypress:run": "pnpm cypress:start \"cypress run\""
   ```
 
   - Note:

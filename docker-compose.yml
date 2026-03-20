@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   web-dev:
     container_name: web_dev

@@ -24,6 +24,8 @@ module.exports = [
     ignores: ['jest.config.js'],
   },
 
+  /* PLOP_INJECT_PWA_ESLINT_CONFIG */
+
   // Main configuration
   {
     files: ['**/*.{js,jsx}'],
