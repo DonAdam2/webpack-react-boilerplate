@@ -2,8 +2,8 @@
   "name": "webpack-react-boilerplate",
   "version": "1.0.0",
   "engines": {
-    "node": ">=17.0.0",
-    "pnpm": ">=8.0.0"
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
   },
   "repository": {
     "type": "git",
@@ -15,11 +15,13 @@
     "production": [
       ">0.2%",
       "not dead",
+      "not ie 11",
       "not op_mini all"
     ],
     "development": [
       ">0.2%",
       "not dead",
+      "not ie 11",
       "not op_mini all"
     ]
   },
@@ -51,15 +53,12 @@
     "@testing-library/react-hooks": "8.0.1",
     "@testing-library/user-event": "14.6.1",
     "@types/jest": "30.0.0",
-    "autoprefixer": "10.4.21",
     "babel-jest": "30.0.4",
     "babel-loader": "10.0.0",
     "babel-plugin-macros": "3.1.0",
-    "browserslist": "4.25.1",
     "clean-webpack-plugin": "4.0.0",
     "cli-color": "2.0.4",
     "copy-webpack-plugin": "13.0.0",
-    "core-js": "3.44.0",
     "css-loader": "7.1.2",
     "css-minimizer-webpack-plugin": "7.0.2",
     "detect-port": "2.1.0",
@@ -88,9 +87,7 @@
     "node-polyfill-webpack-plugin": "4.1.0",
     "plop": "4.0.1",
     "postcss": "8.5.6",
-    "postcss-flexbugs-fixes": "5.0.2",
     "postcss-loader": "8.1.1",
-    "postcss-normalize": "13.0.1",
     "postcss-preset-env": "10.2.4",
     "prettier": "3.6.2",
     "prettier-plugin-sort-json": "4.1.1",
@@ -99,14 +96,12 @@
     "react-dom": "19.1.0",
     "react-refresh": "0.17.0",
     "redux-logger": "3.0.6",
-    "regenerator-runtime": "0.14.1",
     "resolve-url-loader": "5.0.0",
     "rework": "1.0.1",
     "rework-visit": "1.0.0",
     "sass": "1.89.2",
     "sass-loader": "16.0.5",
     "serve": "14.2.4",
-    "source-map-loader": "5.0.0",
     "style-loader": "4.0.0",
     "terser-webpack-plugin": "5.3.14",
     "to-camel-case": "1.0.0",

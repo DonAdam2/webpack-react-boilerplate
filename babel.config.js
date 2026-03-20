@@ -17,13 +17,7 @@ module.exports = (api) => {
   const presets = [
       [
         '@babel/preset-env',
-        {
-          targets: {
-            browsers: ['ie >= 11', 'last 2 versions'],
-          },
-          useBuiltIns: 'entry',
-          corejs: '3',
-        },
+        {},
       ],
       ['@babel/preset-react', { runtime: hasJsxRuntime ? 'automatic' : 'classic' }],
     ],

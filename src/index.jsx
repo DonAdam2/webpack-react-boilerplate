@@ -7,8 +7,6 @@ import { createRoot } from 'react-dom/client';
 
 import '@/public/assets/images/metaImage.jpg';
 
-import 'regenerator-runtime/runtime';
-
 import App from './App';
 import store from './store/store';
 
