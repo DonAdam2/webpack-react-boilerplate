@@ -1,24 +1,25 @@
 process.env.NODE_ENV = 'production';
 
 // the following 2 lines is to merge common webpack configurations with this file
-const { merge } = require('webpack-merge'),
-  common = require('./webpack.common.js'),
-  //plugins
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  CssMinimizerPlugin = require('css-minimizer-webpack-plugin'),
-  TerserJSPlugin = require('terser-webpack-plugin'),
-  { CleanWebpackPlugin } = require('clean-webpack-plugin'),
-  CopyPlugin = require('copy-webpack-plugin'),
-  Dotenv = require('dotenv-webpack'),
-  /* PLOP_INJECT_PWA_IMPORTS */
-  //constants
-  { cssSubDirectory } = require('./constants'),
-  {
-    envProductionPath,
-    /* PLOP_INJECT_PWA_PATH_IMPORTS */
-  } = require('./paths'),
-  //helpers
-  { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
+//plugins
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const { merge } = require('webpack-merge');
+
+/* PLOP_INJECT_PWA_IMPORTS */
+//constants
+const { cssSubDirectory } = require('./constants');
+//helpers
+const { getDirectoryDirectories, getDirectoryFiles } = require('./helpers');
+const {
+  envProductionPath,
+  /* PLOP_INJECT_PWA_PATH_IMPORTS */
+} = require('./paths');
+const common = require('./webpack.common.js');
 
 module.exports = (env, options) => {
   const containedDirectoriesInPublicDirectory = getDirectoryDirectories('public'),
