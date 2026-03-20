@@ -1,15 +1,17 @@
 //the following required to start the dev server
-const Webpack = require('webpack'),
-  WebpackDevServer = require('webpack-dev-server'),
-  webpackConfig = require('../buildTools/webpack.dev'),
-  //required to have colored messages in the terminal
-  clc = require('cli-color'),
-  //used to enforce user input
-  prompts = require('prompts'),
-  //used to detect if the selected port is in use or not and to suggest the next available port
-  { detect } = require('detect-port'),
-  //constants
-  { port } = require('../buildTools/constants');
+const clc = require('cli-color');
+const { detect } = require('detect-port');
+const prompts = require('prompts');
+const Webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+
+const { port } = require('../buildTools/constants');
+const webpackConfig = require('../buildTools/webpack.dev');
+//required to have colored messages in the terminal
+//used to enforce user input
+//used to detect if the selected port is in use or not and to suggest the next available port
+
+//constants
 
 function checkPort() {
   return new Promise((resolve) => {

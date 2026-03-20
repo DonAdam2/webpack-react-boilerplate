@@ -202,6 +202,7 @@ module.exports = [
         webpack: {
           config: path.join(__dirname, 'buildTools/webpack.common.js'),
         },
+        node: true,
       },
       'import/internal-regex': '^@/',
       react: {

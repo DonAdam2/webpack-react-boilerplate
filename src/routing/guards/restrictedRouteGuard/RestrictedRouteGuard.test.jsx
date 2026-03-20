@@ -1,13 +1,18 @@
+import { Route, Routes } from 'react-router-dom';
+
 import { waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Route, Routes } from 'react-router-dom';
-//routing
-import RestrictedRouteGuard from './RestrictedRouteGuard';
+
 //jest mocks
 import renderWithProviders from '@/jest/mocks/RenderWithProviders';
+
 //constants
-import { isAuthenticated } from '@/constants/Helpers';
 import { getLoginPageUrl } from '@/routing/routingConstants/AppUrls';
+
+import { isAuthenticated } from '@/constants/Helpers';
+
+//routing
+import RestrictedRouteGuard from './RestrictedRouteGuard';
 
 //mock isAuthenticated function
 jest.mock('@/constants/Helpers', () => ({
