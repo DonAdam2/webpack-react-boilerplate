@@ -1,36 +1,38 @@
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin'),
-  path = require('path'),
-  //plugins
-  HtmlWebpackPlugin = require('html-webpack-plugin'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  EsLintPlugin = require('eslint-webpack-plugin'),
-  //constants
-  {
-    devServer,
-    jsSubDirectory,
-    isCssModules,
-    metaInfo: { title, description, keywords, siteName, twitterCardType },
-  } = require('./constants'),
-  {
-    publicDirPath,
-    srcPath,
-    outputSrcPath,
-    jestPath,
-    appIndexPath,
-    assetsDirPath,
-    managersDirPath,
-    routingDirPath,
-    storeDirPath,
-    servicesDirPath,
-    hooksDirPath,
-    pagesDirPath,
-    componentsDirPath,
-    stylesDirPath,
-    indexHtmlPath,
-    constantsDirPath,
-  } = require('./paths'),
-  //helpers
-  { generateScopedName } = require('./helpers');
+const path = require('path');
+
+//plugins
+const EsLintPlugin = require('eslint-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
+//constants
+const {
+  devServer,
+  jsSubDirectory,
+  isCssModules,
+  metaInfo: { title, description, keywords, siteName, twitterCardType },
+} = require('./constants');
+//helpers
+const { generateScopedName } = require('./helpers');
+const {
+  publicDirPath,
+  srcPath,
+  outputSrcPath,
+  jestPath,
+  appIndexPath,
+  assetsDirPath,
+  managersDirPath,
+  routingDirPath,
+  storeDirPath,
+  servicesDirPath,
+  hooksDirPath,
+  pagesDirPath,
+  componentsDirPath,
+  stylesDirPath,
+  indexHtmlPath,
+  constantsDirPath,
+} = require('./paths');
 
 module.exports = (env, options) => {
   // the mode variable is passed in package.json scripts (development, production)
@@ -151,16 +153,12 @@ module.exports = (env, options) => {
             {
               loader: 'postcss-loader',
               options: {
-                postcssOptions: {
-                  ident: 'postcss',
-                  plugins: [
-                    [
-                      'postcss-preset-env',
-                      {
-                        stage: 0,
-                      },
-                    ],
-                  ],
+                postcssOptions: async () => {
+                  const postcssPresetEnv = (await import('postcss-preset-env')).default;
+                  return {
+                    ident: 'postcss',
+                    plugins: [postcssPresetEnv({ stage: 0 })],
+                  };
                 },
                 sourceMap: isDevelopment,
               },
