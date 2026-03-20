@@ -1,7 +1,8 @@
-const fs = require('fs'),
-  path = require('path'),
-  //the following module is used to generate incremental IDs for every entry
-  incstr = require('incstr');
+const fs = require('fs');
+const path = require('path');
+
+//the following module is used to generate incremental IDs for every entry
+const incstr = require('incstr');
 
 const createUniqueIdGenerator = () => {
   const index = {};
