@@ -53,14 +53,12 @@ module.exports = (env, options) => {
               ecma: 2020,
             },
             compress: {
-              ecma: 2015,
               warnings: false,
               comparisons: false,
               inline: 2,
               drop_console: true,
             },
             output: {
-              ecma: 2015,
               comments: false,
               ascii_only: true,
             },
