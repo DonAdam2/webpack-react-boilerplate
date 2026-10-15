@@ -43,9 +43,7 @@ module.exports = (env, options) =>
     },
     plugins: [
       // enables fast refresh
-      // overlay disabled: its socket integration imports sockjs-client, which registers a
-      // deprecated `unload` listener and triggers a permissions policy violation in Chrome
-      new ReactRefreshWebpackPlugin({ overlay: false }),
+      new ReactRefreshWebpackPlugin(),
       new Dotenv({
         path: envDevelopmentPath,
         systemvars: true, //Set to true if you would rather load all system variables as well (useful for CI purposes)

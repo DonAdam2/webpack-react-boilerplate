@@ -206,7 +206,8 @@ module.exports = [
       },
       'import/internal-regex': '^@/',
       react: {
-        version: 'detect',
+        // 'detect' crashes on ESLint 10 (eslint-plugin-react 7.37.5 calls the removed context.getFilename)
+        version: '19.3',
       },
     },
   },
