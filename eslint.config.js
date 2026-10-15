@@ -3,7 +3,7 @@ const path = require('path');
 const babelParser = require('@babel/eslint-parser');
 const js = require('@eslint/js');
 const prettierConfig = require('eslint-config-prettier');
-const importPlugin = require('eslint-plugin-import');
+const { createNodeResolver, importX } = require('eslint-plugin-import-x');
 const jest = require('eslint-plugin-jest');
 const jestDom = require('eslint-plugin-jest-dom');
 const prettier = require('eslint-plugin-prettier');
@@ -11,6 +11,10 @@ const react = require('eslint-plugin-react');
 const reactHooks = require('eslint-plugin-react-hooks');
 const testingLibrary = require('eslint-plugin-testing-library');
 const globals = require('globals');
+
+// reuse webpack's aliases and extensions so ESLint resolves imports the same way the bundler does
+const webpackCommon = require('./buildTools/webpack.common.js');
+const { alias, extensions } = webpackCommon({}, { mode: 'development' }).resolve;
 
 module.exports = [
   // ESLint recommended
@@ -70,7 +74,7 @@ module.exports = [
       'testing-library': testingLibrary,
       'jest-dom': jestDom,
       prettier: prettier,
-      import: importPlugin,
+      'import-x': importX,
     },
     rules: {
       // React recommended rules
@@ -90,7 +94,7 @@ module.exports = [
       ...jestDom.configs.recommended.rules,
 
       // Import sorting and organization
-      'import/order': [
+      'import-x/order': [
         'error',
         {
           groups: [
@@ -181,10 +185,10 @@ module.exports = [
           },
         },
       ],
-      'import/no-unresolved': 'error',
-      'import/named': 'error',
-      'import/default': 'error',
-      'import/export': 'error',
+      'import-x/no-unresolved': 'error',
+      'import-x/named': 'error',
+      'import-x/default': 'error',
+      'import-x/export': 'error',
 
       // Custom overrides
       'prettier/prettier': 'error',
@@ -198,13 +202,13 @@ module.exports = [
       'react-hooks/exhaustive-deps': 'warn',
     },
     settings: {
-      'import/resolver': {
-        webpack: {
-          config: path.join(__dirname, 'buildTools/webpack.common.js'),
-        },
-        node: true,
-      },
-      'import/internal-regex': '^@/',
+      'import-x/resolver-next': [
+        createNodeResolver({
+          extensions,
+          alias: Object.fromEntries(Object.entries(alias).map(([key, value]) => [key, [value]])),
+        }),
+      ],
+      'import-x/internal-regex': '^@/',
       react: {
         // 'detect' crashes on ESLint 10 (eslint-plugin-react 7.37.5 calls the removed context.getFilename),
         // so read the installed React version instead
