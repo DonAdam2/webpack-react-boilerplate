@@ -206,8 +206,9 @@ module.exports = [
       },
       'import/internal-regex': '^@/',
       react: {
-        // 'detect' crashes on ESLint 10 (eslint-plugin-react 7.37.5 calls the removed context.getFilename)
-        version: '19.3',
+        // 'detect' crashes on ESLint 10 (eslint-plugin-react 7.37.5 calls the removed context.getFilename),
+        // so read the installed React version instead
+        version: require('react/package.json').version,
       },
     },
   },
